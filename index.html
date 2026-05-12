@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hero Screen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="hero-screen">
+      <section class="hero-card" aria-labelledby="hero-title">
+        <div class="hero-card__backdrop" aria-hidden="true"></div>
+        <div class="hero-card__backdrop-overlay" aria-hidden="true"></div>
+        <div class="hero-card__shapes" aria-hidden="true">
+          <div class="hero-card__shape hero-card__shape--1"></div>
+          <div class="hero-card__shape hero-card__shape--2"></div>
+          <div class="hero-card__shape hero-card__shape--3"></div>
+          <div class="hero-card__shape hero-card__shape--4"></div>
+        </div>
+
+        <img
+          class="hero-card__frame"
+          src="https://www.figma.com/api/mcp/asset/1f6bc810-7a1e-45a2-b180-99f91a93f12e"
+          alt=""
+        />
+
+        <img
+          class="hero-card__brand"
+          src="https://www.figma.com/api/mcp/asset/b722ba09-1c9a-45b4-bb7b-7efc2b3dab3c"
+          alt="Цифровой аудит"
+        />
+
+        <nav class="hero-card__nav" aria-label="Основная навигация">
+          <a class="hero-card__nav-link" href="#about">О нас</a>
+          <a class="hero-card__nav-link" href="#projects">Проекты</a>
+          <a class="hero-card__nav-link" href="#directions">Направления работы</a>
+          <a class="hero-card__nav-link" href="#team">Команда</a>
+          <a class="hero-card__nav-link hero-card__nav-link--bonus" href="#bonuses">
+            <span class="hero-card__nav-icon" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </span>
+            <span>Бонусы</span>
+          </a>
+          <a class="hero-card__button" href="#contacts">Контакты</a>
+        </nav>
+
+        <div class="hero-card__content">
+          <h1 id="hero-title" class="hero-card__title">
+            <span>Создаем</span>
+            <span>инновации</span>
+            <span>в аудите</span>
+          </h1>
+
+          <div class="hero-card__art" aria-hidden="true">
+            <img
+              class="hero-card__art-image"
+              src="https://www.figma.com/api/mcp/asset/6ef6d762-05af-4ad3-8cea-1a88ec873baf"
+              alt=""
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

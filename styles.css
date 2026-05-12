@@ -1,0 +1,377 @@
+:root {
+  --page-bg: #efefef;
+  --text-primary: #030404;
+  --accent-red: #ed1c24;
+  --accent-red-hover: #ad0c12;
+  --card-max-width: 1920px;
+  --hero-backdrop-image: url("https://www.figma.com/api/mcp/asset/6ea93a40-e85a-48b6-952f-0f7fe20cc0f6");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--text-primary);
+  font-family: "Golos Text", sans-serif;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.hero-screen {
+  min-height: 100vh;
+  padding: 0;
+}
+
+.hero-card {
+  position: relative;
+  width: 100%;
+  min-height: 960px;
+  height: 100vh;
+  background: var(--page-bg);
+  overflow: visible;
+  isolation: isolate;
+}
+
+.hero-card__backdrop,
+.hero-card__backdrop-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-card__backdrop {
+  z-index: 0;
+  background-image: var(--hero-backdrop-image);
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 100% 161.3%;
+  opacity: 1;
+}
+
+.hero-card__backdrop-overlay {
+  z-index: 0;
+  background: rgba(255, 255, 255, 0.72);
+  mix-blend-mode: lighten;
+}
+
+.hero-card__shapes {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-card__shape {
+  position: absolute;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 250, 240, 0.78) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  filter: blur(6px);
+  mix-blend-mode: lighten;
+  opacity: 0.7;
+  transform-origin: center;
+}
+
+.hero-card__shape--1 {
+  left: -2%;
+  bottom: 6%;
+  width: 19%;
+  height: 38%;
+  transform: rotate(44deg);
+}
+
+.hero-card__shape--2 {
+  left: 12%;
+  bottom: 10%;
+  width: 17%;
+  height: 34%;
+  transform: rotate(41deg);
+}
+
+.hero-card__shape--3 {
+  left: 29%;
+  bottom: 9%;
+  width: 15%;
+  height: 31%;
+  transform: rotate(39deg);
+}
+
+.hero-card__shape--4 {
+  left: 48%;
+  bottom: 7%;
+  width: 22%;
+  height: 37%;
+  transform: rotate(37deg);
+}
+
+.hero-card__frame {
+  position: absolute;
+  top: 28px;
+  left: 32px;
+  width: calc(100% - 65px);
+  height: 95%;
+  aspect-ratio: 1855.0009765625 / 1051.8369;
+  object-fit: contain;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-card__brand {
+  position: absolute;
+  top: 68px;
+  left: 88px;
+  width: 189px;
+  height: 35px;
+  min-width: 120px;
+  z-index: 2;
+}
+
+.hero-card__nav {
+  position: absolute;
+  top: 76px;
+  right: 89px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  z-index: 2;
+}
+
+.hero-card__nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #000;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 160ms ease;
+}
+
+.hero-card__nav-icon {
+  display: grid;
+  grid-template-columns: repeat(2, 4px);
+  grid-template-rows: repeat(2, 4px);
+  gap: 4px;
+}
+
+.hero-card__nav-icon span {
+  width: 4px;
+  height: 4px;
+  background: var(--accent-red);
+  transition: background-color 160ms ease;
+}
+
+.hero-card__nav-link:hover {
+  color: var(--accent-red-hover);
+}
+
+.hero-card__nav-link:hover .hero-card__nav-icon span {
+  background: var(--accent-red-hover);
+}
+
+.hero-card__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 124px;
+  height: 36px;
+  background: var(--accent-red);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  z-index: 2;
+  transition: background-color 160ms ease;
+  flex: 0 0 auto;
+}
+
+.hero-card__button:hover {
+  background: var(--accent-red-hover);
+}
+
+.hero-card__content {
+  position: relative;
+  z-index: 1;
+  min-height: 100%;
+  width: 100%;
+}
+
+.hero-card__title {
+  position: absolute;
+  top: 50%;
+  left: 149px;
+  transform: translateY(-50%);
+  margin: 0;
+  display: grid;
+  gap: 0;
+  width: 760px;
+  max-width: none;
+  font-size: 208px;
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+.hero-card__title span {
+  display: block;
+}
+
+.hero-card__art {
+  position: absolute;
+  top: 50%;
+  right: 106px;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 859.731px;
+  height: 1007.243px;
+  max-width: none;
+}
+
+.hero-card__art-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: rotate(-1.95deg);
+  transform-origin: center;
+}
+
+@media (max-width: 1024px) {
+  .hero-screen {
+    padding: 40px 48px 0;
+  }
+
+  .hero-card {
+    height: auto;
+    min-height: calc(100vh - 40px);
+  }
+
+  .hero-card__frame {
+    top: 14px;
+    left: 48px;
+    width: calc(100% - 96px);
+    aspect-ratio: 1824 / 1051.8369;
+  }
+
+  .hero-card__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: min(100%, 760px);
+    min-height: 100%;
+    margin: 0 auto;
+    padding: 120px 56px 72px;
+  }
+
+  .hero-card__title {
+    position: static;
+    width: 100%;
+    max-width: none;
+    transform: none;
+  }
+
+  .hero-card__art {
+    position: static;
+    width: 100%;
+    max-width: none;
+    transform: none;
+    justify-content: center;
+    padding-top: 16px;
+  }
+
+  .hero-card__art-image {
+    width: min(100%, 620px);
+  }
+
+  .hero-card__brand {
+    width: 150px;
+    left: 56px;
+    top: 44px;
+  }
+
+  .hero-card__nav {
+    position: static;
+    flex-wrap: wrap;
+    gap: 20px 28px;
+    margin: 0 56px 24px;
+    justify-content: flex-start;
+  }
+
+  .hero-card__button {
+    margin-left: 0;
+    margin: 0 56px 16px auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-screen {
+    padding: 16px;
+  }
+
+  .hero-card {
+    min-height: calc(100vh - 16px);
+    height: auto;
+  }
+
+  .hero-card__content {
+    gap: 28px;
+    padding: 88px 28px 36px;
+  }
+
+  .hero-card__brand {
+    width: 128px;
+    left: 28px;
+    top: 26px;
+    min-width: 0;
+  }
+
+  .hero-card__nav {
+    margin: 72px 28px 16px;
+    gap: 14px 18px;
+  }
+
+  .hero-card__nav-link,
+  .hero-card__button {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .hero-card__button {
+    margin: 0 28px 12px auto;
+    width: 112px;
+    height: 34px;
+  }
+
+  .hero-card__title {
+    font-size: clamp(2.75rem, 13vw, 4.5rem);
+    letter-spacing: -0.05em;
+  }
+
+  .hero-card__art-image {
+    width: 100%;
+  }
+}
