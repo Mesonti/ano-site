@@ -302,14 +302,26 @@ img {
   z-index: 3;
 }
 
-.hero-card__logo-icon {
+.hero-card__logo-icon,
+.hero-card__logo-icon-blur {
   position: absolute;
-  top: 29.17%;
+  top: 30%;
   left: calc(67%);
   width: 200px;
   height: 200px;
-  object-fit: contain;
   pointer-events: none;
+}
+
+.hero-card__logo-icon-blur {
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 2;
+}
+
+.hero-card__logo-icon {
+  object-fit: contain;
   z-index: 3;
 }
 
@@ -384,7 +396,7 @@ img {
 
 .hero-card__content {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   min-height: 100%;
   width: 100%;
 }
@@ -421,6 +433,7 @@ img {
   width: 860px;
   height: 1010px;
   max-width: none;
+  
 }
 
 .hero-card__art-image {
@@ -429,6 +442,7 @@ img {
   object-fit: contain;
   transform: rotate(-1.95deg);
   transform-origin: center;
+  z-index: 0;
 }
 
 @media (max-width: 1024px) {
@@ -483,7 +497,8 @@ img {
     top: 44px;
   }
 
-  .hero-card__logo-icon {
+  .hero-card__logo-icon,
+  .hero-card__logo-icon-blur {
     width: 140px;
     height: 140px;
   }
@@ -524,7 +539,8 @@ img {
     min-width: 0;
   }
 
-  .hero-card__logo-icon {
+  .hero-card__logo-icon,
+  .hero-card__logo-icon-blur {
     width: 96px;
     height: 96px;
   }
