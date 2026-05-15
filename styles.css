@@ -1,10 +1,10 @@
 :root {
-  --page-bg: #efefef;
+  --page-bg: #EFEFEF;
   --text-primary: #030404;
   --accent-red: #ed1c24;
   --accent-red-hover: #ad0c12;
   --card-max-width: 1920px;
-  --hero-backdrop-image: url("https://www.figma.com/api/mcp/asset/6ea93a40-e85a-48b6-952f-0f7fe20cc0f6");
+  --hero-backdrop-image: url("./img/bg-image.png");
 }
 
 * {
@@ -29,8 +29,33 @@ img {
 }
 
 .hero-screen {
+  position: relative;
   min-height: 100vh;
   padding: 0;
+  background: var(--page-bg);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-screen::before,
+.hero-screen::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+}
+
+.hero-screen::before {
+  z-index: -1;
+  background-image: var(--hero-backdrop-image);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 1920px auto;
+  mix-blend-mode: lighten;
+}
+
+.hero-screen::after {
+  z-index: -1;
 }
 
 .hero-card {
@@ -38,7 +63,7 @@ img {
   width: 100%;
   min-height: 960px;
   height: 100vh;
-  background: var(--page-bg);
+  background: transparent;
   overflow: visible;
   isolation: isolate;
 }
@@ -52,17 +77,13 @@ img {
 
 .hero-card__backdrop {
   z-index: 0;
-  background-image: var(--hero-backdrop-image);
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: 100% 161.3%;
+  background: transparent;
   opacity: 1;
 }
 
 .hero-card__backdrop-overlay {
   z-index: 0;
-  background: rgba(255, 255, 255, 0.72);
-  mix-blend-mode: lighten;
+  background: transparent;
 }
 
 .hero-card__shapes {
@@ -445,6 +466,240 @@ img {
   z-index: 0;
 }
 
+.about-section {
+  position: relative;
+  min-height: 615px;
+  margin-top: -160px;
+  padding-top: 160px;
+  background: transparent;
+  overflow: hidden;
+}
+
+.about-section::before,
+.about-section::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  display: none;
+  pointer-events: none;
+}
+
+.about-section::before {
+  z-index: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(239, 239, 239, 0) 0%,
+    rgba(239, 239, 239, 0) 30%,
+    rgba(239, 239, 239, 0.2) 58%,
+    var(--page-bg) 100%
+  );
+  opacity: 1;
+}
+
+.about-section::after {
+  z-index: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 62%);
+  mix-blend-mode: lighten;
+}
+
+.about-section__title {
+  position: absolute;
+  z-index: 1;
+  top: 283px;
+  left: 48px;
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 100px;
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: 0;
+}
+
+.about-card {
+  position: absolute;
+  z-index: 1;
+  top: 307px;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  height: 218px;
+  padding: 24px;
+  color: var(--text-primary);
+  background: #fff;
+  border: 1px solid rgba(3, 4, 4, 0.12);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
+}
+
+.about-card--who {
+  left: 522px;
+  width: 641px;
+}
+
+.about-card--why {
+  left: 1235px;
+  width: 624px;
+}
+
+.about-card__label {
+  display: flex;
+  flex: 0 0 129px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: stretch;
+}
+
+.about-card__label h3 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: -0.02em;
+}
+
+.about-card__label span {
+  width: 8px;
+  height: 8px;
+  background: var(--text-primary);
+}
+
+.about-card p {
+  margin: 0;
+  width: 424px;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.22;
+  letter-spacing: 0;
+}
+
+.about-card--why p {
+  width: 407px;
+}
+
+.about-section__actions {
+  position: absolute;
+  z-index: 1;
+  top: 438px;
+  left: 48px;
+  display: flex;
+  gap: 25px;
+}
+
+.about-section__plus,
+.about-section__arrow {
+  position: relative;
+  display: block;
+  width: 55px;
+  height: 55px;
+}
+
+.about-section__plus {
+  background: var(--accent-red);
+  color: #fff;
+  font-size: 45px;
+  font-weight: 400;
+  line-height: 51px;
+  text-align: center;
+}
+
+.about-section__arrow {
+  color: var(--text-primary);
+}
+
+.about-section__arrow-corner {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+}
+
+.about-section__arrow-corner::before,
+.about-section__arrow-corner::after {
+  position: absolute;
+  content: "";
+  background: currentColor;
+}
+
+.about-section__arrow-corner::before {
+  width: 1px;
+  height: 9px;
+}
+
+.about-section__arrow-corner::after {
+  width: 9px;
+  height: 1px;
+}
+
+.about-section__arrow-corner--tl {
+  top: 0;
+  left: 0;
+}
+
+.about-section__arrow-corner--tl::before,
+.about-section__arrow-corner--tl::after {
+  top: 0;
+  left: 0;
+}
+
+.about-section__arrow-corner--tr {
+  top: 0;
+  right: 0;
+}
+
+.about-section__arrow-corner--tr::before,
+.about-section__arrow-corner--tr::after {
+  top: 0;
+  right: 0;
+}
+
+.about-section__arrow-corner--bl {
+  bottom: 0;
+  left: 0;
+}
+
+.about-section__arrow-corner--bl::before,
+.about-section__arrow-corner--bl::after {
+  bottom: 0;
+  left: 0;
+}
+
+.about-section__arrow-corner--br {
+  right: 0;
+  bottom: 0;
+}
+
+.about-section__arrow-corner--br::before,
+.about-section__arrow-corner--br::after {
+  right: 0;
+  bottom: 0;
+}
+
+.about-section__arrow-line {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 31px;
+  height: 31px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+
+.about-section__arrow-line::before {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 35px;
+  height: 2px;
+  background: currentColor;
+  content: "";
+  transform: rotate(135deg);
+  transform-origin: right center;
+}
+
+@media (min-width: 1921px) {
+  .hero-screen::before {
+    background-size: 100% auto;
+  }
+}
+
 @media (max-width: 1024px) {
   .hero-screen {
     padding: 40px 48px 0;
@@ -515,6 +770,41 @@ img {
     margin-left: 0;
     margin: 0 56px 16px auto;
   }
+
+  .about-section {
+    min-height: auto;
+    margin-top: 0;
+    padding: 72px 56px 80px;
+  }
+
+  .about-section__title,
+  .about-card,
+  .about-section__actions {
+    position: relative;
+    top: auto;
+    left: auto;
+  }
+
+  .about-section__title {
+    margin-bottom: 40px;
+    font-size: 72px;
+  }
+
+  .about-card {
+    width: 100%;
+    height: auto;
+    min-height: 218px;
+    margin-bottom: 24px;
+  }
+
+  .about-card p,
+  .about-card--why p {
+    width: auto;
+  }
+
+  .about-section__actions {
+    margin-top: 8px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -569,5 +859,39 @@ img {
 
   .hero-card__art-image {
     width: 100%;
+  }
+
+  .about-section {
+    padding: 56px 28px 64px;
+  }
+
+  .about-section__title {
+    margin-bottom: 32px;
+    font-size: 56px;
+  }
+
+  .about-card {
+    display: block;
+    min-height: 0;
+    padding: 22px;
+  }
+
+  .about-card__label {
+    display: block;
+    margin-bottom: 32px;
+  }
+
+  .about-card__label h3 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .about-card__label span {
+    display: none;
+  }
+
+  .about-card p {
+    font-size: 22px;
+    line-height: 1.25;
   }
 }
