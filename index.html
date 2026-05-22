@@ -15,6 +15,10 @@
   <body>
     <main class="hero-screen">
       <section class="hero-card" aria-labelledby="hero-title">
+        <div class="hero-screen__bg" aria-hidden="true">
+          <img src="./img/bg.png" alt="" />
+        </div>
+
         <div class="hero-card__backdrop" aria-hidden="true"></div>
         <div class="hero-card__backdrop-overlay" aria-hidden="true"></div>
         <div class="hero-card__shapes" aria-hidden="true">
@@ -48,13 +52,13 @@
 
         <img
           class="hero-card__frame"
-          src="https://www.figma.com/api/mcp/asset/1f6bc810-7a1e-45a2-b180-99f91a93f12e"
+          src="./img/frame.svg"
           alt=""
         />
 
         <img
           class="hero-card__brand"
-          src="https://www.figma.com/api/mcp/asset/b722ba09-1c9a-45b4-bb7b-7efc2b3dab3c"
+          src="./img/logo.svg"
           alt="Цифровой аудит"
         />
 
@@ -90,44 +94,290 @@
             />
           </div>
         </div>
+
+        <section class="about-section" aria-labelledby="about-title">
+          <div class="about-section__inner">
+            <h2 id="about-title" class="about-section__title">О нас</h2>
+
+            <article class="about-card about-card--who">
+              <div class="about-card__label">
+                <h3>Кто мы?</h3>
+                <span aria-hidden="true"></span>
+              </div>
+              <p>
+                Ведущий технологический партнер и центр IT-компетенций Счетной&nbsp;палаты
+                Российской&nbsp;Федерации
+              </p>
+            </article>
+
+            <article class="about-card about-card--why">
+              <div class="about-card__label">
+                <h3>Зачем?</h3>
+                <span aria-hidden="true"></span>
+              </div>
+              <p>
+                Чтобы цифровые инструменты надежно работали для устойчивого развития общества
+                и&nbsp;государства
+              </p>
+            </article>
+
+            <div class="about-section__actions" aria-hidden="true">
+              <span class="about-section__plus"></span>
+              <span class="about-section__arrow"></span>
+            </div>
+          </div>
+        </section>
       </section>
 
-      <section class="about-section" aria-labelledby="about-title">
-        <h2 id="about-title" class="about-section__title">О нас</h2>
+      <section class="projects-section" id="projects" aria-labelledby="projects-title">
+        <div class="projects-section__heading">
+          <h2 id="projects-title">Над чем работаем?</h2>
+          <p>Создаем цифровую инфраструктуру государственного аудита</p>
+        </div>
 
-        <article class="about-card about-card--who">
-          <div class="about-card__label">
-            <h3>Кто мы?</h3>
-            <span aria-hidden="true"></span>
-          </div>
-          <p>
-            Ведущий технологический партнер и центр IT-компетенций Счетной&nbsp;палаты
-            Российской&nbsp;Федерации
-          </p>
-        </article>
+        <div class="projects-section__body">
+          <article class="project-row project-row--platform">
+            <div class="project-card project-card--platform">
+              <h3>Единая цифровая платформа для&nbsp;аудита</h3>
+              <p>
+                Единая точка входа для&nbsp;доступа ко&nbsp;всем системам, сервисам
+                и&nbsp;инструментам
+              </p>
+            </div>
 
-        <article class="about-card about-card--why">
-          <div class="about-card__label">
-            <h3>Зачем?</h3>
-            <span aria-hidden="true"></span>
-          </div>
-          <p>
-            Чтобы цифровые инструменты надежно работали для устойчивого развития общества
-            и&nbsp;государства
-          </p>
-        </article>
+            <div class="project-tags" aria-label="Сервисы единой цифровой платформы">
+              <span>Цифровое рабочее место</span>
+              <span>Планирование мероприятий</span>
+              <span>Платформа хранения и обработки данных</span>
+              <span>Совместный аудит</span>
+              <span>Аналитические панели</span>
+              <span>Распознавание документов</span>
+              <span>Личный кабинет объекта аудита</span>
+              <span>Мониторинг СМИ</span>
+              <span>Моделирование рисков</span>
+              <span>Библиотека ИИ-ассистентов</span>
+              <span>Управление рисками</span>
+            </div>
+          </article>
 
-        <div class="about-section__actions" aria-hidden="true">
-          <span class="about-section__plus">+</span>
-          <span class="about-section__arrow">
-            <span class="about-section__arrow-corner about-section__arrow-corner--tl"></span>
-            <span class="about-section__arrow-corner about-section__arrow-corner--tr"></span>
-            <span class="about-section__arrow-corner about-section__arrow-corner--bl"></span>
-            <span class="about-section__arrow-corner about-section__arrow-corner--br"></span>
-            <span class="about-section__arrow-line"></span>
-          </span>
+          <div class="projects-section__divider" aria-hidden="true"></div>
+
+          <article class="project-row project-row--backoffice">
+            <div class="project-card project-card--backoffice">
+              <h3>Цифровой бэк-офис</h3>
+              <p>
+                Внутренняя среда для&nbsp;эффективной работы и&nbsp;автоматизации
+                процессов
+              </p>
+            </div>
+
+            <div class="project-tags" aria-label="Сервисы цифрового бэк-офиса">
+              <span>Корпоративный портал</span>
+              <span>Защищенный мессенджер</span>
+              <span>ITSM-система</span>
+              <span>Портал КСО</span>
+              <span>Управление трудовыми ресурсами</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="competency-section" id="directions" aria-labelledby="competency-title">
+        <h2 id="competency-title" class="competency-section__title">Компетенции</h2>
+
+        <div class="competency-list">
+          <article class="competency-item competency-item--open" data-accordion-item>
+            <button
+              class="competency-item__trigger"
+              type="button"
+              aria-expanded="true"
+              aria-controls="competency-panel-1"
+            >
+              <div class="competency-item__main">
+                <div class="competency-item__head">
+                  <span class="competency-item__number">01</span>
+                  <h3>Цифровая трансформация</h3>
+                </div>
+                <p id="competency-panel-1">
+                  Помогаем бизнесу и государственным органам внедрять передовые цифровые технологии
+                  и инновационные решения
+                </p>
+              </div>
+              <span class="competency-item__button" aria-hidden="true"></span>
+              <span class="competency-item__icon" aria-hidden="true"></span>
+            </button>
+          </article>
+
+          <article class="competency-item" data-accordion-item>
+            <button
+              class="competency-item__trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="competency-panel-2"
+            >
+              <div class="competency-item__main">
+                <div class="competency-item__head">
+                  <span class="competency-item__number">02</span>
+                  <h3>Разработка и внедрение ИТ-решений</h3>
+                </div>
+                <p id="competency-panel-2" hidden>
+                  Создаем надежные сервисы, платформы и интеграции для цифровых процессов
+                </p>
+              </div>
+              <span class="competency-item__button" aria-hidden="true"></span>
+              <span class="competency-item__icon" aria-hidden="true"></span>
+            </button>
+          </article>
+
+          <article class="competency-item" data-accordion-item>
+            <button
+              class="competency-item__trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="competency-panel-3"
+            >
+              <div class="competency-item__main">
+                <div class="competency-item__head">
+                  <span class="competency-item__number">03</span>
+                  <h3>Работа с данными и аналитика</h3>
+                </div>
+                <p id="competency-panel-3" hidden>
+                  Превращаем данные в понятные метрики, аналитические модели и управленческие выводы
+                </p>
+              </div>
+              <span class="competency-item__button" aria-hidden="true"></span>
+              <span class="competency-item__icon" aria-hidden="true"></span>
+            </button>
+          </article>
+
+          <article class="competency-item" data-accordion-item>
+            <button
+              class="competency-item__trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="competency-panel-4"
+            >
+              <div class="competency-item__main">
+                <div class="competency-item__head">
+                  <span class="competency-item__number">04</span>
+                  <h3>Искусственный интеллект</h3>
+                </div>
+                <p id="competency-panel-4" hidden>
+                  Внедряем ИИ-инструменты для автоматизации, поиска закономерностей и поддержки решений
+                </p>
+              </div>
+              <span class="competency-item__button" aria-hidden="true"></span>
+              <span class="competency-item__icon" aria-hidden="true"></span>
+            </button>
+          </article>
+
+          <article class="competency-item" data-accordion-item>
+            <button
+              class="competency-item__trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="competency-panel-5"
+            >
+              <div class="competency-item__main">
+                <div class="competency-item__head">
+                  <span class="competency-item__number">05</span>
+                  <h3>Дизайн и пользовательский опыт</h3>
+                </div>
+                <p id="competency-panel-5" hidden>
+                  Проектируем интерфейсы, которые помогают пользователям быстро решать рабочие задачи
+                </p>
+              </div>
+              <span class="competency-item__button" aria-hidden="true"></span>
+              <span class="competency-item__icon" aria-hidden="true"></span>
+            </button>
+          </article>
+
+          <article class="competency-item" data-accordion-item>
+            <button
+              class="competency-item__trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="competency-panel-6"
+            >
+              <div class="competency-item__main">
+                <div class="competency-item__head">
+                  <span class="competency-item__number">06</span>
+                  <h3>ИТ-инфраструктура</h3>
+                </div>
+                <p id="competency-panel-6" hidden>
+                  Развиваем устойчивую инфраструктуру для надежной работы цифровых сервисов
+                </p>
+              </div>
+              <span class="competency-item__button" aria-hidden="true"></span>
+              <span class="competency-item__icon" aria-hidden="true"></span>
+            </button>
+          </article>
+
+          <article class="competency-item" data-accordion-item>
+            <button
+              class="competency-item__trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="competency-panel-7"
+            >
+              <div class="competency-item__main">
+                <div class="competency-item__head">
+                  <span class="competency-item__number">07</span>
+                  <h3>Информационная безопасность</h3>
+                </div>
+                <p id="competency-panel-7" hidden>
+                  Защищаем данные, процессы и цифровые продукты на всех этапах жизненного цикла
+                </p>
+              </div>
+              <span class="competency-item__button" aria-hidden="true"></span>
+              <span class="competency-item__icon" aria-hidden="true"></span>
+            </button>
+          </article>
+
+          <article class="competency-item" data-accordion-item>
+            <button
+              class="competency-item__trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="competency-panel-8"
+            >
+              <div class="competency-item__main">
+                <div class="competency-item__head">
+                  <span class="competency-item__number">08</span>
+                  <h3>Развитие команды</h3>
+                </div>
+                <p id="competency-panel-8" hidden>
+                  Формируем экспертизу, процессы и среду для роста продуктовых и инженерных команд
+                </p>
+              </div>
+              <span class="competency-item__button" aria-hidden="true"></span>
+              <span class="competency-item__icon" aria-hidden="true"></span>
+            </button>
+          </article>
+
+          <article class="competency-item" data-accordion-item>
+            <button
+              class="competency-item__trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="competency-panel-9"
+            >
+              <div class="competency-item__main">
+                <div class="competency-item__head">
+                  <span class="competency-item__number">09</span>
+                  <h3>Исследования и консалтинг</h3>
+                </div>
+                <p id="competency-panel-9" hidden>
+                  Проводим исследования, оцениваем решения и помогаем выбирать технологические подходы
+                </p>
+              </div>
+              <span class="competency-item__button" aria-hidden="true"></span>
+              <span class="competency-item__icon" aria-hidden="true"></span>
+            </button>
+          </article>
         </div>
       </section>
     </main>
+    <script src="./script.js"></script>
   </body>
 </html>
