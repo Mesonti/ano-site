@@ -913,7 +913,7 @@ img {
 
 .competency-item h3 {
   margin: 0;
-  color: #000;
+  color: var(--text-primary);
   font-size: calc(30 * var(--competency-u));
   font-weight: 600;
   line-height: normal;
