@@ -1,0 +1,7 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 705.492 372.081" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="path">
+<circle id="from" cx="21" cy="106.081" r="15.5" fill="var(--fill-0, white)" stroke="var(--stroke-0, #ED1C24)" stroke-width="11"/>
+<circle id="to" cx="560" cy="351.081" r="15.5" fill="var(--fill-0, white)" stroke="var(--stroke-0, #ED1C24)" stroke-width="11"/>
+<path id="way" d="M27.5 90.0814L67 47.5814L454 3.08137L701 125.081C671 167.081 657 213.081 670 262.081C661 342.081 606 351.081 574 351.081" stroke="var(--stroke-0, #ED1C24)" stroke-width="6" stroke-dasharray="14 14"/>
+</g>
+</svg>
