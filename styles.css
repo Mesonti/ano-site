@@ -1472,6 +1472,116 @@ img {
   z-index: 1;
 }
 
+.office-section {
+  --office-u: calc(100vw / 1920);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: calc(64 * var(--office-u));
+  width: 100%;
+  min-height: calc(1069 * var(--office-u));
+  padding: calc(56 * var(--office-u)) calc(48 * var(--office-u));
+  background: var(--page-bg);
+  color: var(--text-primary);
+}
+
+.office-section__heading {
+  display: flex;
+  flex-direction: column;
+  gap: calc(16 * var(--office-u));
+  width: 100%;
+  color: var(--text-primary);
+}
+
+.office-section__heading h2 {
+  width: 100%;
+  margin: 0;
+  color: #000;
+  font-size: calc(75 * var(--office-u));
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0;
+}
+
+.office-section__heading p {
+  width: 100%;
+  margin: 0;
+  color: var(--text-primary);
+  font-size: calc(30 * var(--office-u));
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+}
+
+.office-map {
+  position: relative;
+  width: calc(1821 * var(--office-u));
+  max-width: 100%;
+  height: calc(751 * var(--office-u));
+  overflow: hidden;
+  border: calc(1 * var(--office-u)) solid rgba(0, 0, 0, 0.1);
+  border-radius: calc(24 * var(--office-u));
+  background: #fff;
+}
+
+.office-map__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.office-map__route,
+.office-map__photo,
+.office-map__badge {
+  position: absolute;
+  z-index: 1;
+  max-width: none;
+  pointer-events: none;
+}
+
+.office-map__route {
+  top: calc(163 / 751 * 100%);
+  left: calc(511 / 1821 * 100%);
+  width: calc(690 / 1821 * 100%);
+  height: calc(358 / 751 * 100%);
+}
+
+.office-map__photo {
+  top: calc(378.12 / 751 * 100%);
+  left: calc(766 / 1821 * 100%);
+  width: calc(242.763 / 1821 * 100%);
+  height: calc(242.763 / 751 * 100%);
+}
+
+.office-map__badge {
+  top: calc(425 / 751 * 100%);
+  left: calc(1053 / 1821 * 100%);
+  width: calc(59 * var(--office-u));
+  height: calc(37 * var(--office-u));
+}
+
+.office-map__badge img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+.office-map__badge span {
+  position: absolute;
+  top: calc(4 * var(--office-u));
+  left: calc(7.75 * var(--office-u));
+  color: #fff;
+  font-size: calc(14 * var(--office-u));
+  font-weight: 600;
+  line-height: normal;
+  white-space: nowrap;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .competency-item--animating p,
   .competency-item--animating .competency-item__button {
@@ -1524,5 +1634,44 @@ img {
   .benefits-card p {
     font-size: 20px;
     line-height: 24px;
+  }
+
+  .office-section {
+    --office-u: 1px;
+    min-height: 0;
+    padding: 48px 24px;
+    gap: 32px;
+  }
+
+  .office-section__heading {
+    gap: 12px;
+  }
+
+  .office-section__heading h2 {
+    font-size: 40px;
+    line-height: 1.1;
+  }
+
+  .office-section__heading p {
+    font-size: 20px;
+    line-height: 1.25;
+  }
+
+  .office-map {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1821 / 751;
+    border-radius: 16px;
+  }
+
+  .office-map__badge {
+    width: calc(59 / 1821 * 100%);
+    height: calc(37 / 751 * 100%);
+  }
+
+  .office-map__badge span {
+    top: 10.8%;
+    left: 13.1%;
+    font-size: 14px;
   }
 }
