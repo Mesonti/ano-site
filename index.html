@@ -1,556 +1,567 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Hero Screen</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link
-      href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&amp;display=swap"
-      rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&amp;display=swap"
+            rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=office-v1" />
-  </head>
-  <body>
-    <main class="hero-screen">
-      <section class="hero-card" aria-labelledby="hero-title">
+    <link rel="stylesheet" href="./styles.css?v=office-v1"/>
+</head>
+<body>
+<main class="hero-screen">
+    <section class="hero-card" aria-labelledby="hero-title">
         <div class="hero-screen__bg" aria-hidden="true">
-          <img src="./img/bg.png" alt="" />
+            <img src="./img/bg.png" alt=""/>
         </div>
 
         <div class="hero-card__backdrop" aria-hidden="true"></div>
         <div class="hero-card__backdrop-overlay" aria-hidden="true"></div>
         <div class="hero-card__shapes" aria-hidden="true">
-          <div class="hero-card__shape hero-card__shape--1"></div>
-          <div class="hero-card__shape hero-card__shape--2"></div>
-          <div class="hero-card__shape hero-card__shape--3"></div>
-          <div class="hero-card__shape hero-card__shape--4"></div>
+            <div class="hero-card__shape hero-card__shape--1"></div>
+            <div class="hero-card__shape hero-card__shape--2"></div>
+            <div class="hero-card__shape hero-card__shape--3"></div>
+            <div class="hero-card__shape hero-card__shape--4"></div>
         </div>
         <div class="hero-card__pixel-shapes" aria-hidden="true">
-          <span class="hero-card__pixel-shape hero-card__pixel-shape--1"></span>
-          <span class="hero-card__pixel-shape hero-card__pixel-shape--2"></span>
-          <span class="hero-card__pixel-shape hero-card__pixel-shape--3"></span>
-          <span class="hero-card__pixel-shape hero-card__pixel-shape--4"></span>
-          <span class="hero-card__pixel-shape hero-card__pixel-shape--5"></span>
-          <span class="hero-card__pixel-shape hero-card__pixel-shape--6"></span>
-          <span class="hero-card__pixel-shape hero-card__pixel-shape--8"></span>
-          <span class="hero-card__pixel-shape hero-card__pixel-shape--9"></span>
-          <span class="hero-card__pixel-shape hero-card__pixel-shape--10"></span>
-          <span class="hero-card__pixel-shape hero-card__pixel-shape--11"></span>
-          <span class="hero-card__pixel-shape hero-card__pixel-shape--12"></span>
-          <span class="hero-card__pixel-shape hero-card__pixel-shape--13"></span>
-          <span class="hero-card__pixel-shape hero-card__pixel-shape--14"></span>
-          <span class="hero-card__pixel-shape hero-card__pixel-shape--15"></span>
-          <span class="hero-card__pixel-shape hero-card__pixel-shape--16"></span>
-          <span class="hero-card__pixel-shape hero-card__pixel-shape--17"></span>
-          <span class="hero-card__pixel-shape hero-card__pixel-shape--18"></span>
-          <span class="hero-card__pixel-shape hero-card__pixel-shape--19"></span>
-          <span class="hero-card__pixel-shape hero-card__pixel-shape--20"></span>
-          <span class="hero-card__pixel-shape hero-card__pixel-shape--22"></span>
+            <span class="hero-card__pixel-shape hero-card__pixel-shape--1"></span>
+            <span class="hero-card__pixel-shape hero-card__pixel-shape--2"></span>
+            <span class="hero-card__pixel-shape hero-card__pixel-shape--3"></span>
+            <span class="hero-card__pixel-shape hero-card__pixel-shape--4"></span>
+            <span class="hero-card__pixel-shape hero-card__pixel-shape--5"></span>
+            <span class="hero-card__pixel-shape hero-card__pixel-shape--6"></span>
+            <span class="hero-card__pixel-shape hero-card__pixel-shape--8"></span>
+            <span class="hero-card__pixel-shape hero-card__pixel-shape--9"></span>
+            <span class="hero-card__pixel-shape hero-card__pixel-shape--10"></span>
+            <span class="hero-card__pixel-shape hero-card__pixel-shape--11"></span>
+            <span class="hero-card__pixel-shape hero-card__pixel-shape--12"></span>
+            <span class="hero-card__pixel-shape hero-card__pixel-shape--13"></span>
+            <span class="hero-card__pixel-shape hero-card__pixel-shape--14"></span>
+            <span class="hero-card__pixel-shape hero-card__pixel-shape--15"></span>
+            <span class="hero-card__pixel-shape hero-card__pixel-shape--16"></span>
+            <span class="hero-card__pixel-shape hero-card__pixel-shape--17"></span>
+            <span class="hero-card__pixel-shape hero-card__pixel-shape--18"></span>
+            <span class="hero-card__pixel-shape hero-card__pixel-shape--19"></span>
+            <span class="hero-card__pixel-shape hero-card__pixel-shape--20"></span>
+            <span class="hero-card__pixel-shape hero-card__pixel-shape--22"></span>
         </div>
 
         <img
-          class="hero-card__frame"
-          src="./img/frame.svg"
-          alt=""
+                class="hero-card__frame"
+                src="./img/frame.svg"
+                alt=""
         />
 
         <img
-          class="hero-card__brand"
-          src="./img/logo.svg"
-          alt="Цифровой аудит"
+                class="hero-card__brand"
+                src="./img/logo.svg"
+                alt="Цифровой аудит"
         />
 
         <span class="hero-card__logo-icon-blur" aria-hidden="true"></span>
-        <img class="hero-card__logo-icon" src="./img/logo-icon.svg" alt="" aria-hidden="true" />
+        <img class="hero-card__logo-icon" src="./img/logo-icon.svg" alt="" aria-hidden="true"/>
 
         <nav class="hero-card__nav" aria-label="Основная навигация">
-          <a class="hero-card__nav-link" href="#about">О нас</a>
-          <a class="hero-card__nav-link" href="#projects">Проекты</a>
-          <a class="hero-card__nav-link" href="#directions">Направления работы</a>
-          <a class="hero-card__nav-link" href="#team">Команда</a>
-          <a class="hero-card__nav-link hero-card__nav-link--bonus" href="#bonuses">
+            <a class="hero-card__nav-link" href="#about">О нас</a>
+            <a class="hero-card__nav-link" href="#projects">Проекты</a>
+            <a class="hero-card__nav-link" href="#directions">Направления работы</a>
+            <a class="hero-card__nav-link" href="#team">Команда</a>
+            <a class="hero-card__nav-link hero-card__nav-link--bonus" href="#bonuses">
             <span class="hero-card__nav-icon" aria-hidden="true">
               <span></span><span></span><span></span><span></span>
             </span>
-            <span>Бонусы</span>
-          </a>
-          <a class="hero-card__button" href="#contacts">Контакты</a>
+                <span>Бонусы</span>
+            </a>
+            <a class="hero-card__button" href="#contacts">Контакты</a>
         </nav>
 
         <div class="hero-card__content">
-          <h1 id="hero-title" class="hero-card__title">
-            <span>Создаем</span>
-            <span>инновации</span>
-            <span>в аудите</span>
-          </h1>
+            <h1 id="hero-title" class="hero-card__title">
+                <span>Создаем</span>
+                <span>инновации</span>
+                <span>в аудите</span>
+            </h1>
 
-          <div class="hero-card__art" aria-hidden="true">
-            <img
-              class="hero-card__art-image"
-              src="img/big-logo.png"
-              alt=""
-            />
-          </div>
+            <div class="hero-card__art" aria-hidden="true">
+                <img
+                        class="hero-card__art-image"
+                        src="img/big-logo.png"
+                        alt=""
+                />
+            </div>
         </div>
 
         <section class="about-section" aria-labelledby="about-title">
-          <div class="about-section__inner">
-            <h2 id="about-title" class="about-section__title">О нас</h2>
+            <div class="about-section__inner">
+                <h2 id="about-title" class="about-section__title">О нас</h2>
 
-            <article class="about-card about-card--who">
-              <div class="about-card__label">
-                <h3>Кто мы?</h3>
-                <span aria-hidden="true"></span>
-              </div>
-              <p>
-                Ведущий технологический партнер и центр IT-компетенций Счетной&nbsp;палаты
-                Российской&nbsp;Федерации
-              </p>
-            </article>
+                <article class="about-card about-card--who">
+                    <div class="about-card__label">
+                        <h3>Кто мы?</h3>
+                        <span aria-hidden="true"></span>
+                    </div>
+                    <p>
+                        Ведущий технологический партнер и центр IT-компетенций Счетной&nbsp;палаты
+                        Российской&nbsp;Федерации
+                    </p>
+                </article>
 
-            <article class="about-card about-card--why">
-              <div class="about-card__label">
-                <h3>Зачем?</h3>
-                <span aria-hidden="true"></span>
-              </div>
-              <p>
-                Чтобы цифровые инструменты надежно работали для устойчивого развития общества
-                и&nbsp;государства
-              </p>
-            </article>
+                <article class="about-card about-card--why">
+                    <div class="about-card__label">
+                        <h3>Зачем?</h3>
+                        <span aria-hidden="true"></span>
+                    </div>
+                    <p>
+                        Чтобы цифровые инструменты надежно работали для устойчивого развития общества
+                        и&nbsp;государства
+                    </p>
+                </article>
 
-            <div class="about-section__actions" aria-hidden="true">
-              <span class="about-section__plus"></span>
-              <span class="about-section__arrow"></span>
+                <div class="about-section__actions" aria-hidden="true">
+                    <span class="about-section__plus"></span>
+                    <span class="about-section__arrow"></span>
+                </div>
             </div>
-          </div>
         </section>
-      </section>
+    </section>
 
-      <section class="projects-section" id="projects" aria-labelledby="projects-title">
+    <section class="projects-section" id="projects" aria-labelledby="projects-title">
         <div class="projects-section__heading">
-          <h2 id="projects-title">Над чем работаем?</h2>
-          <p>Создаем цифровую инфраструктуру<br/>государственного аудита</p>
+            <h2 id="projects-title">Над чем работаем?</h2>
+            <p>Создаем цифровую инфраструктуру<br/>государственного аудита</p>
         </div>
 
         <div class="projects-section__cards">
-          <article class="project-card">
-            <header class="project-card__header">
-              <h3>Единая цифровая платформа для аудита</h3>
-              <div class="project-card__icon" aria-hidden="true">
-                <img class="project-card__icon-base" src="./img/ecp.png" alt="" />
-                <img class="project-card__icon-mark" src="./img/projects-background.svg" alt="" />
-              </div>
-            </header>
-            <p>
-              Единая точка доступа ко всем системам, сервисам и инструментам аудита. </br>Она объединяет
-              данные из десятков государственных источников, автоматически выявляет риски </br>и
-              нарушения, а также обеспечивает дистанционное взаимодействие </br>с проверяемыми
-              организациями. Платформа охватывает полный цикл проверок — от планирования и
-              подготовки до проведения контрольных мероприятий и анализа их результатов
-            </p>
-          </article>
+            <article class="project-card">
+                <header class="project-card__header">
+                    <h3>Единая цифровая платформа для аудита</h3>
+                    <div class="project-card__icon" aria-hidden="true">
+                        <img class="project-card__icon-base" src="./img/ecp.png" alt=""/>
+                        <img class="project-card__icon-mark" src="./img/projects-background.svg" alt=""/>
+                    </div>
+                </header>
+                <p>
+                    Единая точка доступа ко всем системам, сервисам и инструментам аудита. </br>Она объединяет
+                    данные из десятков государственных источников, автоматически выявляет риски </br>и
+                    нарушения, а также обеспечивает дистанционное взаимодействие </br>с проверяемыми
+                    организациями. Платформа охватывает полный цикл проверок — от планирования и
+                    подготовки до проведения контрольных мероприятий и анализа их результатов
+                </p>
+            </article>
 
-          <article class="project-card">
-            <header class="project-card__header">
-              <h3>Цифровой бэк-офис</h3>
-              <div class="project-card__icon" aria-hidden="true">
-                <img class="project-card__icon-base" src="./img/back-office.png" alt="" />
-                <img class="project-card__icon-mark" src="./img/projects-background.svg" alt="" />
-              </div>
-            </header>
-            <p>
-              Внутренняя среда для эффективной работы и автоматизации процессов. Проект охватывает
-              цифровизацию всех обеспечивающих функций Счетной палаты. Разрозненные инструменты —
-              корпоративная почта, портал, защищенный мессенджер, система видеоконференций, ITSM и
-              другие сервисы — объединяются в единый, целостный ИТ-ландшафт
-            </p>
-          </article>
+            <article class="project-card">
+                <header class="project-card__header">
+                    <h3>Цифровой бэк-офис</h3>
+                    <div class="project-card__icon" aria-hidden="true">
+                        <img class="project-card__icon-base" src="./img/back-office.png" alt=""/>
+                        <img class="project-card__icon-mark" src="./img/projects-background.svg" alt=""/>
+                    </div>
+                </header>
+                <p>
+                    Внутренняя среда для эффективной работы и автоматизации процессов. Проект охватывает
+                    цифровизацию всех обеспечивающих функций Счетной палаты. Разрозненные инструменты —
+                    корпоративная почта, портал, защищенный мессенджер, система видеоконференций, ITSM и
+                    другие сервисы — объединяются в единый, целостный ИТ-ландшафт
+                </p>
+            </article>
 
-          <article class="project-card">
-            <header class="project-card__header">
-              <h3>Надежная и масштабируемая инфраструктура</h3>
-              <div class="project-card__icon" aria-hidden="true">
-                <img class="project-card__icon-base" src="./img/infrastructure.png" alt="" />
-                <img class="project-card__icon-mark" src="./img/projects-background.svg" alt="" />
-              </div>
-            </header>
-            <p>
-              Технологическая основа всей цифровой среды ведомства. Мы модернизируем серверные
-              мощности, переходим на отечественное программное обеспечение и оборудование,
-              выстраиваем системы мониторинга и защиты от киберугроз — чтобы инфраструктура
-              оставалась устойчивой, безопасной и готовой </br>к масштабированию
-            </p>
-          </article>
+            <article class="project-card">
+                <header class="project-card__header">
+                    <h3>Надежная и масштабируемая инфраструктура</h3>
+                    <div class="project-card__icon" aria-hidden="true">
+                        <img class="project-card__icon-base" src="./img/infrastructure.png" alt=""/>
+                        <img class="project-card__icon-mark" src="./img/projects-background.svg" alt=""/>
+                    </div>
+                </header>
+                <p>
+                    Технологическая основа всей цифровой среды ведомства. Мы модернизируем серверные
+                    мощности, переходим на отечественное программное обеспечение и оборудование,
+                    выстраиваем системы мониторинга и защиты от киберугроз — чтобы инфраструктура
+                    оставалась устойчивой, безопасной и готовой </br>к масштабированию
+                </p>
+            </article>
         </div>
-      </section>
+    </section>
 
-      <section class="competency-section" id="directions" aria-labelledby="competency-title">
+    <section class="competency-section" id="directions" aria-labelledby="competency-title">
         <h2 id="competency-title" class="competency-section__title">Компетенции</h2>
 
         <div class="competency-list">
-          <article class="competency-item competency-item--open" data-accordion-item>
-            <button
-              class="competency-item__trigger"
-              type="button"
-              aria-expanded="true"
-              aria-controls="competency-panel-1"
-            >
-              <div class="competency-item__main">
-                <div class="competency-item__head">
-                  <span class="competency-item__number">01</span>
-                  <h3>Цифровая трансформация</h3>
-                </div>
-                <p id="competency-panel-1">
-                  Помогаем государственным органам и бизнесу внедрять передовые технологии и
-                  переходить на новый уровень цифровой зрелости
-                </p>
-              </div>
-              <span class="competency-item__button" aria-hidden="true"></span>
-              <span class="competency-item__icon" aria-hidden="true"></span>
-            </button>
-          </article>
+            <article class="competency-item competency-item--open" data-accordion-item>
+                <button
+                        class="competency-item__trigger"
+                        type="button"
+                        aria-expanded="true"
+                        aria-controls="competency-panel-1"
+                >
+                    <div class="competency-item__main">
+                        <div class="competency-item__head">
+                            <span class="competency-item__number">01</span>
+                            <h3>Цифровая трансформация</h3>
+                        </div>
+                        <p id="competency-panel-1">
+                            Помогаем государственным органам и бизнесу внедрять передовые технологии и
+                            переходить на новый уровень цифровой зрелости
+                        </p>
+                    </div>
+                    <span class="competency-item__button" aria-hidden="true"></span>
+                    <span class="competency-item__icon" aria-hidden="true"></span>
+                </button>
+            </article>
 
-          <article class="competency-item" data-accordion-item>
-            <button
-              class="competency-item__trigger"
-              type="button"
-              aria-expanded="false"
-              aria-controls="competency-panel-2"
-            >
-              <div class="competency-item__main">
-                <div class="competency-item__head">
-                  <span class="competency-item__number">02</span>
-                  <h3>Разработка цифровых решений</h3>
-                </div>
-                <p id="competency-panel-2" hidden>
-                  Создаем цифровые продукты, прикладные сервисы </br>и автоматизированные платформы для
-                  решения интеллектуальных задач
-                </p>
-              </div>
-              <span class="competency-item__button" aria-hidden="true"></span>
-              <span class="competency-item__icon" aria-hidden="true"></span>
-            </button>
-          </article>
+            <article class="competency-item" data-accordion-item>
+                <button
+                        class="competency-item__trigger"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="competency-panel-2"
+                >
+                    <div class="competency-item__main">
+                        <div class="competency-item__head">
+                            <span class="competency-item__number">02</span>
+                            <h3>Разработка цифровых решений</h3>
+                        </div>
+                        <p id="competency-panel-2" hidden>
+                            Создаем цифровые продукты, прикладные сервисы </br>и автоматизированные платформы для
+                            решения интеллектуальных задач
+                        </p>
+                    </div>
+                    <span class="competency-item__button" aria-hidden="true"></span>
+                    <span class="competency-item__icon" aria-hidden="true"></span>
+                </button>
+            </article>
 
-          <article class="competency-item" data-accordion-item>
-            <button
-              class="competency-item__trigger"
-              type="button"
-              aria-expanded="false"
-              aria-controls="competency-panel-3"
-            >
-              <div class="competency-item__main">
-                <div class="competency-item__head">
-                  <span class="competency-item__number">03</span>
-                  <h3>Работа с данными и аналитика</h3>
-                </div>
-                <p id="competency-panel-3" hidden>
-                  Создаем современные системы управления данными </br>и их визуализации, собираем,
-                  собираем, структурируем </br>и обрабатываем данные, строим наглядные интерактивные
-                  дашборды
-                </p>
-              </div>
-              <span class="competency-item__button" aria-hidden="true"></span>
-              <span class="competency-item__icon" aria-hidden="true"></span>
-            </button>
-          </article>
+            <article class="competency-item" data-accordion-item>
+                <button
+                        class="competency-item__trigger"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="competency-panel-3"
+                >
+                    <div class="competency-item__main">
+                        <div class="competency-item__head">
+                            <span class="competency-item__number">03</span>
+                            <h3>Работа с данными и аналитика</h3>
+                        </div>
+                        <p id="competency-panel-3" hidden>
+                            Создаем современные системы управления данными </br>и их визуализации, собираем,
+                            собираем, структурируем </br>и обрабатываем данные, строим наглядные интерактивные
+                            дашборды
+                        </p>
+                    </div>
+                    <span class="competency-item__button" aria-hidden="true"></span>
+                    <span class="competency-item__icon" aria-hidden="true"></span>
+                </button>
+            </article>
 
-          <article class="competency-item" data-accordion-item>
-            <button
-              class="competency-item__trigger"
-              type="button"
-              aria-expanded="false"
-              aria-controls="competency-panel-4"
-            >
-              <div class="competency-item__main">
-                <div class="competency-item__head">
-                  <span class="competency-item__number">04</span>
-                  <h3>Искусственный интеллект</h3>
-                </div>
-                <p id="competency-panel-4" hidden>
-                  Внедряем передовые ИИ‑решения для автоматизации рутинных процессов и повышения
-                  эффективности
-                </p>
-              </div>
-              <span class="competency-item__button" aria-hidden="true"></span>
-              <span class="competency-item__icon" aria-hidden="true"></span>
-            </button>
-          </article>
+            <article class="competency-item" data-accordion-item>
+                <button
+                        class="competency-item__trigger"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="competency-panel-4"
+                >
+                    <div class="competency-item__main">
+                        <div class="competency-item__head">
+                            <span class="competency-item__number">04</span>
+                            <h3>Искусственный интеллект</h3>
+                        </div>
+                        <p id="competency-panel-4" hidden>
+                            Внедряем передовые ИИ‑решения для автоматизации рутинных процессов и повышения
+                            эффективности
+                        </p>
+                    </div>
+                    <span class="competency-item__button" aria-hidden="true"></span>
+                    <span class="competency-item__icon" aria-hidden="true"></span>
+                </button>
+            </article>
 
-          <article class="competency-item" data-accordion-item>
-            <button
-              class="competency-item__trigger"
-              type="button"
-              aria-expanded="false"
-              aria-controls="competency-panel-5"
-            >
-              <div class="competency-item__main">
-                <div class="competency-item__head">
-                  <span class="competency-item__number">05</span>
-                  <h3>Дизайн и пользовательский опыт</h3>
-                </div>
-                <p id="competency-panel-5" hidden>
-                  Проектируем и создаем удобные, комфортные и интуитивно понятные интерфейсы
-                </p>
-              </div>
-              <span class="competency-item__button" aria-hidden="true"></span>
-              <span class="competency-item__icon" aria-hidden="true"></span>
-            </button>
-          </article>
+            <article class="competency-item" data-accordion-item>
+                <button
+                        class="competency-item__trigger"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="competency-panel-5"
+                >
+                    <div class="competency-item__main">
+                        <div class="competency-item__head">
+                            <span class="competency-item__number">05</span>
+                            <h3>Дизайн и пользовательский опыт</h3>
+                        </div>
+                        <p id="competency-panel-5" hidden>
+                            Проектируем и создаем удобные, комфортные и интуитивно понятные интерфейсы
+                        </p>
+                    </div>
+                    <span class="competency-item__button" aria-hidden="true"></span>
+                    <span class="competency-item__icon" aria-hidden="true"></span>
+                </button>
+            </article>
 
-          <article class="competency-item" data-accordion-item>
-            <button
-              class="competency-item__trigger"
-              type="button"
-              aria-expanded="false"
-              aria-controls="competency-panel-6"
-            >
-              <div class="competency-item__main">
-                <div class="competency-item__head">
-                  <span class="competency-item__number">06</span>
-                  <h3>ИТ‑инфраструктура и безопасность</h3>
-                </div>
-                <p id="competency-panel-6" hidden>
-                  Проектируем и поддерживаем надежные, масштабируемые вычислительные системы,
-                  обеспечиваем безотказную </br>и стабильную работу сервисов, защищаем данные </br>и
-                  минимизируем риски киберугроз
-                </p>
-              </div>
-              <span class="competency-item__button" aria-hidden="true"></span>
-              <span class="competency-item__icon" aria-hidden="true"></span>
-            </button>
-          </article>
+            <article class="competency-item" data-accordion-item>
+                <button
+                        class="competency-item__trigger"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="competency-panel-6"
+                >
+                    <div class="competency-item__main">
+                        <div class="competency-item__head">
+                            <span class="competency-item__number">06</span>
+                            <h3>ИТ‑инфраструктура и безопасность</h3>
+                        </div>
+                        <p id="competency-panel-6" hidden>
+                            Проектируем и поддерживаем надежные, масштабируемые вычислительные системы,
+                            обеспечиваем безотказную </br>и стабильную работу сервисов, защищаем данные </br>и
+                            минимизируем риски киберугроз
+                        </p>
+                    </div>
+                    <span class="competency-item__button" aria-hidden="true"></span>
+                    <span class="competency-item__icon" aria-hidden="true"></span>
+                </button>
+            </article>
 
-          <article class="competency-item" data-accordion-item>
-            <button
-              class="competency-item__trigger"
-              type="button"
-              aria-expanded="false"
-              aria-controls="competency-panel-7"
-            >
-              <div class="competency-item__main">
-                <div class="competency-item__head">
-                  <span class="competency-item__number">07</span>
-                  <h3>Импортозамещение</h3>
-                </div>
-                <p id="competency-panel-7" hidden>
-                  Разрабатываем и внедряем отечественные технологические решения, адаптируем
-                  действующие системы под актуальные требования законодательства и безопасности
-                </p>
-              </div>
-              <span class="competency-item__button" aria-hidden="true"></span>
-              <span class="competency-item__icon" aria-hidden="true"></span>
-            </button>
-          </article>
+            <article class="competency-item" data-accordion-item>
+                <button
+                        class="competency-item__trigger"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="competency-panel-7"
+                >
+                    <div class="competency-item__main">
+                        <div class="competency-item__head">
+                            <span class="competency-item__number">07</span>
+                            <h3>Импортозамещение</h3>
+                        </div>
+                        <p id="competency-panel-7" hidden>
+                            Разрабатываем и внедряем отечественные технологические решения, адаптируем
+                            действующие системы под актуальные требования законодательства и безопасности
+                        </p>
+                    </div>
+                    <span class="competency-item__button" aria-hidden="true"></span>
+                    <span class="competency-item__icon" aria-hidden="true"></span>
+                </button>
+            </article>
 
-          <article class="competency-item" data-accordion-item>
-            <button
-              class="competency-item__trigger"
-              type="button"
-              aria-expanded="false"
-              aria-controls="competency-panel-8"
-            >
-              <div class="competency-item__main">
-                <div class="competency-item__head">
-                  <span class="competency-item__number">08</span>
-                  <h3>Автоматизация и интеграция</h3>
-                </div>
-                <p id="competency-panel-8" hidden>
-                  Автоматизируем рутинные операции и бизнес-процессы, обеспечиваем бесшовную
-                  интеграцию платформ и систем
-                </p>
-              </div>
-              <span class="competency-item__button" aria-hidden="true"></span>
-              <span class="competency-item__icon" aria-hidden="true"></span>
-            </button>
-          </article>
+            <article class="competency-item" data-accordion-item>
+                <button
+                        class="competency-item__trigger"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="competency-panel-8"
+                >
+                    <div class="competency-item__main">
+                        <div class="competency-item__head">
+                            <span class="competency-item__number">08</span>
+                            <h3>Автоматизация и интеграция</h3>
+                        </div>
+                        <p id="competency-panel-8" hidden>
+                            Автоматизируем рутинные операции и бизнес-процессы, обеспечиваем бесшовную
+                            интеграцию платформ и систем
+                        </p>
+                    </div>
+                    <span class="competency-item__button" aria-hidden="true"></span>
+                    <span class="competency-item__icon" aria-hidden="true"></span>
+                </button>
+            </article>
 
-          <article class="competency-item" data-accordion-item>
-            <button
-              class="competency-item__trigger"
-              type="button"
-              aria-expanded="false"
-              aria-controls="competency-panel-9"
-            >
-              <div class="competency-item__main">
-                <div class="competency-item__head">
-                  <span class="competency-item__number">09</span>
-                  <h3>Развитие команды</h3>
-                </div>
-                <p id="competency-panel-9" hidden>
-                  Создаем программы обучения, развиваем цифровые навыки и готовим персонал к
-                  внедрению новых технологических решений
-                </p>
-              </div>
-              <span class="competency-item__button" aria-hidden="true"></span>
-              <span class="competency-item__icon" aria-hidden="true"></span>
-            </button>
-          </article>
+            <article class="competency-item" data-accordion-item>
+                <button
+                        class="competency-item__trigger"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="competency-panel-9"
+                >
+                    <div class="competency-item__main">
+                        <div class="competency-item__head">
+                            <span class="competency-item__number">09</span>
+                            <h3>Развитие команды</h3>
+                        </div>
+                        <p id="competency-panel-9" hidden>
+                            Создаем программы обучения, развиваем цифровые навыки и готовим персонал к
+                            внедрению новых технологических решений
+                        </p>
+                    </div>
+                    <span class="competency-item__button" aria-hidden="true"></span>
+                    <span class="competency-item__icon" aria-hidden="true"></span>
+                </button>
+            </article>
         </div>
-      </section>
+    </section>
 
 
-
-      <section class="benefits-section" id="bonuses" aria-labelledby="benefits-title">
+    <section class="benefits-section" id="bonuses" aria-labelledby="benefits-title">
         <h2 id="benefits-title" class="benefits-section__title">Преимущества и бонусы</h2>
 
         <div class="benefits-section__grid">
-          <article class="benefits-card">
-            <div class="benefits-card__content">
-              <header class="benefits-card__header">
-                <span class="benefits-card__number">01</span>
-                <h3>Даем гарантии</h3>
-              </header>
-              <p>ИТ-аккредитация, оформление по ТК, ежегодная индексация зарплаты </br>и социальный пакет</p>
-            </div>
-          </article>
+            <article class="benefits-card">
+                <div class="benefits-card__content">
+                    <header class="benefits-card__header">
+                        <span class="benefits-card__number">01</span>
+                        <h3>Даем гарантии</h3>
+                    </header>
+                    <p>ИТ-аккредитация, оформление по ТК, ежегодная индексация зарплаты </br>и социальный пакет</p>
+                </div>
+            </article>
 
-          <article class="benefits-card">
-            <div class="benefits-card__content">
-              <header class="benefits-card__header">
-                <span class="benefits-card__number">02</span>
-                <h3>Лечим и бережем</h3>
-              </header>
-              <p>Корпоративный ДМС, телемедицина, помощь психолога и страховка </br>для путешественников</p>
-            </div>
-          </article>
+            <article class="benefits-card">
+                <div class="benefits-card__content">
+                    <header class="benefits-card__header">
+                        <span class="benefits-card__number">02</span>
+                        <h3>Лечим и бережем</h3>
+                    </header>
+                    <p>Корпоративный ДМС, телемедицина, помощь психолога и страховка </br>для путешественников</p>
+                </div>
+            </article>
 
-          <article class="benefits-card">
-            <div class="benefits-card__content">
-              <header class="benefits-card__header">
-                <span class="benefits-card__number">03</span>
-                <h3>Заботимся о комфорте</h3>
-              </header>
-              <p>Современный офис со всей необходимой инфраструктурой, возможность работать в гибридном и удаленном форматах</p>
-            </div>
-          </article>
+            <article class="benefits-card">
+                <div class="benefits-card__content">
+                    <header class="benefits-card__header">
+                        <span class="benefits-card__number">03</span>
+                        <h3>Заботимся о комфорте</h3>
+                    </header>
+                    <p>Современный офис со всей необходимой инфраструктурой, возможность работать в гибридном и
+                        удаленном форматах</p>
+                </div>
+            </article>
 
-          <article class="benefits-card">
-            <div class="benefits-card__content">
-              <header class="benefits-card__header">
-                <span class="benefits-card__number">04</span>
-                <h3>Работаем на результат</h3>
-              </header>
-              <p>Гибкие процессы, здоровая корпоративная культура и только рациональная бюрократия</p>
-            </div>
-          </article>
+            <article class="benefits-card">
+                <div class="benefits-card__content">
+                    <header class="benefits-card__header">
+                        <span class="benefits-card__number">04</span>
+                        <h3>Работаем на результат</h3>
+                    </header>
+                    <p>Гибкие процессы, здоровая корпоративная культура и только рациональная бюрократия</p>
+                </div>
+            </article>
 
-          <article class="benefits-card">
-            <div class="benefits-card__content">
-              <header class="benefits-card__header">
-                <span class="benefits-card__number">05</span>
-                <h3>Запускаем перемены</h3>
-              </header>
-              <p>Проекты по цифровизации системы государственного управления, возможность напрямую влиять </br>на развитие нашей страны</p>
-            </div>
-          </article>
+            <article class="benefits-card">
+                <div class="benefits-card__content">
+                    <header class="benefits-card__header">
+                        <span class="benefits-card__number">05</span>
+                        <h3>Запускаем перемены</h3>
+                    </header>
+                    <p>Проекты по цифровизации системы государственного управления, возможность напрямую влиять </br>на
+                        развитие нашей страны</p>
+                </div>
+            </article>
 
-          <a class="benefits-card benefits-card--link" href="https://hh.ru/" target="_blank" rel="noreferrer">
-            <img class="benefits-card__hh" src="./img/hh.png" alt="" aria-hidden="true" />
-            <span class="benefits-card__button">
+            <a class="benefits-card benefits-card--link" href="https://hh.ru/" target="_blank" rel="noreferrer">
+                <img class="benefits-card__hh" src="./img/hh.png" alt="" aria-hidden="true"/>
+                <span class="benefits-card__button">
               <span>Смотреть вакансии</span>
             </span>
-          </a>
+            </a>
         </div>
-      </section>
+    </section>
 
-      <section class="office-section" id="contacts" aria-labelledby="office-title">
+    <section class="office-section" id="contacts" aria-labelledby="office-title">
         <div class="office-section__heading">
-          <h2 id="office-title">Где мы находимся?</h2>
-          <p>
-            В 3 минутах от станции м. «Павелецкая»,<br/>в бизнес-центре
-            «Вивальди Плаза»
-          </p>
+            <h2 id="office-title">Где мы находимся?</h2>
+            <p>
+                В 3 минутах от станции м. «Павелецкая»,<br/>в бизнес-центре
+                «Вивальди Плаза»
+            </p>
         </div>
 
         <div class="office-map" aria-label="Карта пути от станции метро Павелецкая до офиса">
-          <img class="office-map__image" src="./img/office/map.png" alt="" aria-hidden="true" />
-          <img class="office-map__route" src="./img/office/path.svg" alt="" aria-hidden="true" />
-          <img class="office-map__photo" src="./img/office/photo-ring.png" alt="" aria-hidden="true" />
-          <div class="office-map__badge" aria-hidden="true">
-            <img src="./img/office/time-badge.svg" alt="" />
-            <span>3 мин.</span>
-          </div>
+            <img class="office-map__image" src="./img/office/map.png" alt="" aria-hidden="true"/>
+            <img class="office-map__route" src="./img/office/path.svg" alt="" aria-hidden="true"/>
+            <img class="office-map__photo" src="./img/office/photo-ring.png" alt="" aria-hidden="true"/>
+            <div class="office-map__badge" aria-hidden="true">
+                <img src="./img/office/time-badge.svg" alt=""/>
+                <span>3 мин.</span>
+            </div>
         </div>
-      </section>
-    </main>
+    </section>
+</main>
 
-    <footer class="site-footer" aria-labelledby="footer-title">
-      <div class="site-footer__top">
+<footer class="site-footer" aria-labelledby="footer-title">
+    <div class="site-footer__top">
         <section class="site-footer__contacts" aria-labelledby="footer-title">
-          <h2 id="footer-title">Контакты и реквизиты</h2>
+            <h2 id="footer-title">Контакты и реквизиты</h2>
 
-          <p class="site-footer__company">
-            Автономная некоммерческая организация «Цифровой аудит»<br />
-            ИНН: 9704252434 / КПП: 770501001 / ОГРН: 1247700704877
-          </p>
-
-          <div class="site-footer__field">
-            <p class="site-footer__label">Юридический адрес</p>
-            <p>
-              115114, город Москва, вн. тер. г. муниципальный округ Замоскворечье,<br />
-              ул. Летниковская, д. 2, стр. 3, помещ. 1
+            <p class="site-footer__company">
+                Автономная некоммерческая организация «Цифровой аудит»<br/>
+                ИНН: 9704252434 / КПП: 770501001 / ОГРН: 1247700704877
             </p>
-          </div>
 
-          <div class="site-footer__field">
-            <p class="site-footer__label">Электронная почта</p>
-            <p><a href="mailto:ano@ach.gov.ru">ano@ach.gov.ru</a></p>
-          </div>
+            <div class="site-footer__field">
+                <p class="site-footer__label">Юридический адрес</p>
+                <p>
+                    115114, город Москва, вн. тер. г. муниципальный округ Замоскворечье,<br/>
+                    ул. Летниковская, д. 2, стр. 3, помещ. 1
+                </p>
+            </div>
 
-          <div class="site-footer__field">
-            <p class="site-footer__label">Телефон</p>
-            <p><a href="tel:+79256623565">+7(925)-662-35-65</a></p>
-          </div>
+            <div class="site-footer__field">
+                <p class="site-footer__label">Электронная почта</p>
+                <p><a href="mailto:ano@ach.gov.ru">ano@ach.gov.ru</a></p>
+            </div>
+
+            <div class="site-footer__field">
+                <p class="site-footer__label">Телефон</p>
+                <p><a href="tel:+79256623565">+7(925)-662-35-65</a></p>
+            </div>
         </section>
 
         <section class="site-footer__legal" aria-labelledby="footer-legal-title">
-          <h2 id="footer-legal-title">Юридическая информация</h2>
+            <h2 id="footer-legal-title">Юридическая информация</h2>
 
-          <nav class="site-footer__nav" aria-label="Юридическая информация">
-            <div class="site-footer__nav-group">
-              <p class="site-footer__label">Компания</p>
-              <a href="#">Основной вид деятельности</a>
-              <a href="#">Дополнительные виды деятельности</a>
-            </div>
+            <nav class="site-footer__nav" aria-label="Юридическая информация">
+                <div class="site-footer__nav-group">
+                    <p class="site-footer__label">Компания</p>
+                    <a href="#">Основной вид деятельности</a>
+                    <a href="#">Дополнительные виды деятельности</a>
+                </div>
 
-            <div class="site-footer__nav-group">
-              <p class="site-footer__label">Документы</p>
-              <a href="#">Политика конфиденциальности сайта</a>
-              <a href="#">ИТ-аккредитация | Карта технологий</a>
-              <a href="#">Перечень квалифицированных поставщиков</a>
-              <a href="#">Сведения о проведении специальной оценки условий труда</a>
-            </div>
-          </nav>
+                <div class="site-footer__nav-group">
+                    <p class="site-footer__label">Документы</p>
+                    <a href="./docs/privacy-policy.pdf" target="_blank" rel="noreferrer">Политика конфиденциальности
+                        сайта</a>
+                    <a href="./docs/it-accreditation-and-technology-map.pdf.pdf" target="_blank" rel="noreferrer">ИТ-аккредитация
+                        | Карта технологий</a>
+                    <a href="./docs/qualified-suppliers.pdf" target="_blank" rel="noreferrer">Перечень квалифицированных
+                        поставщиков</a>
+                    <a href="./docs/special-assessment-of-working-conditions.pdf.pdf" target="_blank" rel="noreferrer">Сведения
+                        о проведении специальной оценки условий труда</a>
+                </div>
+            </nav>
 
-          <div class="site-footer__licenses">
-            <p class="site-footer__label">Лицензии</p>
-            <div class="site-footer__license-list" aria-label="Лицензии">
-              <span>ФСТЭК</span>
-              <span>ФСБ</span>
+            <div class="site-footer__licenses">
+                <p class="site-footer__label">Лицензии</p>
+                <div class="site-footer__license-list" aria-label="Лицензии">
+                    <span>ФСТЭК</span>
+                    <span>ФСБ</span>
+                </div>
             </div>
-          </div>
         </section>
-      </div>
+    </div>
 
-      <div class="site-footer__note">
+    <div class="site-footer__note">
         <p>
-          Автономная некоммерческая организация «Цифровой аудит» (ОГРН 1247700704877; ИНН 9704252434) осуществляет деятельность в сфере информационных технологий согласно Приказу Минцифры России №449 от 11.05.2023 "Об утверждении перечня видов деятельности в области информационных технологий", коды: 1.01, 2.01
+            Автономная некоммерческая организация «Цифровой аудит» (ОГРН 1247700704877; ИНН 9704252434) осуществляет
+            деятельность в сфере информационных технологий согласно Приказу Минцифры России №449 от 11.05.2023 "Об
+            утверждении перечня видов деятельности в области информационных технологий", коды: 1.01, 2.01
         </p>
         <p>
-          АНО «Цифровой аудит» не является коммерческой организацией, не имеет извлечение прибыли в качестве основной цели своей деятельности и создана в целях, направленных на достижение общественных благ (ст. 2 Федерального закона от 12.01.1996 № 7-ФЗ «О некоммерческих организациях»).
+            АНО «Цифровой аудит» не является коммерческой организацией, не имеет извлечение прибыли в качестве основной
+            цели своей деятельности и создана в целях, направленных на достижение общественных благ (ст. 2 Федерального
+            закона от 12.01.1996 № 7-ФЗ «О некоммерческих организациях»).
         </p>
         <p>
-          Стоимость услуг АНО «Цифровой аудит» определяется условиями соответствующих государственных контрактов, заключенных в порядке, определенном действующим законодательством Российской Федерации, в рамках которых АНО «Цифровой аудит» выступает исполнителем.
+            Стоимость услуг АНО «Цифровой аудит» определяется условиями соответствующих государственных контрактов,
+            заключенных в порядке, определенном действующим законодательством Российской Федерации, в рамках которых АНО
+            «Цифровой аудит» выступает исполнителем.
         </p>
-      </div>
+    </div>
 
-      <p class="site-footer__copyright">АНО «Цифровой аудит» © 2024</p>
-    </footer>
+    <p class="site-footer__copyright">АНО «Цифровой аудит» © 2024</p>
+</footer>
 
-    <script src="./script.js?v=footer-v1"></script>
-  </body>
+<script src="./script.js?v=footer-v1"></script>
+</body>
 </html>

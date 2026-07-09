@@ -529,7 +529,6 @@ img {
     column-gap: calc(48 * var(--about-layout-u));
     width: 100%;
     height: 100%;
-    padding-top: calc(63 * var(--about-u));
 }
 
 .about-section__title {
