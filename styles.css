@@ -1342,6 +1342,145 @@ img {
     white-space: nowrap;
 }
 
+.site-footer {
+    --footer-u: calc(100vw / 1920);
+    display: flex;
+    flex-direction: column;
+    gap: calc(40 * var(--footer-u));
+    width: 100%;
+    min-height: calc(853 * var(--footer-u));
+    padding: calc(48 * var(--footer-u));
+    background: var(--text-primary);
+    color: #fff;
+}
+
+.site-footer__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: calc(80 * var(--footer-u));
+    width: 100%;
+}
+
+.site-footer h2 {
+    margin: 0;
+    color: #fff;
+    font-size: calc(32 * var(--footer-u));
+    font-weight: 600;
+    line-height: calc(40 * var(--footer-u));
+    letter-spacing: -0.02em;
+}
+
+.site-footer p {
+    margin: 0;
+}
+
+.site-footer a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: from-font;
+    text-underline-offset: calc(2 * var(--footer-u));
+}
+
+.site-footer__contacts {
+    display: flex;
+    flex: 0 1 calc(1094 * var(--footer-u));
+    flex-direction: column;
+    gap: calc(24 * var(--footer-u));
+    min-width: 0;
+}
+
+.site-footer__company,
+.site-footer__field,
+.site-footer__nav,
+.site-footer__licenses {
+    color: #fff;
+    font-size: calc(24 * var(--footer-u));
+    font-weight: 400;
+    line-height: calc(28 * var(--footer-u));
+    letter-spacing: -0.02em;
+}
+
+.site-footer__field {
+    display: flex;
+    flex-direction: column;
+    gap: calc(8 * var(--footer-u));
+}
+
+.site-footer__label {
+    color: #727787;
+}
+
+.site-footer__field a {
+    text-decoration: none;
+}
+
+.site-footer__legal {
+    display: flex;
+    flex: 0 1 calc(640 * var(--footer-u));
+    flex-direction: column;
+    gap: calc(24 * var(--footer-u));
+    min-width: 0;
+}
+
+.site-footer__nav {
+    display: flex;
+    flex-direction: column;
+    gap: calc(24 * var(--footer-u));
+}
+
+.site-footer__nav-group {
+    display: flex;
+    flex-direction: column;
+    gap: calc(8 * var(--footer-u));
+}
+
+.site-footer__licenses {
+    display: flex;
+    flex-direction: column;
+    gap: calc(8 * var(--footer-u));
+}
+
+.site-footer__license-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(8 * var(--footer-u));
+}
+
+.site-footer__license-list span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(52 * var(--footer-u));
+    padding: calc(12 * var(--footer-u)) calc(32 * var(--footer-u));
+    border-radius: calc(72 * var(--footer-u));
+    background: #343740;
+    color: #fff;
+    font-size: calc(24 * var(--footer-u));
+    font-weight: 400;
+    line-height: 1;
+}
+
+.site-footer__note {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: calc(12 * var(--footer-u));
+    width: 100%;
+    color: #5d6273;
+    font-size: calc(18 * var(--footer-u));
+    font-weight: 400;
+    line-height: normal;
+}
+
+.site-footer__copyright {
+    color: #5d6273;
+    font-size: calc(16 * var(--footer-u));
+    font-weight: 400;
+    line-height: calc(20 * var(--footer-u));
+    letter-spacing: -0.02em;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .competency-item--animating p,
     .competency-item--animating .competency-item__button {
@@ -1433,5 +1572,52 @@ img {
         top: 10.8%;
         left: 13.1%;
         font-size: 14px;
+    }
+
+    .site-footer {
+        --footer-u: 1px;
+        min-height: 0;
+        padding: 40px 24px;
+        gap: 40px;
+    }
+
+    .site-footer__top {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .site-footer__contacts,
+    .site-footer__legal {
+        flex-basis: auto;
+        width: 100%;
+    }
+
+    .site-footer h2 {
+        font-size: 28px;
+        line-height: 34px;
+    }
+
+    .site-footer__company,
+    .site-footer__field,
+    .site-footer__nav,
+    .site-footer__licenses {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .site-footer__license-list span {
+        min-height: 44px;
+        padding: 10px 24px;
+        font-size: 18px;
+    }
+
+    .site-footer__note {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .site-footer__copyright {
+        font-size: 14px;
+        line-height: 18px;
     }
 }
