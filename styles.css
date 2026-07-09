@@ -754,29 +754,21 @@ img {
 .project-card__icon-base {
     z-index: 2;
     top: calc(7.4 * var(--projects-u));
-    left: calc(7.4 * var(--projects-u));
-    width: calc(78.696 * var(--projects-u));
-    height: calc(78.696 * var(--projects-u));
+    left: calc(40 * var(--projects-u));
+    width: calc(67 * var(--projects-u));
+    height: calc(67 * var(--projects-u));
     object-fit: cover;
-    transform: rotate(-167.82deg) scaleY(-1);
+    transform: rotate(0) scaleX(1) scaleY(1);
 }
 
 .project-card__icon-mark {
     z-index: 1;
-    left: calc(38.87 * var(--projects-u));
-    width: calc(67.155 * var(--projects-u));
-    height: calc(40.294 * var(--projects-u));
+    left: calc(40 * var(--projects-u));
+    width: calc(72 * var(--projects-u));
+    height: calc(80 * var(--projects-u));
+    background-image: url("./img/projects-background.svg");
 }
 
-.project-card__icon-mark--top {
-    top: calc(11 * var(--projects-u));
-    transform: rotate(-90deg) scaleY(-1);
-}
-
-.project-card__icon-mark--bottom {
-    top: calc(42.71 * var(--projects-u));
-    transform: rotate(90deg) scaleY(-1);
-}
 
 @media (max-width: 900px) {
     .projects-section {
