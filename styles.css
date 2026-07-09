@@ -946,6 +946,10 @@ img {
     cursor: pointer;
 }
 
+.competency-item--open .competency-item__trigger {
+    align-items: flex-start;
+}
+
 .competency-item__trigger:focus-visible {
     outline: calc(2 * var(--competency-u)) solid var(--accent-red);
     outline-offset: calc(4 * var(--competency-u));
