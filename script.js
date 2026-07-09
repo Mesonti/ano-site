@@ -1,6 +1,67 @@
 const competencyItems = document.querySelectorAll("[data-accordion-item]");
 const competencyAnimationDuration = 320;
 const competencyAnimationTimers = new WeakMap();
+const heroCard = document.querySelector(".hero-card");
+const heroNav = document.querySelector(".hero-card__nav");
+const heroNavParent = heroNav?.parentNode;
+const heroNavNextSibling = heroNav?.nextSibling;
+let heroNavAnimationFrame = 0;
+let heroNavOffsetTop = heroNav?.offsetTop || 0;
+
+const getOriginalHeroNavBottom = () => {
+  if (!heroCard || !heroNav) return 0;
+
+  return heroCard.getBoundingClientRect().top + heroNavOffsetTop + heroNav.offsetHeight;
+};
+
+const setHeroNavFixed = (shouldFix) => {
+  if (!heroNav || !heroNavParent) return;
+  const isFixed = heroNav.classList.contains("hero-card__nav--fixed");
+
+  if (shouldFix) {
+    if (isFixed) return;
+
+    if (heroNav.parentNode !== document.body) {
+      document.body.append(heroNav);
+    }
+
+    heroNav.classList.add("hero-card__nav--fixed");
+    window.cancelAnimationFrame(heroNavAnimationFrame);
+    heroNavAnimationFrame = window.requestAnimationFrame(() => {
+      heroNavAnimationFrame = window.requestAnimationFrame(() => {
+        heroNav.classList.add("hero-card__nav--visible");
+      });
+    });
+    return;
+  }
+
+  if (!isFixed) return;
+
+  window.cancelAnimationFrame(heroNavAnimationFrame);
+  heroNav.classList.remove("hero-card__nav--visible", "hero-card__nav--fixed");
+
+  if (heroNav.parentNode !== heroNavParent) {
+    heroNavParent.insertBefore(heroNav, heroNavNextSibling);
+  }
+};
+
+const updateHeroNavPosition = () => {
+  if (!heroCard || !heroNav) return;
+
+  const shouldFix = getOriginalHeroNavBottom() <= 0;
+
+  setHeroNavFixed(shouldFix);
+};
+
+updateHeroNavPosition();
+window.addEventListener("scroll", updateHeroNavPosition, { passive: true });
+window.addEventListener("resize", () => {
+  if (heroNav?.parentNode === heroNavParent) {
+    heroNavOffsetTop = heroNav.offsetTop;
+  }
+
+  updateHeroNavPosition();
+});
 
 const clearCompetencyAnimation = (item) => {
   const timer = competencyAnimationTimers.get(item);
