@@ -739,9 +739,9 @@ img {
 
 .project-card__icon {
     position: relative;
-    flex: 0 0 calc(106.03 * var(--projects-u));
-    width: calc(106.03 * var(--projects-u));
-    height: calc(93.525 * var(--projects-u));
+    flex: 0 0 calc(110 * var(--projects-u));
+    width: calc(110 * var(--projects-u));
+    height: calc(92 * var(--projects-u));
 }
 
 .project-card__icon-base,
@@ -753,10 +753,10 @@ img {
 
 .project-card__icon-base {
     z-index: 2;
-    top: calc(7.4 * var(--projects-u));
-    left: calc(40 * var(--projects-u));
-    width: calc(67 * var(--projects-u));
-    height: calc(67 * var(--projects-u));
+    top: calc(8 * var(--projects-u));
+    left: calc(8 * var(--projects-u));
+    width: calc(90 * var(--projects-u));
+    height: calc(90 * var(--projects-u));
     object-fit: cover;
     transform: rotate(0) scaleX(1) scaleY(1);
 }
@@ -766,7 +766,6 @@ img {
     left: calc(40 * var(--projects-u));
     width: calc(72 * var(--projects-u));
     height: calc(80 * var(--projects-u));
-    background-image: url("./img/projects-background.svg");
 }
 
 
@@ -894,7 +893,7 @@ img {
 .competency-list {
     display: flex;
     flex-direction: column;
-    width: calc(1823 * var(--competency-u));
+    width: calc(100vh * var(--competency-u));
 }
 
 .competency-item {
