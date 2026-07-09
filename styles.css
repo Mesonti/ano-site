@@ -487,7 +487,7 @@ img {
     height: calc(344 / 1920 * 100vw);
     min-height: 0;
     margin-top: 0;
-    padding: 0 var(--about-padding-x);
+    padding: calc(64 * var(--about-u)) calc(80 * var(--about-u));
     overflow: hidden;
 }
 
@@ -882,7 +882,7 @@ img {
     gap: calc(65 * var(--competency-u));
     width: 100%;
     min-height: calc(1259 * var(--competency-u));
-    padding: calc(80 * var(--competency-u)) calc(33 * var(--competency-u)) calc(80 * var(--competency-u)) calc(64 * var(--competency-u));
+    padding: calc(64 * var(--competency-u)) calc(80 * var(--competency-u));
     background: var(--page-bg);
     color: var(--text-primary);
 }
@@ -1073,7 +1073,7 @@ img {
     z-index: 1;
     width: 100%;
     min-height: calc(1064 * var(--benefits-u));
-    padding: calc(56 * var(--benefits-u)) calc(48 * var(--benefits-u));
+    padding: calc(64 * var(--benefits-u)) calc(80 * var(--benefits-u));
     background: var(--page-bg);
     color: var(--text-primary);
 }
@@ -1241,7 +1241,7 @@ img {
     gap: calc(64 * var(--office-u));
     width: 100%;
     min-height: calc(1069 * var(--office-u));
-    padding: calc(56 * var(--office-u)) calc(48 * var(--office-u));
+    padding: calc(64 * var(--office-u)) calc(80 * var(--office-u));
     background: var(--page-bg);
     color: var(--text-primary);
 }
@@ -1349,7 +1349,7 @@ img {
     gap: calc(40 * var(--footer-u));
     width: 100%;
     min-height: calc(853 * var(--footer-u));
-    padding: calc(48 * var(--footer-u));
+    padding: calc(64 * var(--footer-u)) calc(80 * var(--footer-u));
     background: var(--text-primary);
     color: #fff;
 }
