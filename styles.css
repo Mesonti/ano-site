@@ -756,10 +756,10 @@ img {
   z-index: 2;
   top: 0;
   left: calc(0 * var(--projects-u));
-  width: calc(80 * var(--projects-u));
-  height: calc(80 * var(--projects-u));
+  width: calc(97 * var(--projects-u));
+  height: calc(97 * var(--projects-u));
   object-fit: cover;
-  transform: rotate(-167deg) scaleY(-1) scaleX(-1);
+  transform: rotate(0) scaleY(1) scaleX(-1);
 }
 
 .project-card__icon-mark {
@@ -1192,49 +1192,51 @@ img {
 }
 
 .benefits-card--link:hover {
-  transform: translateY(calc(-3 * var(--benefits-u)));
+  transform: translateY(calc(-5 * var(--benefits-u)));
+  background: var(--accent-red);
+  .benefits-card__button {
+    background: var(--text-primary);
+  }
 }
 
 .benefits-card__hh {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: calc(451.879 * var(--benefits-u));
+  width: calc(450 * var(--benefits-u));
   height: calc(240 * var(--benefits-u));
   max-width: none;
   transform: translate(-50%, -50%);
-  pointer-events: none;
 }
 
 .benefits-card__button {
-  position: relative;
-  z-index: 1;
-  display: flex;
+  --button-cut: calc(12 / 1920 * 100vw);
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: calc(271 * var(--benefits-u));
-  height: calc(52 * var(--benefits-u));
+  width: calc(271 / 1920 * 100vw);
+  height: calc(52 / 1920 * 100vw);
+  background: var(--accent-red);
   color: #fff;
-  font-size: calc(24 * var(--benefits-u));
+  font-size: calc(24 / 1920 * 100vw);
   font-weight: 500;
-  line-height: calc(28 * var(--benefits-u));
+  line-height: calc(28 / 1920 * 100vw);
   letter-spacing: -0.02em;
-  white-space: nowrap;
+  text-decoration: none;
+  clip-path: polygon(
+          var(--button-cut) 0,
+          100% 0,
+          100% calc(100% - var(--button-cut)),
+          calc(100% - var(--button-cut)) 100%,
+          0 100%,
+          0 var(--button-cut)
+  );
+  z-index: 2;
+  transition: background-color 160ms ease;
+  flex: 0 0 auto;
 }
 
-.benefits-card__button img {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  max-width: none;
-}
 
-.benefits-card__button span {
-  position: relative;
-  z-index: 1;
-}
 
 .office-section {
   --office-u: calc(100vw / 1920);
@@ -1323,8 +1325,8 @@ img {
 }
 
 .office-map__badge {
-  top: calc(425 / 751 * 100%);
-  left: calc(1053 / 1821 * 100%);
+  top: calc(435 / 751 * 100%);
+  left: calc(1030 / 1821 * 100%);
   width: calc(59 * var(--office-u));
   height: calc(37 * var(--office-u));
 }
@@ -1338,7 +1340,7 @@ img {
 .office-map__badge span {
   position: absolute;
   top: calc(4 * var(--office-u));
-  left: calc(7.75 * var(--office-u));
+  left: calc(7.5 * var(--office-u));
   color: #fff;
   font-size: calc(14 * var(--office-u));
   font-weight: 600;
