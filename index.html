@@ -10,7 +10,7 @@
             href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&amp;display=swap"
             rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=office-v1"/>
+    <link rel="stylesheet" href="./styles.css?v=principles-shelf-hover-v2"/>
 </head>
 <body>
 <main class="hero-screen">
@@ -458,6 +458,27 @@
         </div>
     </section>
 
+    <section class="principles-section" id="team" aria-labelledby="principles-title">
+        <h2 id="principles-title" class="principles-section__title">Наши принципы</h2>
+
+        <div class="principles-rack" aria-hidden="true">
+            <img class="principles-rack__layer principles-rack__foot principles-rack__foot--right" src="./img/principles/rack-foot.svg" alt=""/>
+            <img class="principles-rack__layer principles-rack__foot principles-rack__foot--center" src="./img/principles/rack-foot.svg" alt=""/>
+            <img class="principles-rack__layer principles-rack__foot principles-rack__foot--left" src="./img/principles/rack-foot-left.svg" alt=""/>
+            <img class="principles-rack__layer principles-rack__base" src="./img/principles/rack-base.png" alt=""/>
+            <img class="principles-rack__layer principles-rack__shelf principles-rack__shelf--1" src="./img/principles/shelf-1.svg" alt=""/>
+            <img class="principles-rack__layer principles-rack__shelf principles-rack__shelf--2" src="./img/principles/shelf-2.svg" alt=""/>
+            <img class="principles-rack__layer principles-rack__shelf principles-rack__shelf--3" src="./img/principles/shelf-3.svg" alt=""/>
+            <img class="principles-rack__layer principles-rack__shelf principles-rack__shelf--4" src="./img/principles/shelf-4.svg" alt=""/>
+            <img class="principles-rack__layer principles-rack__shelf principles-rack__shelf--5" src="./img/principles/shelf-5.svg" alt=""/>
+            <img class="principles-rack__layer principles-rack__shelf principles-rack__shelf--6" src="./img/principles/shelf-6.svg" alt=""/>
+            <img class="principles-rack__layer principles-rack__shelf principles-rack__shelf--7" src="./img/principles/shelf-7.svg" alt=""/>
+            <img class="principles-rack__layer principles-rack__shelf principles-rack__shelf--8" src="./img/principles/shelf-8.svg" alt=""/>
+            <img class="principles-rack__layer principles-rack__glass principles-rack__glass--back" src="./img/principles/rack-glass-back.svg" alt=""/>
+            <img class="principles-rack__layer principles-rack__glass principles-rack__glass--front" src="./img/principles/rack-glass-front.svg" alt=""/>
+        </div>
+    </section>
+
     <section class="office-section" id="contacts" aria-labelledby="office-title">
         <div class="office-section__heading">
             <h2 id="office-title">Где мы находимся?</h2>
@@ -469,7 +490,31 @@
 
         <div class="office-map" aria-label="Карта пути от станции метро Павелецкая до офиса">
             <img class="office-map__image" src="./img/office/map.png" alt="" aria-hidden="true"/>
-            <img class="office-map__route" src="./img/office/path.svg" alt="" aria-hidden="true"/>
+            <svg
+                    class="office-map__route"
+                    viewBox="0 0 705.492 372.081"
+                    preserveAspectRatio="none"
+                    aria-hidden="true"
+                    focusable="false"
+            >
+                <defs>
+                    <mask id="office-route-mask" maskUnits="userSpaceOnUse">
+                        <path
+                                class="office-map__route-mask"
+                                pathLength="1"
+                                d="M27.5 90.0814L67 47.5814L454 3.08137L701 125.081C671 167.081 657 213.081 670 262.081C661 342.081 606 351.081 574 351.081"
+                        />
+                    </mask>
+                </defs>
+                <circle class="office-map__route-point office-map__route-point--from" cx="21" cy="106.081" r="15.5"/>
+                <circle class="office-map__route-point office-map__route-point--to" cx="560" cy="351.081" r="15.5"/>
+                <path
+                        class="office-map__route-way"
+                        pathLength="1"
+                        mask="url(#office-route-mask)"
+                        d="M27.5 90.0814L67 47.5814L454 3.08137L701 125.081C671 167.081 657 213.081 670 262.081C661 342.081 606 351.081 574 351.081"
+                />
+            </svg>
             <img class="office-map__photo" src="./img/office/photo-ring.png" alt="" aria-hidden="true"/>
             <div class="office-map__badge" aria-hidden="true">
                 <img src="./img/office/time-badge.svg" alt=""/>
@@ -560,6 +605,6 @@
     <p class="site-footer__copyright">АНО «Цифровой аудит» © 2024</p>
 </footer>
 
-<script src="./script.js?v=nav-fixed-top-smooth-v3"></script>
+<script src="./script.js?v=principles-shelf-hover-v2"></script>
 </body>
 </html>
