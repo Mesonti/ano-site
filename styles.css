@@ -348,8 +348,8 @@ img {
 .hero-card__nav {
     position: absolute;
     top: calc(62 / 1920 * 100vw);
-    left: calc(1104 / 1920 * 100vw);
-    right: auto;
+    right: 64px;
+    left: auto;
     display: flex;
     align-items: center;
     gap: calc(40 / 1920 * 100vw);
@@ -386,7 +386,7 @@ img {
     align-items: center;
     gap: 8px;
     color: #000;
-    font-size: calc(16 / 1920 * 100vw);
+    font-size: calc(20 / 1920 * 100vw);
     font-weight: 500;
     line-height: calc(20 / 1920 * 100vw);
     letter-spacing: -0.02em;
@@ -428,7 +428,7 @@ img {
     height: calc(36 / 1920 * 100vw);
     background: var(--accent-red);
     color: #fff;
-    font-size: calc(16 / 1920 * 100vw);
+    font-size: calc(20 / 1920 * 100vw);
     font-weight: 500;
     line-height: calc(20 / 1920 * 100vw);
     letter-spacing: -0.02em;
