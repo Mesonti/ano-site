@@ -1287,8 +1287,8 @@ img {
     gap: calc(64 * var(--principles-u));
     width: 100%;
     min-height: calc(1378 * var(--principles-u));
-    padding: calc(56 * var(--principles-u)) calc(48 * var(--principles-u));
-    background: var(--page-bg);
+    padding: calc(64 * var(--principles-u)) calc(80 * var(--principles-u));
+    /*background: var(--page-bg);*/
     color: var(--text-primary);
 }
 
@@ -1321,9 +1321,22 @@ img {
 
 .principles-connectors path {
     fill: none;
-    stroke: #030404;
+    stroke: var(--accent-red);
+    opacity: 0;
     stroke-width: 1;
     vector-effect: non-scaling-stroke;
+    transition: opacity 180ms ease;
+}
+
+.principles-section:has(.principles-rack__shelf--1:hover) .principles-connectors__line--1,
+.principles-section:has(.principles-rack__shelf--2:hover) .principles-connectors__line--2,
+.principles-section:has(.principles-rack__shelf--3:hover) .principles-connectors__line--3,
+.principles-section:has(.principles-rack__shelf--4:hover) .principles-connectors__line--4,
+.principles-section:has(.principles-rack__shelf--5:hover) .principles-connectors__line--5,
+.principles-section:has(.principles-rack__shelf--6:hover) .principles-connectors__line--6,
+.principles-section:has(.principles-rack__shelf--7:hover) .principles-connectors__line--7,
+.principles-section:has(.principles-rack__shelf--8:hover) .principles-connectors__line--8 {
+    opacity: 1;
 }
 
 .principles-cards {
@@ -1335,10 +1348,11 @@ img {
 
 .principle-card {
     --card-cut: calc(24 * var(--principles-u));
+    --principle-corner-color: rgba(3, 4, 4, 0.32);
     position: absolute;
     display: flex;
     flex-direction: column;
-    gap: calc(2 * var(--principles-u));
+    gap: calc(4 * var(--principles-u));
     min-height: calc(126 * var(--principles-u));
     padding: calc(24 * var(--principles-u)) calc(24 * var(--principles-u)) calc(24 * var(--principles-u)) calc(40 * var(--principles-u));
     background: #E4E4E4;
@@ -1351,6 +1365,7 @@ img {
             0 100%,
             0 var(--card-cut)
     );
+    transition: background-color 180ms ease, color 180ms ease;
 }
 
 .principle-card::before {
@@ -1370,8 +1385,8 @@ img {
     position: absolute;
     inset: 0;
     background:
-            linear-gradient(rgba(3, 4, 4, 0.32), rgba(3, 4, 4, 0.32)) var(--card-cut) 0 / calc(100% - var(--card-cut)) calc(1 * var(--principles-u)) no-repeat,
-            linear-gradient(rgba(3, 4, 4, 0.32), rgba(3, 4, 4, 0.32)) 100% 0 / calc(1 * var(--principles-u)) calc(52 * var(--principles-u)) no-repeat;
+            linear-gradient(var(--principle-corner-color), var(--principle-corner-color)) var(--card-cut) 0 / calc(100% - var(--card-cut)) calc(1 * var(--principles-u)) no-repeat,
+            linear-gradient(var(--principle-corner-color), var(--principle-corner-color)) 100% 0 / calc(1 * var(--principles-u)) calc(52 * var(--principles-u)) no-repeat;
     pointer-events: none;
 }
 
@@ -1390,8 +1405,8 @@ img {
     position: absolute;
     inset: 0;
     background:
-            linear-gradient(rgba(3, 4, 4, 0.32), rgba(3, 4, 4, 0.32)) 0 100% / calc(100% - var(--card-cut)) calc(1 * var(--principles-u)) no-repeat,
-            linear-gradient(rgba(3, 4, 4, 0.32), rgba(3, 4, 4, 0.32)) 0 calc(100% - calc(52 * var(--principles-u))) / calc(1 * var(--principles-u)) calc(52 * var(--principles-u)) no-repeat;
+            linear-gradient(var(--principle-corner-color), var(--principle-corner-color)) 0 100% / calc(100% - var(--card-cut)) calc(1 * var(--principles-u)) no-repeat,
+            linear-gradient(var(--principle-corner-color), var(--principle-corner-color)) 0 calc(100% - calc(52 * var(--principles-u))) / calc(1 * var(--principles-u)) calc(52 * var(--principles-u)) no-repeat;
     pointer-events: none;
 }
 
@@ -1428,6 +1443,34 @@ img {
     font-size: calc(20 * var(--principles-u));
     font-weight: 400;
     line-height: 1.1;
+    transition: color 180ms ease;
+}
+
+.principle-card--highlight,
+.principles-section:has(.principles-rack__shelf--1:hover) .principle-card--1,
+.principles-section:has(.principles-rack__shelf--2:hover) .principle-card--2,
+.principles-section:has(.principles-rack__shelf--3:hover) .principle-card--3,
+.principles-section:has(.principles-rack__shelf--4:hover) .principle-card--4,
+.principles-section:has(.principles-rack__shelf--5:hover) .principle-card--5,
+.principles-section:has(.principles-rack__shelf--6:hover) .principle-card--6,
+.principles-section:has(.principles-rack__shelf--7:hover) .principle-card--7,
+.principles-section:has(.principles-rack__shelf--8:hover) .principle-card--8 {
+    --principle-corner-color: rgba(255, 255, 255, 0.86);
+    background: var(--accent-red);
+    color: #fff;
+}
+
+.principle-card--highlight p:not(.principle-card__eyebrow),
+.principle-card--highlight .principle-card__eyebrow,
+.principles-section:has(.principles-rack__shelf--1:hover) .principle-card--1 p,
+.principles-section:has(.principles-rack__shelf--2:hover) .principle-card--2 p,
+.principles-section:has(.principles-rack__shelf--3:hover) .principle-card--3 p,
+.principles-section:has(.principles-rack__shelf--4:hover) .principle-card--4 p,
+.principles-section:has(.principles-rack__shelf--5:hover) .principle-card--5 p,
+.principles-section:has(.principles-rack__shelf--6:hover) .principle-card--6 p,
+.principles-section:has(.principles-rack__shelf--7:hover) .principle-card--7 p,
+.principles-section:has(.principles-rack__shelf--8:hover) .principle-card--8 p {
+    color: #fff;
 }
 
 .principle-card--1 {
