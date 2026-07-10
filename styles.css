@@ -1279,6 +1279,7 @@ img {
 
 .principles-section {
     --principles-u: calc(100vw / 1920);
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1303,9 +1304,185 @@ img {
 
 .principles-rack {
     position: relative;
+    z-index: 2;
     width: calc(762 * var(--principles-u));
     height: calc(1112 * var(--principles-u));
     flex: 0 0 auto;
+}
+
+.principles-connectors {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.principles-connectors path {
+    fill: none;
+    stroke: #030404;
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+}
+
+.principles-cards {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.principle-card {
+    --card-cut: calc(24 * var(--principles-u));
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: calc(2 * var(--principles-u));
+    min-height: calc(126 * var(--principles-u));
+    padding: calc(24 * var(--principles-u)) calc(24 * var(--principles-u)) calc(24 * var(--principles-u)) calc(40 * var(--principles-u));
+    background: #E4E4E4;
+    color: var(--text-primary);
+    clip-path: polygon(
+            var(--card-cut) 0,
+            100% 0,
+            100% calc(100% - var(--card-cut)),
+            calc(100% - var(--card-cut)) 100%,
+            0 100%,
+            0 var(--card-cut)
+    );
+}
+
+.principle-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: calc(1 * var(--principles-u)) solid rgba(3, 4, 4, 0.24);
+    clip-path: inherit;
+    pointer-events: none;
+}
+
+.principle-card--1::after,
+.principle-card--3::after,
+.principle-card--5::after,
+.principle-card--7::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+            linear-gradient(rgba(3, 4, 4, 0.32), rgba(3, 4, 4, 0.32)) var(--card-cut) 0 / calc(100% - var(--card-cut)) calc(1 * var(--principles-u)) no-repeat,
+            linear-gradient(rgba(3, 4, 4, 0.32), rgba(3, 4, 4, 0.32)) 100% 0 / calc(1 * var(--principles-u)) calc(52 * var(--principles-u)) no-repeat;
+    pointer-events: none;
+}
+
+.principle-card--1::before,
+.principle-card--3::before,
+.principle-card--5::before,
+.principle-card--7::before {
+    border: 0;
+}
+
+.principle-card--2::after,
+.principle-card--4::after,
+.principle-card--6::after,
+.principle-card--8::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+            linear-gradient(rgba(3, 4, 4, 0.32), rgba(3, 4, 4, 0.32)) 0 100% / calc(100% - var(--card-cut)) calc(1 * var(--principles-u)) no-repeat,
+            linear-gradient(rgba(3, 4, 4, 0.32), rgba(3, 4, 4, 0.32)) 0 calc(100% - calc(52 * var(--principles-u))) / calc(1 * var(--principles-u)) calc(52 * var(--principles-u)) no-repeat;
+    pointer-events: none;
+}
+
+.principle-card--2::before,
+.principle-card--4::before,
+.principle-card--6::before,
+.principle-card--8::before {
+    border: 0;
+}
+
+.principle-card p,
+.principle-card h3 {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+}
+
+.principle-card__eyebrow {
+    color: var(--text-primary);
+    font-size: calc(14 * var(--principles-u));
+    font-weight: 400;
+    line-height: 1;
+}
+
+.principle-card h3 {
+    font-size: calc(38 * var(--principles-u));
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: 0;
+}
+
+.principle-card p:not(.principle-card__eyebrow) {
+    color: #5d6273;
+    font-size: calc(20 * var(--principles-u));
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.principle-card--1 {
+    top: calc(332 * var(--principles-u));
+    left: calc(64 * var(--principles-u));
+    width: calc(458 * var(--principles-u));
+    min-height: calc(134 * var(--principles-u));
+}
+
+.principle-card--2 {
+    top: calc(396.38 * var(--principles-u));
+    left: calc(1397 * var(--principles-u));
+    width: calc(458 * var(--principles-u));
+    min-height: calc(134 * var(--principles-u));
+}
+
+.principle-card--3 {
+    top: calc(538 * var(--principles-u));
+    left: calc(64 * var(--principles-u));
+    width: calc(563 * var(--principles-u));
+    min-height: calc(126 * var(--principles-u));
+}
+
+.principle-card--4 {
+    top: calc(602.38 * var(--principles-u));
+    left: calc(1304 * var(--principles-u));
+    width: calc(551 * var(--principles-u));
+    min-height: calc(148 * var(--principles-u));
+}
+
+.principle-card--5 {
+    top: calc(736 * var(--principles-u));
+    left: calc(64 * var(--principles-u));
+    width: calc(571 * var(--principles-u));
+}
+
+.principle-card--6 {
+    top: calc(822.38 * var(--principles-u));
+    left: calc(1334 * var(--principles-u));
+    width: calc(522 * var(--principles-u));
+    min-height: calc(148 * var(--principles-u));
+}
+
+.principle-card--7 {
+    top: calc(934 * var(--principles-u));
+    left: calc(64 * var(--principles-u));
+    width: calc(443 * var(--principles-u));
+    min-height: calc(134 * var(--principles-u));
+}
+
+.principle-card--8 {
+    top: calc(1042.38 * var(--principles-u));
+    left: calc(1440 * var(--principles-u));
+    width: calc(415 * var(--principles-u));
+    min-height: calc(148 * var(--principles-u));
 }
 
 .principles-rack__layer {
@@ -1353,13 +1530,38 @@ img {
     width: calc(433.53 * var(--principles-u));
     height: calc(181.642 * var(--principles-u));
     pointer-events: auto;
+}
+
+.principles-rack__shelf-content,
+.principles-rack__shelf-layer {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.principles-rack__shelf-content {
     transform-origin: center;
     transition: transform 260ms cubic-bezier(0.2, 0, 0, 1);
     will-change: transform;
 }
 
-.principles-rack__shelf:hover {
+.principles-rack__shelf-layer {
+    max-width: none;
+}
+
+.principles-rack__shelf-layer--red {
+    opacity: 0;
+    transition: opacity 220ms ease;
+}
+
+.principles-rack__shelf:hover .principles-rack__shelf-content {
     transform: translate(calc(-60 * var(--principles-u)), calc(10 * var(--principles-u)));
+}
+
+.principles-rack__shelf:hover .principles-rack__shelf-layer--red {
+    opacity: 1;
 }
 
 .principles-rack__shelf--1 {
@@ -1759,6 +1961,54 @@ img {
     .principles-section__title {
         font-size: 40px;
         line-height: 1.1;
+    }
+
+    .principles-connectors {
+        display: none;
+    }
+
+    .principles-rack {
+        order: 2;
+    }
+
+    .principles-cards {
+        position: static;
+        order: 3;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+        width: 100%;
+        pointer-events: auto;
+    }
+
+    .principle-card,
+    .principle-card--1,
+    .principle-card--2,
+    .principle-card--3,
+    .principle-card--4,
+    .principle-card--5,
+    .principle-card--6,
+    .principle-card--7,
+    .principle-card--8 {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        min-height: 0;
+        padding: 20px 24px;
+    }
+
+    .principle-card__eyebrow {
+        font-size: 14px;
+    }
+
+    .principle-card h3 {
+        font-size: 28px;
+        line-height: 1.1;
+    }
+
+    .principle-card p:not(.principle-card__eyebrow) {
+        font-size: 18px;
     }
 
     .benefits-section {
