@@ -10,7 +10,7 @@
             href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&amp;display=swap"
             rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=principles-pan-v1"/>
+    <link rel="stylesheet" href="./styles.css?v=principles-scroll-slower-v1"/>
 </head>
 <body>
 <main class="hero-screen">
@@ -62,8 +62,14 @@
                 alt="Цифровой аудит"
         />
 
-        <span class="hero-card__logo-icon-blur" aria-hidden="true"></span>
-        <img class="hero-card__logo-icon" src="./img/logo-icon.svg" alt="" aria-hidden="true"/>
+        <span class="hero-card__logo-icon" aria-hidden="true">
+            <span class="hero-card__logo-icon-bg"></span>
+            <img class="hero-card__logo-icon-mark" src="./img/logo-icon-mark.png" alt=""/>
+            <span class="hero-card__logo-icon-corner hero-card__logo-icon-corner--top-left"></span>
+            <span class="hero-card__logo-icon-corner hero-card__logo-icon-corner--top-right"></span>
+            <span class="hero-card__logo-icon-corner hero-card__logo-icon-corner--bottom-left"></span>
+            <span class="hero-card__logo-icon-corner hero-card__logo-icon-corner--bottom-right"></span>
+        </span>
 
         <nav class="hero-card__nav" aria-label="Основная навигация">
             <a class="hero-card__nav-link" href="#about-title">О нас</a>
@@ -392,72 +398,6 @@
         </div>
     </section>
 
-
-    <section class="benefits-section" id="bonuses" aria-labelledby="benefits-title">
-        <h2 id="benefits-title" class="benefits-section__title">Преимущества и бонусы</h2>
-
-        <div class="benefits-section__grid">
-            <article class="benefits-card">
-                <div class="benefits-card__content">
-                    <header class="benefits-card__header">
-                        <span class="benefits-card__number">01</span>
-                        <h3>Даем гарантии</h3>
-                    </header>
-                    <p>ИТ-аккредитация, оформление по ТК, ежегодная индексация зарплаты <br>и социальный пакет</p>
-                </div>
-            </article>
-
-            <article class="benefits-card">
-                <div class="benefits-card__content">
-                    <header class="benefits-card__header">
-                        <span class="benefits-card__number">02</span>
-                        <h3>Лечим и бережем</h3>
-                    </header>
-                    <p>Корпоративный ДМС, телемедицина, помощь психолога и страховка <br>для путешественников</p>
-                </div>
-            </article>
-
-            <article class="benefits-card">
-                <div class="benefits-card__content">
-                    <header class="benefits-card__header">
-                        <span class="benefits-card__number">03</span>
-                        <h3>Заботимся о комфорте</h3>
-                    </header>
-                    <p>Современный офис со всей необходимой инфраструктурой, возможность работать в гибридном и
-                        удаленном форматах</p>
-                </div>
-            </article>
-
-            <article class="benefits-card">
-                <div class="benefits-card__content">
-                    <header class="benefits-card__header">
-                        <span class="benefits-card__number">04</span>
-                        <h3>Работаем на результат</h3>
-                    </header>
-                    <p>Гибкие процессы, здоровая корпоративная культура и только рациональная бюрократия</p>
-                </div>
-            </article>
-
-            <article class="benefits-card">
-                <div class="benefits-card__content">
-                    <header class="benefits-card__header">
-                        <span class="benefits-card__number">05</span>
-                        <h3>Запускаем перемены</h3>
-                    </header>
-                    <p>Проекты по цифровизации системы государственного управления, возможность напрямую влиять <br>на
-                        развитие нашей страны</p>
-                </div>
-            </article>
-
-            <a class="benefits-card benefits-card--link" href="https://hh.ru/employer/11660779?ysclid=mpv4m1prr934180923&tab=VACANCIES&customDomain=1&overRideDomainAreaId=1" target="_blank" rel="noreferrer">
-                <img class="benefits-card__hh" src="./img/hh.png" alt="" aria-hidden="true"/>
-                <span class="benefits-card__button">
-              <span>Смотреть вакансии</span>
-            </span>
-            </a>
-        </div>
-    </section>
-
     <section class="principles-section" id="team" aria-labelledby="principles-title">
         <div class="principles-section__sticky">
             <h2 id="principles-title" class="principles-section__title">Наши принципы</h2>
@@ -579,6 +519,71 @@
             <img class="principles-rack__layer principles-rack__glass principles-rack__glass--back" src="./img/principles/rack-glass-back.svg" alt=""/>
             <img class="principles-rack__layer principles-rack__glass principles-rack__glass--front" src="./img/principles/rack-glass-front.svg" alt=""/>
             </div>
+        </div>
+    </section>
+
+    <section class="benefits-section" id="bonuses" aria-labelledby="benefits-title">
+        <h2 id="benefits-title" class="benefits-section__title">Преимущества и бонусы</h2>
+
+        <div class="benefits-section__grid">
+            <article class="benefits-card">
+                <div class="benefits-card__content">
+                    <header class="benefits-card__header">
+                        <span class="benefits-card__number">01</span>
+                        <h3>Даем гарантии</h3>
+                    </header>
+                    <p>ИТ-аккредитация, оформление по ТК, ежегодная индексация зарплаты <br>и социальный пакет</p>
+                </div>
+            </article>
+
+            <article class="benefits-card">
+                <div class="benefits-card__content">
+                    <header class="benefits-card__header">
+                        <span class="benefits-card__number">02</span>
+                        <h3>Лечим и бережем</h3>
+                    </header>
+                    <p>Корпоративный ДМС, телемедицина, помощь психолога и страховка <br>для путешественников</p>
+                </div>
+            </article>
+
+            <article class="benefits-card">
+                <div class="benefits-card__content">
+                    <header class="benefits-card__header">
+                        <span class="benefits-card__number">03</span>
+                        <h3>Заботимся о комфорте</h3>
+                    </header>
+                    <p>Современный офис со всей необходимой инфраструктурой, возможность работать в гибридном и
+                        удаленном форматах</p>
+                </div>
+            </article>
+
+            <article class="benefits-card">
+                <div class="benefits-card__content">
+                    <header class="benefits-card__header">
+                        <span class="benefits-card__number">04</span>
+                        <h3>Работаем на результат</h3>
+                    </header>
+                    <p>Гибкие процессы, здоровая корпоративная культура и только рациональная бюрократия</p>
+                </div>
+            </article>
+
+            <article class="benefits-card">
+                <div class="benefits-card__content">
+                    <header class="benefits-card__header">
+                        <span class="benefits-card__number">05</span>
+                        <h3>Запускаем перемены</h3>
+                    </header>
+                    <p>Проекты по цифровизации системы государственного управления, возможность напрямую влиять <br>на
+                        развитие нашей страны</p>
+                </div>
+            </article>
+
+            <a class="benefits-card benefits-card--link" href="https://hh.ru/employer/11660779?ysclid=mpv4m1prr934180923&tab=VACANCIES&customDomain=1&overRideDomainAreaId=1" target="_blank" rel="noreferrer">
+                <img class="benefits-card__hh" src="./img/hh.png" alt="" aria-hidden="true"/>
+                <span class="benefits-card__button">
+              <span>Смотреть вакансии</span>
+            </span>
+            </a>
         </div>
     </section>
 
@@ -708,6 +713,6 @@
     <p class="site-footer__copyright">АНО «Цифровой аудит» © 2024</p>
 </footer>
 
-<script src="./script.js?v=principles-pan-v1"></script>
+<script src="./script.js?v=principles-scroll-slower-v1"></script>
 </body>
 </html>
