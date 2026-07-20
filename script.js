@@ -184,16 +184,13 @@ const updatePrincipleScrollState = () => {
     return;
   }
 
-  const activationLine = viewportHeight * 0.55;
-  let nextIndex = -1;
-
-  principleCards.forEach((card, index) => {
-    const cardRect = card.getBoundingClientRect();
-
-    if (cardRect.top <= activationLine) {
-      nextIndex = index;
-    }
-  });
+  const cardsHeight = lastCardRect.bottom - firstCardRect.top;
+  const scrollRange = Math.max(1, viewportHeight + cardsHeight);
+  const progress = Math.min(
+    Math.max((viewportHeight - firstCardRect.top) / scrollRange, 0),
+    0.999
+  );
+  const nextIndex = Math.floor(progress * principleCards.length);
 
   setActivePrinciple(nextIndex);
 };
