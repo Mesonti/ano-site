@@ -1603,15 +1603,19 @@ img {
 
 .principles-section {
     --principles-u: calc(100vw / 1920);
+    --principles-scroll-height: 260vh;
     position: relative;
     width: 100%;
+    min-height: var(--principles-scroll-height);
     padding: 0;
     /*background: var(--page-bg);*/
     color: var(--text-primary);
 }
 
 .principles-section__sticky {
-    position: relative;
+    --principles-pan-y: 0px;
+    position: sticky;
+    top: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1620,6 +1624,8 @@ img {
     width: 100%;
     min-height: calc(1378 * var(--principles-u));
     padding: calc(64 * var(--principles-u)) calc(80 * var(--principles-u));
+    transform: translate3d(0, var(--principles-pan-y), 0);
+    will-change: transform;
 }
 
 .principles-section__title {
@@ -2492,44 +2498,5 @@ img {
     .site-footer__copyright {
         font-size: 14px;
         line-height: 18px;
-    }
-}
-
-@media (max-width: 480px) {
-    .principles-section {
-        --principles-u: min(1px, calc((100vw - 32px) / 762));
-    }
-
-    .principles-section__sticky {
-        gap: 24px;
-        padding: 40px 16px;
-    }
-
-    .principles-section__title {
-        font-size: 34px;
-    }
-
-    .principles-cards {
-        gap: 12px;
-    }
-
-    .principle-card,
-    .principle-card--1,
-    .principle-card--2,
-    .principle-card--3,
-    .principle-card--4,
-    .principle-card--5,
-    .principle-card--6,
-    .principle-card--7,
-    .principle-card--8 {
-        padding: 18px 20px;
-    }
-
-    .principle-card h3 {
-        font-size: 24px;
-    }
-
-    .principle-card p:not(.principle-card__eyebrow) {
-        font-size: 16px;
     }
 }
