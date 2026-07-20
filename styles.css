@@ -1655,7 +1655,7 @@ img {
     opacity: 0;
     stroke-width: 1;
     vector-effect: non-scaling-stroke;
-    transition: opacity 180ms ease;
+    transition: opacity 560ms ease;
 }
 
 .principles-connectors__line--active {
@@ -1688,7 +1688,7 @@ img {
             0 100%,
             0 var(--card-cut)
     );
-    transition: background-color 180ms ease, color 180ms ease;
+    transition: background-color 560ms ease, color 560ms ease;
 }
 
 .principle-card::before {
@@ -1766,7 +1766,7 @@ img {
     font-size: calc(20 * var(--principles-u));
     font-weight: 400;
     line-height: 1.1;
-    transition: color 180ms ease;
+    transition: color 560ms ease;
 }
 
 .principle-card--highlight {
@@ -1893,7 +1893,7 @@ img {
 
 .principles-rack__shelf-content {
     transform-origin: center;
-    transition: transform 260ms cubic-bezier(0.2, 0, 0, 1);
+    transition: transform 720ms cubic-bezier(0.2, 0, 0, 1);
     will-change: transform;
 }
 
@@ -1903,7 +1903,7 @@ img {
 
 .principles-rack__shelf-layer--red {
     opacity: 0;
-    transition: opacity 220ms ease;
+    transition: opacity 620ms ease;
 }
 
 .principles-rack__shelf--active .principles-rack__shelf-content {
@@ -2038,7 +2038,8 @@ img {
 
 .office-map__route,
 .office-map__photo,
-.office-map__badge {
+.office-map__badge
+{
     position: absolute;
     z-index: 1;
     max-width: none;
@@ -2061,6 +2062,8 @@ img {
     stroke-linejoin: round;
     stroke-dasharray: 0.02 0.02;
 }
+
+
 
 .office-map__route-mask {
     fill: none;
@@ -2115,8 +2118,8 @@ img {
 }
 
 .office-map__badge {
-    top: calc(425 / 751 * 100%);
-    left: calc(1053 / 1821 * 100%);
+    top: calc(435 / 751 * 100%);
+    left: calc(1029 / 1821 * 100%);
     width: calc(59 * var(--office-u));
     height: calc(37 * var(--office-u));
 }
