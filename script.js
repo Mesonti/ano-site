@@ -28,15 +28,13 @@ let heroLogoVelocity = 0;
 let heroLogoTargetVelocity = 0;
 let heroLogoRestAngle = 0;
 let heroLogoIsSpinning = false;
-let principlesAnimationFrame = 0;
-let currentPrincipleProgress = 0;
-let targetPrincipleProgress = 0;
 let activePrincipleIndex = -1;
-let targetPrincipleIndex = -1;
 let principlesStepTimer = 0;
+let queuedPrincipleDirection = 0;
+let principleScrollAccumulator = 0;
 let principleTouchY = 0;
-const principlesStepDuration = 420;
-const principlesWheelSlowdown = 7;
+const principlesStepDuration = 620;
+const principleScrollStepThreshold = 180;
 
 const revealSectionTitle = (title) => {
   title.classList.add("section-title-reveal--visible");
@@ -183,68 +181,6 @@ const setActivePrinciple = (index) => {
   });
 };
 
-const stepActivePrinciple = () => {
-  window.clearTimeout(principlesStepTimer);
-  principlesStepTimer = 0;
-
-  if (targetPrincipleIndex === activePrincipleIndex) return;
-
-  const direction = targetPrincipleIndex > activePrincipleIndex ? 1 : -1;
-  setActivePrinciple(activePrincipleIndex + direction);
-
-  if (targetPrincipleIndex !== activePrincipleIndex) {
-    principlesStepTimer = window.setTimeout(stepActivePrinciple, principlesStepDuration);
-  }
-};
-
-const setTargetPrinciple = (index) => {
-  targetPrincipleIndex = index;
-
-  if (activePrincipleIndex < 0) {
-    setActivePrinciple(index > 0 ? 0 : index);
-  }
-
-  if (!principlesStepTimer) {
-    stepActivePrinciple();
-  }
-};
-
-const clampPrincipleProgress = (progress) => Math.min(Math.max(progress, 0), 0.999);
-
-const requestPrincipleAnimation = () => {
-  if (!principlesAnimationFrame) {
-    principlesAnimationFrame = window.requestAnimationFrame(updatePrincipleScrollState);
-  }
-};
-
-const setPrincipleProgressTarget = (progress) => {
-  targetPrincipleProgress = clampPrincipleProgress(progress);
-  requestPrincipleAnimation();
-};
-
-const updatePrincipleScrollState = () => {
-  principlesAnimationFrame = 0;
-
-  if (!principleCards.length) return;
-
-  currentPrincipleProgress += (targetPrincipleProgress - currentPrincipleProgress) * 0.075;
-
-  if (Math.abs(targetPrincipleProgress - currentPrincipleProgress) < 0.001) {
-    currentPrincipleProgress = targetPrincipleProgress;
-  }
-
-  const targetIndex = Math.min(
-    principleCards.length - 1,
-    Math.floor(currentPrincipleProgress * principleCards.length)
-  );
-
-  setTargetPrinciple(targetIndex);
-
-  if (currentPrincipleProgress !== targetPrincipleProgress) {
-    principlesAnimationFrame = window.requestAnimationFrame(updatePrincipleScrollState);
-  }
-};
-
 const syncPrincipleScrollTarget = () => {
   if (!principlesSection || !principleCards.length) return;
 
@@ -252,15 +188,19 @@ const syncPrincipleScrollTarget = () => {
   const rect = principlesSection.getBoundingClientRect();
 
   if (rect.top >= viewportHeight * 0.9) {
-    currentPrincipleProgress = 0;
-    targetPrincipleProgress = 0;
+    window.clearTimeout(principlesStepTimer);
+    principlesStepTimer = 0;
+    queuedPrincipleDirection = 0;
+    principleScrollAccumulator = 0;
     setActivePrinciple(-1);
     return;
   }
 
   if (rect.bottom <= viewportHeight * 0.1) {
-    currentPrincipleProgress = 0.999;
-    targetPrincipleProgress = 0.999;
+    window.clearTimeout(principlesStepTimer);
+    principlesStepTimer = 0;
+    queuedPrincipleDirection = 0;
+    principleScrollAccumulator = 0;
     setActivePrinciple(principleCards.length - 1);
   }
 };
@@ -274,9 +214,8 @@ const getPrincipleScrollLockState = (deltaY) => {
   const willEnterFromTop = deltaY > 0 && rect.top > lockStart && rect.top - deltaY <= lockStart;
   const willEnterFromBottom =
     deltaY < 0 && rect.bottom < lockEnd && rect.bottom - deltaY >= lockEnd;
-  const atStart = targetPrincipleProgress <= 0.001 && activePrincipleIndex <= 0;
-  const atEnd =
-    targetPrincipleProgress >= 0.998 && activePrincipleIndex >= principleCards.length - 1;
+  const atStart = activePrincipleIndex === 0;
+  const atEnd = activePrincipleIndex === principleCards.length - 1;
 
   return {
     atEnd,
@@ -307,29 +246,79 @@ const requestPrincipleScrollUpdate = () => {
   syncPrincipleScrollTarget();
 };
 
+const canAdvancePrinciple = (direction) => {
+  if (!direction || !principleCards.length) return false;
+  if (activePrincipleIndex < 0) return true;
+
+  return direction > 0
+    ? activePrincipleIndex < principleCards.length - 1
+    : activePrincipleIndex > 0;
+};
+
+const completePrincipleStep = () => {
+  principlesStepTimer = 0;
+
+  if (!queuedPrincipleDirection) return;
+
+  const direction = queuedPrincipleDirection;
+
+  queuedPrincipleDirection = 0;
+  advancePrinciple(direction);
+};
+
+const advancePrinciple = (direction) => {
+  if (!canAdvancePrinciple(direction)) return;
+
+  if (principlesStepTimer) {
+    queuedPrincipleDirection = direction;
+    return;
+  }
+
+  const fallbackIndex = direction > 0 ? 0 : principleCards.length - 1;
+  const currentIndex = activePrincipleIndex < 0 ? fallbackIndex : activePrincipleIndex;
+  const nextIndex =
+    activePrincipleIndex < 0
+      ? currentIndex
+      : Math.min(Math.max(currentIndex + direction, 0), principleCards.length - 1);
+
+  setActivePrinciple(nextIndex);
+  principlesStepTimer = window.setTimeout(completePrincipleStep, principlesStepDuration);
+};
+
+const scrollPrinciplesContent = (deltaY) => {
+  const direction = Math.sign(deltaY);
+
+  if (!direction) return;
+
+  if (Math.sign(principleScrollAccumulator) !== direction) {
+    principleScrollAccumulator = 0;
+  }
+
+  principleScrollAccumulator += deltaY;
+
+  if (Math.abs(principleScrollAccumulator) < principleScrollStepThreshold) return;
+
+  principleScrollAccumulator = 0;
+  advancePrinciple(direction);
+};
+
 const handlePrincipleWheel = (event) => {
   if (!shouldHandlePrincipleWheel(event.deltaY)) return;
 
-  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
   const state = getPrincipleScrollLockState(event.deltaY);
-  let deltaY = event.deltaY;
 
   if (state.willEnterFromTop) {
     const scrollToLock = state.rect.top - state.lockStart;
 
     window.scrollBy({ top: scrollToLock, left: 0, behavior: "auto" });
-    deltaY -= scrollToLock;
   } else if (state.willEnterFromBottom) {
     const scrollToLock = state.rect.bottom - state.lockEnd;
 
     window.scrollBy({ top: scrollToLock, left: 0, behavior: "auto" });
-    deltaY -= scrollToLock;
   }
 
-  const progressStep = deltaY / Math.max(viewportHeight * principlesWheelSlowdown, 3200);
-
   event.preventDefault();
-  setPrincipleProgressTarget(targetPrincipleProgress + progressStep);
+  scrollPrinciplesContent(event.deltaY);
 };
 
 const handlePrincipleTouchStart = (event) => {
@@ -344,11 +333,8 @@ const handlePrincipleTouchMove = (event) => {
 
   if (!shouldHandlePrincipleWheel(deltaY)) return;
 
-  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-  const progressStep = deltaY / Math.max(viewportHeight * principlesWheelSlowdown, 3200);
-
   event.preventDefault();
-  setPrincipleProgressTarget(targetPrincipleProgress + progressStep);
+  scrollPrinciplesContent(deltaY);
 };
 
 const getOriginalHeroNavBottom = () => {
