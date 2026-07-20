@@ -10,8 +10,6 @@ const revealCards = document.querySelectorAll(
 const competencyAnimationDuration = 320;
 const competencyAnimationTimers = new WeakMap();
 const heroCard = document.querySelector(".hero-card");
-const principlesSection = document.querySelector(".principles-section");
-const principlesSticky = document.querySelector(".principles-section__sticky");
 const principleCards = [...document.querySelectorAll(".principle-card")];
 const principleShelves = [...document.querySelectorAll(".principles-rack__shelf")];
 const principleLines = [...document.querySelectorAll(".principles-connectors__line")];
@@ -29,7 +27,6 @@ let heroLogoVelocity = 0;
 let heroLogoTargetVelocity = 0;
 let heroLogoRestAngle = 0;
 let heroLogoIsSpinning = false;
-let activePrincipleIndex = -1;
 let principlesAnimationFrame = 0;
 
 const revealSectionTitle = (title) => {
@@ -160,10 +157,6 @@ if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("Intersec
 }
 
 const setActivePrinciple = (index) => {
-  if (index === activePrincipleIndex) return;
-
-  activePrincipleIndex = index;
-
   principleCards.forEach((card, cardIndex) => {
     card.classList.toggle("principle-card--highlight", cardIndex === index);
   });
@@ -177,60 +170,28 @@ const setActivePrinciple = (index) => {
   });
 };
 
-const setPrinciplesPan = (progress) => {
-  if (!principlesSticky) return;
-
-  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-  const maxPan = Math.max(0, principlesSticky.offsetHeight - viewportHeight);
-  const pan = -maxPan * Math.min(Math.max(progress, 0), 1);
-
-  principlesSticky.style.setProperty("--principles-pan-y", `${pan.toFixed(2)}px`);
-};
-
-const syncPrinciplesSectionHeight = () => {
-  if (!principlesSection || !principlesSticky) return;
-
-  if (window.matchMedia("(max-width: 900px)").matches) {
-    principlesSection.style.removeProperty("--principles-scroll-height");
-    return;
-  }
-
-  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-  const stickyHeight = principlesSticky.offsetHeight;
-  const stickyPanDistance = Math.max(0, stickyHeight - viewportHeight);
-  const principleStep = Math.max(viewportHeight * 0.28, stickyHeight * 0.12);
-  const scrollDistance = principleStep * Math.max(principleCards.length - 1, 1);
-  const bottomGap = 0;
-  const sectionHeight = stickyHeight + scrollDistance - stickyPanDistance + bottomGap;
-
-  principlesSection.style.setProperty("--principles-scroll-height", `${sectionHeight.toFixed(2)}px`);
-};
-
 const updatePrincipleScrollState = () => {
   principlesAnimationFrame = 0;
 
-  if (!principlesSection || !principleCards.length) return;
+  if (!principleCards.length) return;
 
-  const rect = principlesSection.getBoundingClientRect();
   const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+  const firstCardRect = principleCards[0].getBoundingClientRect();
+  const lastCardRect = principleCards[principleCards.length - 1].getBoundingClientRect();
 
-  if (rect.top > 0) {
+  if (firstCardRect.top >= viewportHeight || lastCardRect.bottom <= 0) {
     setActivePrinciple(-1);
-    setPrinciplesPan(0);
     return;
   }
 
-  if (rect.bottom < viewportHeight) {
-    setActivePrinciple(principleCards.length - 1);
-    setPrinciplesPan(1);
-    return;
-  }
-
-  const scrollRange = Math.max(1, rect.height - viewportHeight);
-  const progress = Math.min(Math.max(-rect.top / scrollRange, 0), 0.999);
+  const cardsHeight = lastCardRect.bottom - firstCardRect.top;
+  const scrollRange = Math.max(1, viewportHeight + cardsHeight);
+  const progress = Math.min(
+    Math.max((viewportHeight - firstCardRect.top) / scrollRange, 0),
+    0.999
+  );
   const nextIndex = Math.floor(progress * principleCards.length);
 
-  setPrinciplesPan(progress);
   setActivePrinciple(nextIndex);
 };
 
@@ -285,7 +246,6 @@ const updateHeroNavPosition = () => {
   setHeroNavFixed(shouldFix);
 };
 
-syncPrinciplesSectionHeight();
 updateHeroNavPosition();
 updatePrincipleScrollState();
 
@@ -303,7 +263,6 @@ window.addEventListener("resize", () => {
     heroNavOffsetTop = heroNav.offsetTop;
   }
 
-  syncPrinciplesSectionHeight();
   updateHeroNavPosition();
   updatePrincipleScrollState();
 });
