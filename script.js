@@ -5,7 +5,8 @@ const sectionTitles = document.querySelectorAll(
 );
 const revealCards = document.querySelectorAll(
   ".about-card, .project-card, .competency-item, .benefits-card, .principle-card, " +
-    ".office-map, .site-footer__field, .site-footer__nav-group, .site-footer__licenses, .site-footer__note"
+    ".office-map, .site-footer__company, .site-footer__field, .site-footer__nav-group, " +
+    ".site-footer__licenses, .site-footer__note"
 );
 const competencyAnimationDuration = 320;
 const competencyAnimationTimers = new WeakMap();
@@ -17,6 +18,7 @@ const principleLines = [...document.querySelectorAll(".principles-connectors__li
 const heroLogoIcon = document.querySelector(".hero-card__logo-icon");
 const heroLogoMark = document.querySelector(".hero-card__logo-icon-mark");
 const heroNav = document.querySelector(".hero-card__nav");
+const heroNavLogo = document.querySelector(".hero-card__nav-logo");
 const heroNavParent = heroNav?.parentNode;
 const heroNavNextSibling = heroNav?.nextSibling;
 let heroNavAnimationFrame = 0;
@@ -29,12 +31,6 @@ let heroLogoTargetVelocity = 0;
 let heroLogoRestAngle = 0;
 let heroLogoIsSpinning = false;
 let activePrincipleIndex = -1;
-let principlesStepTimer = 0;
-let queuedPrincipleDirection = 0;
-let principleScrollAccumulator = 0;
-let principleTouchY = 0;
-const principlesStepDuration = 620;
-const principleScrollStepThreshold = 180;
 
 const revealSectionTitle = (title) => {
   title.classList.add("section-title-reveal--visible");
@@ -120,6 +116,11 @@ if (
   });
 }
 
+heroNavLogo?.addEventListener("click", (event) => {
+  event.preventDefault();
+  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+});
+
 if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
   sectionTitles.forEach(revealSectionTitle);
   revealCards.forEach(revealCard);
@@ -187,154 +188,26 @@ const syncPrincipleScrollTarget = () => {
   const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
   const rect = principlesSection.getBoundingClientRect();
 
-  if (rect.top >= viewportHeight * 0.9) {
-    window.clearTimeout(principlesStepTimer);
-    principlesStepTimer = 0;
-    queuedPrincipleDirection = 0;
-    principleScrollAccumulator = 0;
+  if (rect.top >= viewportHeight * 0.2) {
     setActivePrinciple(-1);
     return;
   }
 
-  if (rect.bottom <= viewportHeight * 0.1) {
-    window.clearTimeout(principlesStepTimer);
-    principlesStepTimer = 0;
-    queuedPrincipleDirection = 0;
-    principleScrollAccumulator = 0;
+  if (rect.bottom <= viewportHeight * 0.24) {
     setActivePrinciple(principleCards.length - 1);
-  }
-};
-
-const getPrincipleScrollLockState = (deltaY) => {
-  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-  const rect = principlesSection.getBoundingClientRect();
-  const lockStart = viewportHeight * 0.18;
-  const lockEnd = viewportHeight * 0.55;
-  const isInsideSection = rect.top <= lockStart && rect.bottom >= lockEnd;
-  const willEnterFromTop = deltaY > 0 && rect.top > lockStart && rect.top - deltaY <= lockStart;
-  const willEnterFromBottom =
-    deltaY < 0 && rect.bottom < lockEnd && rect.bottom - deltaY >= lockEnd;
-  const atStart = activePrincipleIndex === 0;
-  const atEnd = activePrincipleIndex === principleCards.length - 1;
-
-  return {
-    atEnd,
-    atStart,
-    isInsideSection,
-    lockEnd,
-    lockStart,
-    rect,
-    willEnterFromBottom,
-    willEnterFromTop,
-  };
-};
-
-const shouldHandlePrincipleWheel = (deltaY) => {
-  if (!principlesSection || !principleCards.length || window.innerWidth <= 900 || deltaY === 0) {
-    return false;
+    return;
   }
 
-  const state = getPrincipleScrollLockState(deltaY);
-  const isEnteringSection = state.willEnterFromTop || state.willEnterFromBottom;
-  const canMoveInside =
-    !((deltaY < 0 && state.atStart) || (deltaY > 0 && state.atEnd));
+  const scrollStart = viewportHeight * 0.18;
+  const scrollEnd = -rect.height + viewportHeight * 0.24;
+  const progress = Math.min(Math.max((scrollStart - rect.top) / (scrollStart - scrollEnd), 0), 0.999);
+  const nextIndex = Math.floor(progress * principleCards.length);
 
-  return (state.isInsideSection || isEnteringSection) && canMoveInside;
+  setActivePrinciple(nextIndex);
 };
 
 const requestPrincipleScrollUpdate = () => {
   syncPrincipleScrollTarget();
-};
-
-const canAdvancePrinciple = (direction) => {
-  if (!direction || !principleCards.length) return false;
-  if (activePrincipleIndex < 0) return true;
-
-  return direction > 0
-    ? activePrincipleIndex < principleCards.length - 1
-    : activePrincipleIndex > 0;
-};
-
-const completePrincipleStep = () => {
-  principlesStepTimer = 0;
-
-  if (!queuedPrincipleDirection) return;
-
-  const direction = queuedPrincipleDirection;
-
-  queuedPrincipleDirection = 0;
-  advancePrinciple(direction);
-};
-
-const advancePrinciple = (direction) => {
-  if (!canAdvancePrinciple(direction)) return;
-
-  if (principlesStepTimer) {
-    queuedPrincipleDirection = direction;
-    return;
-  }
-
-  const fallbackIndex = direction > 0 ? 0 : principleCards.length - 1;
-  const currentIndex = activePrincipleIndex < 0 ? fallbackIndex : activePrincipleIndex;
-  const nextIndex =
-    activePrincipleIndex < 0
-      ? currentIndex
-      : Math.min(Math.max(currentIndex + direction, 0), principleCards.length - 1);
-
-  setActivePrinciple(nextIndex);
-  principlesStepTimer = window.setTimeout(completePrincipleStep, principlesStepDuration);
-};
-
-const scrollPrinciplesContent = (deltaY) => {
-  const direction = Math.sign(deltaY);
-
-  if (!direction) return;
-
-  if (Math.sign(principleScrollAccumulator) !== direction) {
-    principleScrollAccumulator = 0;
-  }
-
-  principleScrollAccumulator += deltaY;
-
-  if (Math.abs(principleScrollAccumulator) < principleScrollStepThreshold) return;
-
-  principleScrollAccumulator = 0;
-  advancePrinciple(direction);
-};
-
-const handlePrincipleWheel = (event) => {
-  if (!shouldHandlePrincipleWheel(event.deltaY)) return;
-
-  const state = getPrincipleScrollLockState(event.deltaY);
-
-  if (state.willEnterFromTop) {
-    const scrollToLock = state.rect.top - state.lockStart;
-
-    window.scrollBy({ top: scrollToLock, left: 0, behavior: "auto" });
-  } else if (state.willEnterFromBottom) {
-    const scrollToLock = state.rect.bottom - state.lockEnd;
-
-    window.scrollBy({ top: scrollToLock, left: 0, behavior: "auto" });
-  }
-
-  event.preventDefault();
-  scrollPrinciplesContent(event.deltaY);
-};
-
-const handlePrincipleTouchStart = (event) => {
-  principleTouchY = event.touches[0]?.clientY || 0;
-};
-
-const handlePrincipleTouchMove = (event) => {
-  const nextTouchY = event.touches[0]?.clientY || 0;
-  const deltaY = principleTouchY - nextTouchY;
-
-  principleTouchY = nextTouchY;
-
-  if (!shouldHandlePrincipleWheel(deltaY)) return;
-
-  event.preventDefault();
-  scrollPrinciplesContent(deltaY);
 };
 
 const getOriginalHeroNavBottom = () => {
@@ -393,10 +266,6 @@ window.addEventListener(
   },
   { passive: true }
 );
-
-window.addEventListener("wheel", handlePrincipleWheel, { passive: false });
-window.addEventListener("touchstart", handlePrincipleTouchStart, { passive: true });
-window.addEventListener("touchmove", handlePrincipleTouchMove, { passive: false });
 
 window.addEventListener("resize", () => {
   if (heroNav?.parentNode === heroNavParent) {
@@ -485,6 +354,26 @@ const animateCompetencyClose = (item, startHeight, onComplete) => {
   competencyAnimationTimers.set(item, timer);
 };
 
+const stabilizeCompetencyAnchor = (anchor, topBefore) => {
+  const startedAt = performance.now();
+  const duration = competencyAnimationDuration + 80;
+
+  const update = (time) => {
+    const currentTop = anchor.getBoundingClientRect().top;
+    const delta = currentTop - topBefore;
+
+    if (Math.abs(delta) > 0.5) {
+      window.scrollBy({ top: delta, left: 0, behavior: "auto" });
+    }
+
+    if (time - startedAt < duration) {
+      window.requestAnimationFrame(update);
+    }
+  };
+
+  window.requestAnimationFrame(update);
+};
+
 competencyItems.forEach((item) => {
   const trigger = item.querySelector(".competency-item__trigger");
   const panelId = trigger?.getAttribute("aria-controls");
@@ -492,6 +381,12 @@ competencyItems.forEach((item) => {
 
   trigger?.addEventListener("click", () => {
     const wasOpen = item.classList.contains("competency-item--open");
+    const itemIndex = [...competencyItems].indexOf(item);
+    const itemTopBefore = item.getBoundingClientRect().top;
+    const hasOpenItemAbove = [...competencyItems].some(
+      (nextItem, nextIndex) =>
+        nextIndex < itemIndex && nextItem.classList.contains("competency-item--open")
+    );
 
     competencyItems.forEach((nextItem) => {
       const nextTrigger = nextItem.querySelector(".competency-item__trigger");
@@ -524,5 +419,9 @@ competencyItems.forEach((item) => {
       nextItem.classList.remove("competency-item--open");
       if (nextPanel) nextPanel.hidden = true;
     });
+
+    if (!wasOpen && hasOpenItemAbove) {
+      stabilizeCompetencyAnchor(item, itemTopBefore);
+    }
   });
 });
