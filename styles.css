@@ -676,7 +676,6 @@ img {
     display: none;
     align-items: center;
     justify-content: center;
-    /*flex: 0 0 40px;*/
     width: 32px;
     height: 32px;
     text-decoration: none;
@@ -1295,7 +1294,7 @@ img {
 .competency-list {
     display: flex;
     flex-direction: column;
-    width: calc(100vh * var(--competency-u));
+    width: 100%;
 }
 
 .competency-item {
@@ -2322,6 +2321,14 @@ img {
     }
 
     .benefits-card--link {
+        transition: none;
+    }
+
+    .principles-connectors path,
+    .principle-card,
+    .principle-card__text,
+    .principles-rack__shelf-content,
+    .principles-rack__shelf-layer--red {
         transition: none;
     }
 }
