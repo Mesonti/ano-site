@@ -4,6 +4,9 @@
     --accent-red: #ed1c24;
     --accent-red-hover: #ad0c12;
     --card-max-width: 1920px;
+    --anchor-offset: clamp(72px, calc(112 / 1920 * 100vw), 112px);
+    --nav-floating-top: calc(24 / 1920 * 100vw);
+    --nav-floating-z: 1000;
 }
 
 * {
@@ -20,6 +23,18 @@ body {
     background: var(--page-bg);
     color: var(--text-primary);
     font-family: "Golos Text", sans-serif;
+}
+
+#top,
+#about-title,
+#projects,
+#competency-title,
+#directions,
+#team,
+#bonuses,
+#contacts,
+#footer-title {
+    scroll-margin-top: var(--anchor-offset);
 }
 
 img {
@@ -649,11 +664,11 @@ img {
 
 .hero-card__nav--fixed {
     position: fixed;
-    top: calc(24 / 1920 * 100vw);
+    top: var(--nav-floating-top);
     right: auto;
     bottom: auto;
     left: 50%;
-    z-index: 2147483647;
+    z-index: var(--nav-floating-z);
     max-width: calc(100vw - calc(96 / 1920 * 100vw));
     padding: calc(16 / 1920 * 100vw) calc(32 / 1920 * 100vw);
     border: 1px solid rgba(3, 4, 4, 0.1);
@@ -665,11 +680,13 @@ img {
     transform: translate(-50%, calc(-24 / 1920 * 100vw));
     transition: opacity 360ms cubic-bezier(0.2, 0, 0, 1), transform 360ms cubic-bezier(0.2, 0, 0, 1);
     will-change: opacity, transform;
+    pointer-events: none;
 }
 
 .hero-card__nav--fixed.hero-card__nav--visible {
     opacity: 1;
     transform: translate(-50%, 0);
+    pointer-events: auto;
 }
 
 .hero-card__nav-logo {

@@ -17,12 +17,12 @@ const principleShelves = [...document.querySelectorAll(".principles-rack__shelf"
 const principleLines = [...document.querySelectorAll(".principles-connectors__line")];
 const heroLogoIcon = document.querySelector(".hero-card__logo-icon");
 const heroLogoMark = document.querySelector(".hero-card__logo-icon-mark");
-const heroNav = document.querySelector(".hero-card__nav");
-const heroNavLogo = document.querySelector(".hero-card__nav-logo");
-const heroNavParent = heroNav?.parentNode;
-const heroNavNextSibling = heroNav?.nextSibling;
+const heroNav = document.querySelector(".hero-card > .hero-card__nav");
+const heroFixedNav = document.querySelector(".hero-card__nav--floating");
+const heroNavLogos = document.querySelectorAll(".hero-card__nav-logo");
 let heroNavAnimationFrame = 0;
 let heroNavOffsetTop = heroNav?.offsetTop || 0;
+let scrollStateFrame = 0;
 let heroLogoAnimationFrame = 0;
 let heroLogoPreviousTime = 0;
 let heroLogoAngle = 0;
@@ -116,9 +116,11 @@ if (
   });
 }
 
-heroNavLogo?.addEventListener("click", (event) => {
-  event.preventDefault();
-  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+heroNavLogos.forEach((logo) => {
+  logo.addEventListener("click", (event) => {
+    event.preventDefault();
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  });
 });
 
 if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
@@ -206,10 +208,6 @@ const syncPrincipleScrollTarget = () => {
   setActivePrinciple(nextIndex);
 };
 
-const requestPrincipleScrollUpdate = () => {
-  syncPrincipleScrollTarget();
-};
-
 const getOriginalHeroNavBottom = () => {
   if (!heroCard || !heroNav) return 0;
 
@@ -217,34 +215,29 @@ const getOriginalHeroNavBottom = () => {
 };
 
 const setHeroNavFixed = (shouldFix) => {
-  if (!heroNav || !heroNavParent) return;
-  const isFixed = heroNav.classList.contains("hero-card__nav--fixed");
+  if (!heroFixedNav) return;
+  const isVisible = heroFixedNav.classList.contains("hero-card__nav--visible");
 
   if (shouldFix) {
-    if (isFixed) return;
+    if (isVisible) return;
 
-    if (heroNav.parentNode !== document.body) {
-      document.body.append(heroNav);
-    }
-
-    heroNav.classList.add("hero-card__nav--fixed");
+    heroFixedNav.removeAttribute("aria-hidden");
+    heroFixedNav.inert = false;
     window.cancelAnimationFrame(heroNavAnimationFrame);
     heroNavAnimationFrame = window.requestAnimationFrame(() => {
       heroNavAnimationFrame = window.requestAnimationFrame(() => {
-        heroNav.classList.add("hero-card__nav--visible");
+        heroFixedNav.classList.add("hero-card__nav--visible");
       });
     });
     return;
   }
 
-  if (!isFixed) return;
+  if (!isVisible) return;
 
   window.cancelAnimationFrame(heroNavAnimationFrame);
-  heroNav.classList.remove("hero-card__nav--visible", "hero-card__nav--fixed");
-
-  if (heroNav.parentNode !== heroNavParent) {
-    heroNavParent.insertBefore(heroNav, heroNavNextSibling);
-  }
+  heroFixedNav.classList.remove("hero-card__nav--visible");
+  heroFixedNav.setAttribute("aria-hidden", "true");
+  heroFixedNav.inert = true;
 };
 
 const updateHeroNavPosition = () => {
@@ -255,25 +248,35 @@ const updateHeroNavPosition = () => {
   setHeroNavFixed(shouldFix);
 };
 
+const syncScrollState = () => {
+  scrollStateFrame = 0;
+  updateHeroNavPosition();
+  syncPrincipleScrollTarget();
+};
+
+const requestScrollStateUpdate = () => {
+  if (scrollStateFrame) return;
+
+  scrollStateFrame = window.requestAnimationFrame(syncScrollState);
+};
+
 updateHeroNavPosition();
 syncPrincipleScrollTarget();
 
 window.addEventListener(
   "scroll",
   () => {
-    updateHeroNavPosition();
-    requestPrincipleScrollUpdate();
+    requestScrollStateUpdate();
   },
   { passive: true }
 );
 
 window.addEventListener("resize", () => {
-  if (heroNav?.parentNode === heroNavParent) {
+  if (heroNav && !heroNav.classList.contains("hero-card__nav--fixed")) {
     heroNavOffsetTop = heroNav.offsetTop;
   }
 
-  updateHeroNavPosition();
-  syncPrincipleScrollTarget();
+  requestScrollStateUpdate();
 });
 
 const clearCompetencyAnimation = (item) => {
@@ -354,26 +357,6 @@ const animateCompetencyClose = (item, startHeight, onComplete) => {
   competencyAnimationTimers.set(item, timer);
 };
 
-const stabilizeCompetencyAnchor = (anchor, topBefore) => {
-  const startedAt = performance.now();
-  const duration = competencyAnimationDuration + 80;
-
-  const update = (time) => {
-    const currentTop = anchor.getBoundingClientRect().top;
-    const delta = currentTop - topBefore;
-
-    if (Math.abs(delta) > 0.5) {
-      window.scrollBy({ top: delta, left: 0, behavior: "auto" });
-    }
-
-    if (time - startedAt < duration) {
-      window.requestAnimationFrame(update);
-    }
-  };
-
-  window.requestAnimationFrame(update);
-};
-
 competencyItems.forEach((item) => {
   const trigger = item.querySelector(".competency-item__trigger");
   const panelId = trigger?.getAttribute("aria-controls");
@@ -381,12 +364,6 @@ competencyItems.forEach((item) => {
 
   trigger?.addEventListener("click", () => {
     const wasOpen = item.classList.contains("competency-item--open");
-    const itemIndex = [...competencyItems].indexOf(item);
-    const itemTopBefore = item.getBoundingClientRect().top;
-    const hasOpenItemAbove = [...competencyItems].some(
-      (nextItem, nextIndex) =>
-        nextIndex < itemIndex && nextItem.classList.contains("competency-item--open")
-    );
 
     competencyItems.forEach((nextItem) => {
       const nextTrigger = nextItem.querySelector(".competency-item__trigger");
@@ -419,9 +396,5 @@ competencyItems.forEach((item) => {
       nextItem.classList.remove("competency-item--open");
       if (nextPanel) nextPanel.hidden = true;
     });
-
-    if (!wasOpen && hasOpenItemAbove) {
-      stabilizeCompetencyAnchor(item, itemTopBefore);
-    }
   });
 });

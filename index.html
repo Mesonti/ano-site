@@ -3,20 +3,42 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Hero Screen</title>
+    <meta
+            name="description"
+            content="АНО «Цифровой аудит» создает цифровые продукты, платформы и инфраструктуру для развития аудита, данных и государственных сервисов."
+    />
+    <meta name="theme-color" content="#efefef"/>
+    <title>Цифровой аудит — создаем инновации в аудите</title>
+    <link rel="icon" href="./img/nav-logo.svg" type="image/svg+xml"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link
             href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&amp;display=swap"
             rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=fixed-nav-logo-40-v1"/>
+    <link rel="stylesheet" href="./styles.css?v=layout-stability-v1"/>
 </head>
 <body id="top">
+<nav class="hero-card__nav hero-card__nav--fixed hero-card__nav--floating" aria-label="Фиксированная навигация" aria-hidden="true" inert>
+    <a class="hero-card__nav-logo" href="#top" aria-label="Наверх">
+        <img src="./img/nav-logo.svg" alt="Цифровой аудит" width="30" height="36" decoding="async"/>
+    </a>
+    <a class="hero-card__nav-link" href="#about-title">О нас</a>
+    <a class="hero-card__nav-link" href="#projects">Над чем работаем</a>
+    <a class="hero-card__nav-link" href="#competency-title">Компетенции</a>
+    <a class="hero-card__nav-link" href="#team">Принципы</a>
+    <a class="hero-card__nav-link hero-card__nav-link--bonus" href="#bonuses">
+        <span class="hero-card__nav-icon" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </span>
+        <span>Бонусы</span>
+    </a>
+    <a class="hero-card__button" href="#contacts">Контакты</a>
+</nav>
 <main class="hero-screen">
     <section class="hero-card" aria-labelledby="hero-title">
         <div class="hero-screen__bg" aria-hidden="true">
-            <img src="./img/bg.png" alt=""/>
+            <img src="./img/bg.png" alt="" width="1922" height="1548" decoding="async" fetchpriority="high"/>
         </div>
 
         <div class="hero-card__backdrop" aria-hidden="true"></div>
@@ -54,17 +76,23 @@
                 class="hero-card__frame"
                 src="./img/frame.svg"
                 alt=""
+                width="1860"
+                height="901"
+                decoding="async"
         />
 
         <img
                 class="hero-card__brand"
                 src="./img/logo.svg"
                 alt="Цифровой аудит"
+                width="189"
+                height="35"
+                decoding="async"
         />
 
         <span class="hero-card__logo-icon" aria-hidden="true">
             <span class="hero-card__logo-icon-bg"></span>
-            <img class="hero-card__logo-icon-mark" src="./img/logo-icon-mark.png" alt=""/>
+            <img class="hero-card__logo-icon-mark" src="./img/logo-icon-mark-small.png" alt="" width="216" height="256" decoding="async"/>
             <span class="hero-card__logo-icon-corner hero-card__logo-icon-corner--top-left"></span>
             <span class="hero-card__logo-icon-corner hero-card__logo-icon-corner--top-right"></span>
             <span class="hero-card__logo-icon-corner hero-card__logo-icon-corner--bottom-left"></span>
@@ -73,7 +101,7 @@
 
         <nav class="hero-card__nav" aria-label="Основная навигация">
             <a class="hero-card__nav-logo" href="#top" aria-label="Наверх">
-                <img src="./img/nav-logo.svg" alt="Цифровой аудит"/>
+                <img src="./img/nav-logo.svg" alt="Цифровой аудит" width="30" height="36" decoding="async"/>
             </a>
             <a class="hero-card__nav-link" href="#about-title">О нас</a>
             <a class="hero-card__nav-link" href="#projects">Над чем работаем</a>
@@ -100,6 +128,9 @@
                         class="hero-card__art-image"
                         src="img/big-logo.png"
                         alt=""
+                        width="894"
+                        height="1036"
+                        decoding="async"
                 />
             </div>
         </div>
@@ -149,8 +180,8 @@
                 <header class="project-card__header">
                     <h3>Единая цифровая платформа для аудита</h3>
                     <div class="project-card__icon" aria-hidden="true">
-                        <img class="project-card__icon-base" src="./img/ecp.png" alt=""/>
-                        <img class="project-card__icon-mark" src="./img/projects-background.svg" alt=""/>
+                        <img class="project-card__icon-base" src="./img/ecp.png" alt="" width="389" height="389" loading="lazy" decoding="async"/>
+                        <img class="project-card__icon-mark" src="./img/projects-background.svg" alt="" width="68" height="72" loading="lazy" decoding="async"/>
                     </div>
                 </header>
                 <p>
@@ -166,8 +197,8 @@
                 <header class="project-card__header">
                     <h3>Цифровой бэк-офис</h3>
                     <div class="project-card__icon" aria-hidden="true">
-                        <img class="project-card__icon-base" src="./img/back-office.png" alt=""/>
-                        <img class="project-card__icon-mark" src="./img/projects-background.svg" alt=""/>
+                        <img class="project-card__icon-base" src="./img/back-office.png" alt="" width="389" height="389" loading="lazy" decoding="async"/>
+                        <img class="project-card__icon-mark" src="./img/projects-background.svg" alt="" width="68" height="72" loading="lazy" decoding="async"/>
                     </div>
                 </header>
                 <p>
@@ -182,8 +213,8 @@
                 <header class="project-card__header">
                     <h3>Надежная и масштабируемая инфраструктура</h3>
                     <div class="project-card__icon" aria-hidden="true">
-                        <img class="project-card__icon-base" src="./img/infrastructure.png" alt=""/>
-                        <img class="project-card__icon-mark" src="./img/projects-background.svg" alt=""/>
+                        <img class="project-card__icon-base" src="./img/infrastructure.png" alt="" width="389" height="389" loading="lazy" decoding="async"/>
+                        <img class="project-card__icon-mark" src="./img/projects-background.svg" alt="" width="68" height="72" loading="lazy" decoding="async"/>
                     </div>
                 </header>
                 <p>
@@ -258,7 +289,7 @@
                         </div>
                         <p id="competency-panel-3" hidden>
                             Создаем современные системы управления данными <br>и их визуализации, собираем,
-                            собираем, структурируем <br>и обрабатываем данные, строим наглядные интерактивные
+                            структурируем <br>и обрабатываем данные, строим наглядные интерактивные
                             дашборды
                         </p>
                     </div>
@@ -467,60 +498,60 @@
         </div>
 
         <div class="principles-rack" aria-hidden="true">
-            <img class="principles-rack__layer principles-rack__foot principles-rack__foot--right" src="./img/principles/rack-foot.svg" alt=""/>
-            <img class="principles-rack__layer principles-rack__foot principles-rack__foot--center" src="./img/principles/rack-foot.svg" alt=""/>
-            <img class="principles-rack__layer principles-rack__foot principles-rack__foot--left" src="./img/principles/rack-foot-left.svg" alt=""/>
-            <img class="principles-rack__layer principles-rack__base" src="./img/principles/rack-base.png" alt=""/>
+            <img class="principles-rack__layer principles-rack__foot principles-rack__foot--right" src="./img/principles/rack-foot.svg" alt="" width="28" height="19" loading="lazy" decoding="async"/>
+            <img class="principles-rack__layer principles-rack__foot principles-rack__foot--center" src="./img/principles/rack-foot.svg" alt="" width="28" height="19" loading="lazy" decoding="async"/>
+            <img class="principles-rack__layer principles-rack__foot principles-rack__foot--left" src="./img/principles/rack-foot-left.svg" alt="" width="28" height="21" loading="lazy" decoding="async"/>
+            <img class="principles-rack__layer principles-rack__base" src="./img/principles/rack-base.png" alt="" width="477" height="58" loading="lazy" decoding="async"/>
             <span class="principles-rack__layer principles-rack__shelf principles-rack__shelf--1">
                 <span class="principles-rack__shelf-content">
-                    <img class="principles-rack__shelf-layer" src="./img/principles/shelf-1.svg" alt=""/>
-                    <img class="principles-rack__shelf-layer principles-rack__shelf-layer--red" src="./img/principles/shelf-red.svg" alt=""/>
+                    <img class="principles-rack__shelf-layer" src="./img/principles/shelf-1.svg" alt="" width="434" height="182" loading="lazy" decoding="async"/>
+                    <img class="principles-rack__shelf-layer principles-rack__shelf-layer--red" src="./img/principles/shelf-red.svg" alt="" width="434" height="182" loading="lazy" decoding="async"/>
                 </span>
             </span>
             <span class="principles-rack__layer principles-rack__shelf principles-rack__shelf--2">
                 <span class="principles-rack__shelf-content">
-                    <img class="principles-rack__shelf-layer" src="./img/principles/shelf-2.svg" alt=""/>
-                    <img class="principles-rack__shelf-layer principles-rack__shelf-layer--red" src="./img/principles/shelf-red.svg" alt=""/>
+                    <img class="principles-rack__shelf-layer" src="./img/principles/shelf-2.svg" alt="" width="434" height="182" loading="lazy" decoding="async"/>
+                    <img class="principles-rack__shelf-layer principles-rack__shelf-layer--red" src="./img/principles/shelf-red.svg" alt="" width="434" height="182" loading="lazy" decoding="async"/>
                 </span>
             </span>
             <span class="principles-rack__layer principles-rack__shelf principles-rack__shelf--3">
                 <span class="principles-rack__shelf-content">
-                    <img class="principles-rack__shelf-layer" src="./img/principles/shelf-3.svg" alt=""/>
-                    <img class="principles-rack__shelf-layer principles-rack__shelf-layer--red" src="./img/principles/shelf-red.svg" alt=""/>
+                    <img class="principles-rack__shelf-layer" src="./img/principles/shelf-3.svg" alt="" width="434" height="182" loading="lazy" decoding="async"/>
+                    <img class="principles-rack__shelf-layer principles-rack__shelf-layer--red" src="./img/principles/shelf-red.svg" alt="" width="434" height="182" loading="lazy" decoding="async"/>
                 </span>
             </span>
             <span class="principles-rack__layer principles-rack__shelf principles-rack__shelf--4">
                 <span class="principles-rack__shelf-content">
-                    <img class="principles-rack__shelf-layer" src="./img/principles/shelf-4.svg" alt=""/>
-                    <img class="principles-rack__shelf-layer principles-rack__shelf-layer--red" src="./img/principles/shelf-red.svg" alt=""/>
+                    <img class="principles-rack__shelf-layer" src="./img/principles/shelf-4.svg" alt="" width="434" height="182" loading="lazy" decoding="async"/>
+                    <img class="principles-rack__shelf-layer principles-rack__shelf-layer--red" src="./img/principles/shelf-red.svg" alt="" width="434" height="182" loading="lazy" decoding="async"/>
                 </span>
             </span>
             <span class="principles-rack__layer principles-rack__shelf principles-rack__shelf--5">
                 <span class="principles-rack__shelf-content">
-                    <img class="principles-rack__shelf-layer" src="./img/principles/shelf-5.svg" alt=""/>
-                    <img class="principles-rack__shelf-layer principles-rack__shelf-layer--red" src="./img/principles/shelf-red.svg" alt=""/>
+                    <img class="principles-rack__shelf-layer" src="./img/principles/shelf-5.svg" alt="" width="434" height="182" loading="lazy" decoding="async"/>
+                    <img class="principles-rack__shelf-layer principles-rack__shelf-layer--red" src="./img/principles/shelf-red.svg" alt="" width="434" height="182" loading="lazy" decoding="async"/>
                 </span>
             </span>
             <span class="principles-rack__layer principles-rack__shelf principles-rack__shelf--6">
                 <span class="principles-rack__shelf-content">
-                    <img class="principles-rack__shelf-layer" src="./img/principles/shelf-6.svg" alt=""/>
-                    <img class="principles-rack__shelf-layer principles-rack__shelf-layer--red" src="./img/principles/shelf-red.svg" alt=""/>
+                    <img class="principles-rack__shelf-layer" src="./img/principles/shelf-6.svg" alt="" width="434" height="182" loading="lazy" decoding="async"/>
+                    <img class="principles-rack__shelf-layer principles-rack__shelf-layer--red" src="./img/principles/shelf-red.svg" alt="" width="434" height="182" loading="lazy" decoding="async"/>
                 </span>
             </span>
             <span class="principles-rack__layer principles-rack__shelf principles-rack__shelf--7">
                 <span class="principles-rack__shelf-content">
-                    <img class="principles-rack__shelf-layer" src="./img/principles/shelf-7.svg" alt=""/>
-                    <img class="principles-rack__shelf-layer principles-rack__shelf-layer--red" src="./img/principles/shelf-red.svg" alt=""/>
+                    <img class="principles-rack__shelf-layer" src="./img/principles/shelf-7.svg" alt="" width="434" height="182" loading="lazy" decoding="async"/>
+                    <img class="principles-rack__shelf-layer principles-rack__shelf-layer--red" src="./img/principles/shelf-red.svg" alt="" width="434" height="182" loading="lazy" decoding="async"/>
                 </span>
             </span>
             <span class="principles-rack__layer principles-rack__shelf principles-rack__shelf--8">
                 <span class="principles-rack__shelf-content">
-                    <img class="principles-rack__shelf-layer" src="./img/principles/shelf-8.svg" alt=""/>
-                    <img class="principles-rack__shelf-layer principles-rack__shelf-layer--red" src="./img/principles/shelf-red.svg" alt=""/>
+                    <img class="principles-rack__shelf-layer" src="./img/principles/shelf-8.svg" alt="" width="434" height="182" loading="lazy" decoding="async"/>
+                    <img class="principles-rack__shelf-layer principles-rack__shelf-layer--red" src="./img/principles/shelf-red.svg" alt="" width="434" height="182" loading="lazy" decoding="async"/>
                 </span>
             </span>
-            <img class="principles-rack__layer principles-rack__glass principles-rack__glass--back" src="./img/principles/rack-glass-back.svg" alt=""/>
-            <img class="principles-rack__layer principles-rack__glass principles-rack__glass--front" src="./img/principles/rack-glass-front.svg" alt=""/>
+            <img class="principles-rack__layer principles-rack__glass principles-rack__glass--back" src="./img/principles/rack-glass-back.svg" alt="" width="490" height="915" loading="lazy" decoding="async"/>
+            <img class="principles-rack__layer principles-rack__glass principles-rack__glass--front" src="./img/principles/rack-glass-front.svg" alt="" width="488" height="968" loading="lazy" decoding="async"/>
             </div>
         </div>
     </section>
@@ -581,8 +612,8 @@
                 </div>
             </article>
 
-            <a class="benefits-card benefits-card--link" href="https://hh.ru/employer/11660779?ysclid=mpv4m1prr934180923&tab=VACANCIES&customDomain=1&overRideDomainAreaId=1" target="_blank" rel="noreferrer">
-                <img class="benefits-card__hh" src="./img/hh.png" alt="" aria-hidden="true"/>
+            <a class="benefits-card benefits-card--link" href="https://hh.ru/employer/11660779?tab=VACANCIES&customDomain=1&overRideDomainAreaId=1" target="_blank" rel="noreferrer">
+                <img class="benefits-card__hh" src="./img/hh.png" alt="" aria-hidden="true" width="441" height="281" loading="lazy" decoding="async"/>
                 <span class="benefits-card__button">
               <span>Смотреть вакансии</span>
             </span>
@@ -600,7 +631,7 @@
         </div>
 
         <div class="office-map" aria-label="Карта пути от станции метро Павелецкая до офиса">
-            <img class="office-map__image" src="./img/office/map.png" alt="" aria-hidden="true"/>
+            <img class="office-map__image" src="./img/office/map.png" alt="" aria-hidden="true" width="705" height="372" loading="lazy" decoding="async"/>
             <svg
                     class="office-map__route"
                     viewBox="0 0 705.492 372.081"
@@ -626,9 +657,9 @@
                         d="M27.5 90.0814L67 47.5814L454 3.08137L701 125.081C671 167.081 657 213.081 670 262.081C661 342.081 606 351.081 574 351.081"
                 />
             </svg>
-            <img class="office-map__photo" src="./img/office/photo-ring.png" alt="" aria-hidden="true"/>
+            <img class="office-map__photo" src="./img/office/photo-ring.png" alt="" aria-hidden="true" width="451" height="240" loading="lazy" decoding="async"/>
             <div class="office-map__badge" aria-hidden="true">
-                <img src="./img/office/time-badge.svg" alt=""/>
+                <img src="./img/office/time-badge.svg" alt="" width="59" height="37" loading="lazy" decoding="async"/>
                 <span>3 мин.</span>
             </div>
         </div>
@@ -678,11 +709,11 @@
                     <p class="site-footer__label">Документы</p>
                     <a href="./docs/privacy-policy.pdf" target="_blank" rel="noreferrer">Политика конфиденциальности
                         сайта</a>
-                    <a href="./docs/it-accreditation-and-technology-map.pdf.pdf" target="_blank" rel="noreferrer">ИТ-аккредитация
+                    <a href="./docs/it-accreditation-and-technology-map.pdf" target="_blank" rel="noreferrer">ИТ-аккредитация
                         | Карта технологий</a>
                     <a href="./docs/qualified-suppliers.pdf" target="_blank" rel="noreferrer">Перечень квалифицированных
                         поставщиков</a>
-                    <a href="./docs/special-assessment-of-working-conditions.pdf.pdf" target="_blank" rel="noreferrer">Сведения
+                    <a href="./docs/special-assessment-of-working-conditions.pdf" target="_blank" rel="noreferrer">Сведения
                         о проведении специальной оценки условий труда</a>
                 </div>
             </nav>
@@ -713,9 +744,9 @@
         </p>
     </div>
 
-    <p class="site-footer__copyright">АНО «Цифровой аудит» © 2024</p>
+    <p class="site-footer__copyright">АНО «Цифровой аудит» © 2026</p>
 </footer>
 
-<script src="./script.js?v=fixed-nav-logo-40-v1"></script>
+<script src="./script.js?v=layout-stability-v1"></script>
 </body>
 </html>
