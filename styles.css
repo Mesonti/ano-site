@@ -500,7 +500,7 @@ img {
 }
 
 .hero-card__pixel-shape--20 {
-    --shape-left: calc(113 / 1920 * 100vw);
+    --shape-left: calc(156 / 1920 * 100vw);
     --shape-top: calc(204 / 1920 * 100vw);
     --shape-size: calc(16 / 1920 * 100vw);
     --shape-color: var(--accent-red);
