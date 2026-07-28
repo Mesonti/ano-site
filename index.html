@@ -16,7 +16,7 @@
             href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&amp;display=swap"
             rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=red-square-right-v1"/>
+    <link rel="stylesheet" href="./styles.css?v=fix-v3"/>
 </head>
 <body id="top">
 <nav class="hero-card__nav hero-card__nav--fixed hero-card__nav--floating" aria-label="Фиксированная навигация" aria-hidden="true" inert>
@@ -25,7 +25,7 @@
     </a>
     <a class="hero-card__nav-link" href="#about-title">О нас</a>
     <a class="hero-card__nav-link" href="#projects">Над чем работаем</a>
-    <a class="hero-card__nav-link" href="#competency-title">Компетенции</a>
+    <a class="hero-card__nav-link" href="#directions">Компетенции</a>
     <a class="hero-card__nav-link" href="#team">Принципы</a>
     <a class="hero-card__nav-link hero-card__nav-link--bonus" href="#bonuses">
         <span class="hero-card__nav-icon" aria-hidden="true">
@@ -105,7 +105,7 @@
             </a>
             <a class="hero-card__nav-link" href="#about-title">О нас</a>
             <a class="hero-card__nav-link" href="#projects">Над чем работаем</a>
-            <a class="hero-card__nav-link" href="#competency-title">Компетенции</a>
+            <a class="hero-card__nav-link" href="#directions">Компетенции</a>
             <a class="hero-card__nav-link" href="#team">Принципы</a>
             <a class="hero-card__nav-link hero-card__nav-link--bonus" href="#bonuses">
             <span class="hero-card__nav-icon" aria-hidden="true">
@@ -232,12 +232,7 @@
 
         <div class="competency-list">
             <article class="competency-item competency-item--open" data-accordion-item>
-                <button
-                        class="competency-item__trigger"
-                        type="button"
-                        aria-expanded="true"
-                        aria-controls="competency-panel-1"
-                >
+                <div class="competency-item__trigger">
                     <div class="competency-item__main">
                         <div class="competency-item__head">
                             <span class="competency-item__number">01</span>
@@ -248,18 +243,12 @@
                             переходить на новый уровень цифровой зрелости
                         </p>
                     </div>
-                    <span class="competency-item__button" aria-hidden="true"></span>
-                    <span class="competency-item__icon" aria-hidden="true"></span>
-                </button>
+                    <button class="competency-item__button" type="button" aria-expanded="true" aria-controls="competency-panel-1" aria-label="Свернуть: Цифровая трансформация"></button>
+                </div>
             </article>
 
             <article class="competency-item" data-accordion-item>
-                <button
-                        class="competency-item__trigger"
-                        type="button"
-                        aria-expanded="false"
-                        aria-controls="competency-panel-2"
-                >
+                <div class="competency-item__trigger">
                     <div class="competency-item__main">
                         <div class="competency-item__head">
                             <span class="competency-item__number">02</span>
@@ -270,18 +259,12 @@
                             решения интеллектуальных задач
                         </p>
                     </div>
-                    <span class="competency-item__button" aria-hidden="true"></span>
-                    <span class="competency-item__icon" aria-hidden="true"></span>
-                </button>
+                    <button class="competency-item__button" type="button" aria-expanded="false" aria-controls="competency-panel-2" aria-label="Развернуть: Разработка цифровых решений"></button>
+                </div>
             </article>
 
             <article class="competency-item" data-accordion-item>
-                <button
-                        class="competency-item__trigger"
-                        type="button"
-                        aria-expanded="false"
-                        aria-controls="competency-panel-3"
-                >
+                <div class="competency-item__trigger">
                     <div class="competency-item__main">
                         <div class="competency-item__head">
                             <span class="competency-item__number">03</span>
@@ -293,18 +276,12 @@
                             дашборды
                         </p>
                     </div>
-                    <span class="competency-item__button" aria-hidden="true"></span>
-                    <span class="competency-item__icon" aria-hidden="true"></span>
-                </button>
+                    <button class="competency-item__button" type="button" aria-expanded="false" aria-controls="competency-panel-3" aria-label="Развернуть: Работа с данными и аналитика"></button>
+                </div>
             </article>
 
             <article class="competency-item" data-accordion-item>
-                <button
-                        class="competency-item__trigger"
-                        type="button"
-                        aria-expanded="false"
-                        aria-controls="competency-panel-4"
-                >
+                <div class="competency-item__trigger">
                     <div class="competency-item__main">
                         <div class="competency-item__head">
                             <span class="competency-item__number">04</span>
@@ -315,18 +292,12 @@
                             эффективности
                         </p>
                     </div>
-                    <span class="competency-item__button" aria-hidden="true"></span>
-                    <span class="competency-item__icon" aria-hidden="true"></span>
-                </button>
+                    <button class="competency-item__button" type="button" aria-expanded="false" aria-controls="competency-panel-4" aria-label="Развернуть: Искусственный интеллект"></button>
+                </div>
             </article>
 
             <article class="competency-item" data-accordion-item>
-                <button
-                        class="competency-item__trigger"
-                        type="button"
-                        aria-expanded="false"
-                        aria-controls="competency-panel-5"
-                >
+                <div class="competency-item__trigger">
                     <div class="competency-item__main">
                         <div class="competency-item__head">
                             <span class="competency-item__number">05</span>
@@ -336,18 +307,12 @@
                             Проектируем и создаем удобные, комфортные и интуитивно понятные интерфейсы
                         </p>
                     </div>
-                    <span class="competency-item__button" aria-hidden="true"></span>
-                    <span class="competency-item__icon" aria-hidden="true"></span>
-                </button>
+                    <button class="competency-item__button" type="button" aria-expanded="false" aria-controls="competency-panel-5" aria-label="Развернуть: Дизайн и пользовательский опыт"></button>
+                </div>
             </article>
 
             <article class="competency-item" data-accordion-item>
-                <button
-                        class="competency-item__trigger"
-                        type="button"
-                        aria-expanded="false"
-                        aria-controls="competency-panel-6"
-                >
+                <div class="competency-item__trigger">
                     <div class="competency-item__main">
                         <div class="competency-item__head">
                             <span class="competency-item__number">06</span>
@@ -359,18 +324,12 @@
                             минимизируем риски киберугроз
                         </p>
                     </div>
-                    <span class="competency-item__button" aria-hidden="true"></span>
-                    <span class="competency-item__icon" aria-hidden="true"></span>
-                </button>
+                    <button class="competency-item__button" type="button" aria-expanded="false" aria-controls="competency-panel-6" aria-label="Развернуть: ИТ-инфраструктура и безопасность"></button>
+                </div>
             </article>
 
             <article class="competency-item" data-accordion-item>
-                <button
-                        class="competency-item__trigger"
-                        type="button"
-                        aria-expanded="false"
-                        aria-controls="competency-panel-7"
-                >
+                <div class="competency-item__trigger">
                     <div class="competency-item__main">
                         <div class="competency-item__head">
                             <span class="competency-item__number">07</span>
@@ -381,18 +340,12 @@
                             действующие системы под актуальные требования законодательства и безопасности
                         </p>
                     </div>
-                    <span class="competency-item__button" aria-hidden="true"></span>
-                    <span class="competency-item__icon" aria-hidden="true"></span>
-                </button>
+                    <button class="competency-item__button" type="button" aria-expanded="false" aria-controls="competency-panel-7" aria-label="Развернуть: Импортозамещение"></button>
+                </div>
             </article>
 
             <article class="competency-item" data-accordion-item>
-                <button
-                        class="competency-item__trigger"
-                        type="button"
-                        aria-expanded="false"
-                        aria-controls="competency-panel-8"
-                >
+                <div class="competency-item__trigger">
                     <div class="competency-item__main">
                         <div class="competency-item__head">
                             <span class="competency-item__number">08</span>
@@ -403,18 +356,12 @@
                             интеграцию платформ и систем
                         </p>
                     </div>
-                    <span class="competency-item__button" aria-hidden="true"></span>
-                    <span class="competency-item__icon" aria-hidden="true"></span>
-                </button>
+                    <button class="competency-item__button" type="button" aria-expanded="false" aria-controls="competency-panel-8" aria-label="Развернуть: Автоматизация и интеграция"></button>
+                </div>
             </article>
 
             <article class="competency-item" data-accordion-item>
-                <button
-                        class="competency-item__trigger"
-                        type="button"
-                        aria-expanded="false"
-                        aria-controls="competency-panel-9"
-                >
+                <div class="competency-item__trigger">
                     <div class="competency-item__main">
                         <div class="competency-item__head">
                             <span class="competency-item__number">09</span>
@@ -425,9 +372,8 @@
                             внедрению новых технологических решений
                         </p>
                     </div>
-                    <span class="competency-item__button" aria-hidden="true"></span>
-                    <span class="competency-item__icon" aria-hidden="true"></span>
-                </button>
+                    <button class="competency-item__button" type="button" aria-expanded="false" aria-controls="competency-panel-9" aria-label="Развернуть: Развитие команды"></button>
+                </div>
             </article>
         </div>
     </section>
@@ -686,7 +632,7 @@
 
             <div class="site-footer__field">
                 <p class="site-footer__label">Электронная почта</p>
-                <p><a href="mailto:ano@ach.gov.ru">info@da.gov.ru</a></p>
+                <p><a href="mailto:info@da.gov.ru">info@da.gov.ru</a></p>
             </div>
 
             <div class="site-footer__field">
@@ -747,6 +693,6 @@
     <p class="site-footer__copyright">АНО «Цифровой аудит» © 2026</p>
 </footer>
 
-<script src="./script.js?v=layout-stability-v1"></script>
+<script src="./script.js?v=fix-v3"></script>
 </body>
 </html>

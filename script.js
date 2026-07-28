@@ -20,6 +20,7 @@ const heroLogoMark = document.querySelector(".hero-card__logo-icon-mark");
 const heroNav = document.querySelector(".hero-card > .hero-card__nav");
 const heroFixedNav = document.querySelector(".hero-card__nav--floating");
 const heroNavLogos = document.querySelectorAll(".hero-card__nav-logo");
+const navFocusableSelector = "a, button, input, select, textarea, [tabindex]";
 let heroNavAnimationFrame = 0;
 let heroNavOffsetTop = heroNav?.offsetTop || 0;
 let scrollStateFrame = 0;
@@ -214,6 +215,31 @@ const getOriginalHeroNavBottom = () => {
   return heroCard.getBoundingClientRect().top + heroNavOffsetTop + heroNav.offsetHeight;
 };
 
+const setNavInteractive = (nav, isInteractive) => {
+  if (!nav) return;
+
+  nav.toggleAttribute("aria-hidden", !isInteractive);
+  nav.inert = !isInteractive;
+
+  nav.querySelectorAll(navFocusableSelector).forEach((element) => {
+    if (!element.dataset.originalTabindex && element.hasAttribute("tabindex")) {
+      element.dataset.originalTabindex = element.getAttribute("tabindex");
+    }
+
+    if (isInteractive) {
+      if (element.dataset.originalTabindex) {
+        element.setAttribute("tabindex", element.dataset.originalTabindex);
+        delete element.dataset.originalTabindex;
+      } else {
+        element.removeAttribute("tabindex");
+      }
+      return;
+    }
+
+    element.setAttribute("tabindex", "-1");
+  });
+};
+
 const setHeroNavFixed = (shouldFix) => {
   if (!heroFixedNav) return;
   const isVisible = heroFixedNav.classList.contains("hero-card__nav--visible");
@@ -221,8 +247,8 @@ const setHeroNavFixed = (shouldFix) => {
   if (shouldFix) {
     if (isVisible) return;
 
-    heroFixedNav.removeAttribute("aria-hidden");
-    heroFixedNav.inert = false;
+    setNavInteractive(heroNav, false);
+    setNavInteractive(heroFixedNav, true);
     window.cancelAnimationFrame(heroNavAnimationFrame);
     heroNavAnimationFrame = window.requestAnimationFrame(() => {
       heroNavAnimationFrame = window.requestAnimationFrame(() => {
@@ -236,8 +262,8 @@ const setHeroNavFixed = (shouldFix) => {
 
   window.cancelAnimationFrame(heroNavAnimationFrame);
   heroFixedNav.classList.remove("hero-card__nav--visible");
-  heroFixedNav.setAttribute("aria-hidden", "true");
-  heroFixedNav.inert = true;
+  setNavInteractive(heroFixedNav, false);
+  setNavInteractive(heroNav, true);
 };
 
 const updateHeroNavPosition = () => {
@@ -260,6 +286,8 @@ const requestScrollStateUpdate = () => {
   scrollStateFrame = window.requestAnimationFrame(syncScrollState);
 };
 
+setNavInteractive(heroFixedNav, false);
+setNavInteractive(heroNav, true);
 updateHeroNavPosition();
 syncPrincipleScrollTarget();
 
@@ -358,23 +386,29 @@ const animateCompetencyClose = (item, startHeight, onComplete) => {
 };
 
 competencyItems.forEach((item) => {
-  const trigger = item.querySelector(".competency-item__trigger");
+  const trigger = item.querySelector(".competency-item__button");
   const panelId = trigger?.getAttribute("aria-controls");
   const panel = panelId ? document.getElementById(panelId) : null;
+  const title = item.querySelector("h3")?.textContent?.trim() || "компетенция";
 
   trigger?.addEventListener("click", () => {
     const wasOpen = item.classList.contains("competency-item--open");
 
     competencyItems.forEach((nextItem) => {
-      const nextTrigger = nextItem.querySelector(".competency-item__trigger");
+      const nextTrigger = nextItem.querySelector(".competency-item__button");
       const nextPanelId = nextTrigger?.getAttribute("aria-controls");
       const nextPanel = nextPanelId ? document.getElementById(nextPanelId) : null;
+      const nextTitle = nextItem.querySelector("h3")?.textContent?.trim() || "компетенция";
       const isActive = !wasOpen && nextItem === item;
       const isOpen = nextItem.classList.contains("competency-item--open");
       const startHeight = nextItem.getBoundingClientRect().height;
 
       clearCompetencyAnimation(nextItem);
       nextTrigger?.setAttribute("aria-expanded", String(isActive));
+      nextTrigger?.setAttribute(
+        "aria-label",
+        `${isActive ? "Свернуть" : "Развернуть"}: ${nextTitle}`
+      );
 
       if (isActive) {
         if (nextPanel) nextPanel.hidden = false;
@@ -396,5 +430,7 @@ competencyItems.forEach((item) => {
       nextItem.classList.remove("competency-item--open");
       if (nextPanel) nextPanel.hidden = true;
     });
+
+    trigger.setAttribute("aria-label", `${wasOpen ? "Развернуть" : "Свернуть"}: ${title}`);
   });
 });
