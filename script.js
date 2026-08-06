@@ -191,20 +191,21 @@ const syncPrincipleScrollTarget = () => {
   const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
   const rect = principlesSection.getBoundingClientRect();
 
-  if (rect.top >= viewportHeight * 0.2) {
+  const scrollStart = viewportHeight * 0.55;
+  const scrollEnd = viewportHeight * 0.62 - rect.height;
+
+  if (rect.top >= scrollStart) {
     setActivePrinciple(-1);
     return;
   }
 
-  if (rect.bottom <= viewportHeight * 0.24) {
+  if (rect.top <= scrollEnd) {
     setActivePrinciple(principleCards.length - 1);
     return;
   }
 
-  const scrollStart = viewportHeight * 0.18;
-  const scrollEnd = -rect.height + viewportHeight * 0.24;
-  const progress = Math.min(Math.max((scrollStart - rect.top) / (scrollStart - scrollEnd), 0), 0.999);
-  const nextIndex = Math.floor(progress * principleCards.length);
+  const progress = Math.min(Math.max((scrollStart - rect.top) / (scrollStart - scrollEnd), 0), 1);
+  const nextIndex = Math.min(Math.floor(progress * principleCards.length), principleCards.length - 1);
 
   setActivePrinciple(nextIndex);
 };
