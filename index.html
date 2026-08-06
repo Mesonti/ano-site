@@ -10,12 +10,9 @@
     <meta name="theme-color" content="#efefef"/>
     <title>Цифровой аудит — создаем инновации в аудите</title>
     <link rel="icon" href="./img/nav-logo.svg" type="image/svg+xml"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link
-            href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&amp;display=swap"
-            rel="stylesheet"
-    />
+    <link rel="preload" href="./fonts/Golos-Text_Regular.ttf" as="font" type="font/ttf" crossorigin/>
+    <link rel="preload" href="./fonts/Golos-Text_Medium.ttf" as="font" type="font/ttf" crossorigin/>
+    <link rel="preload" href="./fonts/Golos-Text_DemiBold.ttf" as="font" type="font/ttf" crossorigin/>
     <link rel="stylesheet" href="./styles.css?v=fix-v3"/>
 </head>
 <body id="top">
@@ -31,14 +28,14 @@
         <span class="hero-card__nav-icon" aria-hidden="true">
           <span></span><span></span><span></span><span></span>
         </span>
-        <span>Бонусы</span>
+        <span>Преимущества</span>
     </a>
     <a class="hero-card__button" href="#contacts">Контакты</a>
 </nav>
 <main class="hero-screen">
     <section class="hero-card" aria-labelledby="hero-title">
         <div class="hero-screen__bg" aria-hidden="true">
-            <img src="./img/bg.png" alt="" width="1922" height="1548" decoding="async" fetchpriority="high"/>
+            <img src="./img/bg.png" srcset="./img/bg-960.png 960w, ./img/bg.png 1922w" sizes="100vw" alt="" width="1922" height="1548" decoding="async" fetchpriority="high"/>
         </div>
 
         <div class="hero-card__backdrop" aria-hidden="true"></div>
@@ -92,7 +89,7 @@
 
         <span class="hero-card__logo-icon" aria-hidden="true">
             <span class="hero-card__logo-icon-bg"></span>
-            <img class="hero-card__logo-icon-mark" src="./img/logo-icon-mark-small.png" alt="" width="216" height="256" decoding="async"/>
+            <img class="hero-card__logo-icon-mark" src="./img/logo-icon-mark-small.png" srcset="./img/logo-icon-mark-small-128.png 128w, ./img/logo-icon-mark-small.png 216w" sizes="clamp(32px, 6vw, 216px)" alt="" width="216" height="256" decoding="async"/>
             <span class="hero-card__logo-icon-corner hero-card__logo-icon-corner--top-left"></span>
             <span class="hero-card__logo-icon-corner hero-card__logo-icon-corner--top-right"></span>
             <span class="hero-card__logo-icon-corner hero-card__logo-icon-corner--bottom-left"></span>
@@ -111,7 +108,7 @@
             <span class="hero-card__nav-icon" aria-hidden="true">
               <span></span><span></span><span></span><span></span>
             </span>
-                <span>Бонусы</span>
+                <span>Преимущества</span>
             </a>
             <a class="hero-card__button" href="#contacts">Контакты</a>
         </nav>
@@ -127,6 +124,8 @@
                 <img
                         class="hero-card__art-image"
                         src="img/big-logo.png"
+                        srcset="img/big-logo-640.png 640w, img/big-logo.png 894w"
+                        sizes="(max-width: 768px) 60vw, 47vw"
                         alt=""
                         width="894"
                         height="1036"
@@ -145,8 +144,7 @@
                         <span aria-hidden="true"></span>
                     </div>
                     <p>
-                        Ведущий технологический партнер и центр IT-компетенций Счетной&nbsp;палаты
-                        Российской&nbsp;Федерации
+                        Ведущий технологический партнер Счетной палаты Российской Федерации
                     </p>
                 </article>
 
@@ -156,8 +154,7 @@
                         <span aria-hidden="true"></span>
                     </div>
                     <p>
-                        Чтобы цифровые инструменты надежно работали для устойчивого развития общества
-                        и&nbsp;государства
+                        Чтобы наши цифровые сервисы способствовали ответственному и эффективному использованию бюджетных средств
                     </p>
                 </article>
 
@@ -172,7 +169,7 @@
     <section class="projects-section" id="projects" aria-labelledby="projects-title">
         <div class="projects-section__heading">
             <h2 id="projects-title">Над чем работаем?</h2>
-            <p>Создаем цифровую инфраструктуру<br>государственного аудита</p>
+            <p>Создаем и внедряем интеллектуальные решения <br>в сфере государственного аудита</p>
         </div>
 
         <div class="projects-section__cards">
@@ -180,48 +177,46 @@
                 <header class="project-card__header">
                     <h3>Единая цифровая платформа для аудита</h3>
                     <div class="project-card__icon" aria-hidden="true">
-                        <img class="project-card__icon-base" src="./img/ecp.png" alt="" width="389" height="389" loading="lazy" decoding="async"/>
+                        <img class="project-card__icon-base" src="./img/ecp.png" srcset="./img/ecp-320.png 320w, ./img/ecp.png 389w" sizes="(max-width: 768px) 120px, 21vw" alt="" width="389" height="389" loading="lazy" decoding="async"/>
                         <img class="project-card__icon-mark" src="./img/projects-background.svg" alt="" width="68" height="72" loading="lazy" decoding="async"/>
                     </div>
                 </header>
                 <p>
-                    Единая точка доступа ко всем системам, сервисам и инструментам аудита. <br>Она объединяет
-                    данные из десятков государственных источников, автоматически выявляет риски <br>и
-                    нарушения, а также обеспечивает дистанционное взаимодействие <br>с проверяемыми
-                    организациями. Платформа охватывает полный цикл проверок — от планирования и
-                    подготовки до проведения контрольных мероприятий и анализа их результатов
+                    Разрабатываем платформу, которая объединяет данные, процессы, инструменты, а также участников государственного аудита — органы контроля и проверяемые организации
+                    <p>Она автоматизирует весь цикл проверки, от сбора информации до подведения итогов. А встроенные интеллектуальные сервисы и ИИ-ассистенты помогают анализировать данные и выявлять возможные нарушения
                 </p>
             </article>
 
             <article class="project-card">
                 <header class="project-card__header">
-                    <h3>Цифровой бэк-офис</h3>
+                    <h3>Сервисы и решения <br>для цифрового офиса</h3>
                     <div class="project-card__icon" aria-hidden="true">
-                        <img class="project-card__icon-base" src="./img/back-office.png" alt="" width="389" height="389" loading="lazy" decoding="async"/>
+                        <img class="project-card__icon-base" src="./img/back-office.png" srcset="./img/back-office-320.png 320w, ./img/back-office.png 389w" sizes="(max-width: 768px) 120px, 21vw" alt="" width="389" height="389" loading="lazy" decoding="async"/>
                         <img class="project-card__icon-mark" src="./img/projects-background.svg" alt="" width="68" height="72" loading="lazy" decoding="async"/>
                     </div>
                 </header>
                 <p>
-                    Внутренняя среда для эффективной работы и автоматизации процессов. Проект охватывает
-                    цифровизацию всех обеспечивающих функций Счетной палаты. Разрозненные инструменты —
-                    корпоративная почта, портал, защищенный мессенджер, система видеоконференций, ITSM и
-                    другие сервисы — объединяются в единый, целостный ИТ-ландшафт
+                    Внедряем комплекс внутренних
+                    сервисов для повседневной работы: корпоративную почту и портал, ВКС, защищенный мессенджер, ITSM, системы управления проектами и персоналом
+                    <p>Все решения объединены в цифровой среде с общей авторизацией
+                    <br>и навигацией: одной учетной записи достаточно, чтобы пользоваться ими
+                    <br>без повторного входа и лишних
+                    переключений между системами
                 </p>
             </article>
 
             <article class="project-card">
                 <header class="project-card__header">
-                    <h3>Надежная и масштабируемая инфраструктура</h3>
+                    <h3>Инфраструктура <br>и кибербезопасность</h3>
                     <div class="project-card__icon" aria-hidden="true">
-                        <img class="project-card__icon-base" src="./img/infrastructure.png" alt="" width="389" height="389" loading="lazy" decoding="async"/>
+                        <img class="project-card__icon-base" src="./img/infrastructure.png" srcset="./img/infrastructure-320.png 320w, ./img/infrastructure.png 389w" sizes="(max-width: 768px) 120px, 21vw" alt="" width="389" height="389" loading="lazy" decoding="async"/>
                         <img class="project-card__icon-mark" src="./img/projects-background.svg" alt="" width="68" height="72" loading="lazy" decoding="async"/>
                     </div>
                 </header>
                 <p>
-                    Технологическая основа всей цифровой среды ведомства. Мы модернизируем серверные
-                    мощности, переходим на отечественное программное обеспечение и оборудование,
-                    выстраиваем системы мониторинга и защиты от киберугроз — чтобы инфраструктура
-                    оставалась устойчивой, безопасной и готовой <br>к масштабированию
+                    Создаем производительную, надежную <br>и безопасную вычислительную среду — технологическую основу для цифровых сервисов и решений на базе искусственного интеллекта
+                    <p>Инфраструктура обеспечивает стабильную работу систем, обработку больших данных и защиту информации. Она рассчитана на увеличение нагрузки
+                    <br>и масштабирование по мере развития проекта и запуска новых инструментов
                 </p>
             </article>
         </div>
@@ -239,8 +234,7 @@
                             <h3>Цифровая трансформация</h3>
                         </div>
                         <p id="competency-panel-1">
-                            Помогаем государственным органам и бизнесу внедрять передовые технологии и
-                            переходить на новый уровень цифровой зрелости
+                            Помогаем государственным органам внедрять передовые технологии и переходить на новый уровень возможностей
                         </p>
                     </div>
                     <button class="competency-item__button" type="button" aria-expanded="true" aria-controls="competency-panel-1" aria-label="Свернуть: Цифровая трансформация"></button>
@@ -255,7 +249,7 @@
                             <h3>Разработка цифровых решений</h3>
                         </div>
                         <p id="competency-panel-2" hidden>
-                            Создаем цифровые продукты, прикладные сервисы <br>и автоматизированные платформы для
+                            Создаем цифровые продукты и прикладные сервисы <br>для
                             решения интеллектуальных задач
                         </p>
                     </div>
@@ -271,9 +265,8 @@
                             <h3>Работа с данными и аналитика</h3>
                         </div>
                         <p id="competency-panel-3" hidden>
-                            Создаем современные системы управления данными <br>и их визуализации, собираем,
-                            структурируем <br>и обрабатываем данные, строим наглядные интерактивные
-                            дашборды
+                            Объединяем и структурируем данные из разных источников,
+                            создаем на их основе аналитику и интерактивные панели
                         </p>
                     </div>
                     <button class="competency-item__button" type="button" aria-expanded="false" aria-controls="competency-panel-3" aria-label="Развернуть: Работа с данными и аналитика"></button>
@@ -288,8 +281,8 @@
                             <h3>Искусственный интеллект</h3>
                         </div>
                         <p id="competency-panel-4" hidden>
-                            Внедряем передовые ИИ‑решения для автоматизации рутинных процессов и повышения
-                            эффективности
+                            Превращаем технологии искусственного интеллекта в рабочие
+                            инструменты для повышения эффективности
                         </p>
                     </div>
                     <button class="competency-item__button" type="button" aria-expanded="false" aria-controls="competency-panel-4" aria-label="Развернуть: Искусственный интеллект"></button>
@@ -304,7 +297,8 @@
                             <h3>Дизайн и пользовательский опыт</h3>
                         </div>
                         <p id="competency-panel-5" hidden>
-                            Проектируем и создаем удобные, комфортные и интуитивно понятные интерфейсы
+                            Проектируем и создаем удобные, комфортные <br>и интуитивно
+                            понятные интерфейсы
                         </p>
                     </div>
                     <button class="competency-item__button" type="button" aria-expanded="false" aria-controls="competency-panel-5" aria-label="Развернуть: Дизайн и пользовательский опыт"></button>
@@ -319,9 +313,8 @@
                             <h3>ИТ‑инфраструктура и безопасность</h3>
                         </div>
                         <p id="competency-panel-6" hidden>
-                            Проектируем и поддерживаем надежные, масштабируемые вычислительные системы,
-                            обеспечиваем безотказную <br>и стабильную работу сервисов, защищаем данные <br>и
-                            минимизируем риски киберугроз
+                            Проектируем масштабируемую инфраструктуру, обеспечиваем
+                            стабильную работу сервисов <br>и защищаем данные от киберугроз
                         </p>
                     </div>
                     <button class="competency-item__button" type="button" aria-expanded="false" aria-controls="competency-panel-6" aria-label="Развернуть: ИТ-инфраструктура и безопасность"></button>
@@ -336,8 +329,8 @@
                             <h3>Импортозамещение</h3>
                         </div>
                         <p id="competency-panel-7" hidden>
-                            Разрабатываем и внедряем отечественные технологические решения, адаптируем
-                            действующие системы под актуальные требования законодательства и безопасности
+                            Внедряем отечественные технологические решения, адаптируем действующие системы под актуальные требования
+                            законодательства <br>и безопасности
                         </p>
                     </div>
                     <button class="competency-item__button" type="button" aria-expanded="false" aria-controls="competency-panel-7" aria-label="Развернуть: Импортозамещение"></button>
@@ -352,8 +345,8 @@
                             <h3>Автоматизация и интеграция</h3>
                         </div>
                         <p id="competency-panel-8" hidden>
-                            Автоматизируем рутинные операции и бизнес-процессы, обеспечиваем бесшовную
-                            интеграцию платформ и систем
+                            Автоматизируем рутинные операции и бизнес-процессы,
+                            обеспечиваем бесшовную интеграцию платформ и систем
                         </p>
                     </div>
                     <button class="competency-item__button" type="button" aria-expanded="false" aria-controls="competency-panel-8" aria-label="Развернуть: Автоматизация и интеграция"></button>
@@ -368,8 +361,10 @@
                             <h3>Развитие команды</h3>
                         </div>
                         <p id="competency-panel-9" hidden>
-                            Создаем программы обучения, развиваем цифровые навыки и готовим персонал к
-                            внедрению новых технологических решений
+                            Адаптируем сотрудников к внедрению новых технологических
+                            решений. Сопровождаем запуск сервисов, проводим обучение,
+                            создаем визуальный контент, развиваем цифровые
+                            коммуникации
                         </p>
                     </div>
                     <button class="competency-item__button" type="button" aria-expanded="false" aria-controls="competency-panel-9" aria-label="Развернуть: Развитие команды"></button>
@@ -503,16 +498,16 @@
     </section>
 
     <section class="benefits-section" id="bonuses" aria-labelledby="benefits-title">
-        <h2 id="benefits-title" class="benefits-section__title">Преимущества и бонусы</h2>
+        <h2 id="benefits-title" class="benefits-section__title">Преимущества</h2>
 
         <div class="benefits-section__grid">
             <article class="benefits-card">
                 <div class="benefits-card__content">
                     <header class="benefits-card__header">
                         <span class="benefits-card__number">01</span>
-                        <h3>Даем гарантии</h3>
+                        <h3>Работаем прозрачно</h3>
                     </header>
-                    <p>ИТ-аккредитация, оформление по ТК, ежегодная индексация зарплаты <br>и социальный пакет</p>
+                    <p>Официальное трудоустройство, ИТ-аккредитация и конкурентная оплата труда с понятными условиями</p>
                 </div>
             </article>
 
@@ -520,9 +515,9 @@
                 <div class="benefits-card__content">
                     <header class="benefits-card__header">
                         <span class="benefits-card__number">02</span>
-                        <h3>Лечим и бережем</h3>
+                        <h3>Заботимся о команде</h3>
                     </header>
-                    <p>Корпоративный ДМС, телемедицина, помощь психолога и страховка <br>для путешественников</p>
+                    <p>ДМС со стоматологией, страхование <br>в поездках, поддержка психолога <br>и онлайн-консультации врачей</p>
                 </div>
             </article>
 
@@ -530,10 +525,9 @@
                 <div class="benefits-card__content">
                     <header class="benefits-card__header">
                         <span class="benefits-card__number">03</span>
-                        <h3>Заботимся о комфорте</h3>
+                        <h3>Создаем условия</h3>
                     </header>
-                    <p>Современный офис со всей необходимой инфраструктурой, возможность работать в гибридном и
-                        удаленном форматах</p>
+                    <p>Офис в центре города, гибкий график, возможность работать из дома, командные события и мероприятия</p>
                 </div>
             </article>
 
@@ -541,9 +535,9 @@
                 <div class="benefits-card__content">
                     <header class="benefits-card__header">
                         <span class="benefits-card__number">04</span>
-                        <h3>Работаем на результат</h3>
+                        <h3>Доверяем друг другу</h3>
                     </header>
-                    <p>Гибкие процессы, здоровая корпоративная культура и только рациональная бюрократия</p>
+                    <p>Мы ценим профессионализм и открытый диалог, уважаем мнение каждого, поддерживаем инициативу и готовность отвечать за результат</p>
                 </div>
             </article>
 
@@ -553,8 +547,7 @@
                         <span class="benefits-card__number">05</span>
                         <h3>Запускаем перемены</h3>
                     </header>
-                    <p>Проекты по цифровизации системы государственного управления, возможность напрямую влиять <br>на
-                        развитие нашей страны</p>
+                    <p>Мы создаем интеллектуальные продукты для государственного аудита, которые повышают эффективность контроля <br>и способствуют развитию страны</p>
                 </div>
             </article>
 
@@ -576,8 +569,8 @@
             </p>
         </div>
 
-        <div class="office-map" aria-label="Карта пути от станции метро Павелецкая до офиса">
-            <img class="office-map__image" src="./img/office/map.png" alt="" aria-hidden="true" width="705" height="372" loading="lazy" decoding="async"/>
+        <div class="office-map" role="img" aria-label="Карта пути от станции метро Павелецкая до офиса">
+            <img class="office-map__image" src="./img/office/map.png" srcset="./img/office/map-900.png 900w, ./img/office/map-1400.png 1400w, ./img/office/map.png 1821w" sizes="(max-width: 768px) 100vw, 95vw" alt="" aria-hidden="true" width="705" height="372" loading="lazy" decoding="async"/>
             <svg
                     class="office-map__route"
                     viewBox="0 0 705.492 372.081"
@@ -603,7 +596,7 @@
                         d="M27.5 90.0814L67 47.5814L454 3.08137L701 125.081C671 167.081 657 213.081 670 262.081C661 342.081 606 351.081 574 351.081"
                 />
             </svg>
-            <img class="office-map__photo" src="./img/office/photo-ring.png" alt="" aria-hidden="true" width="451" height="240" loading="lazy" decoding="async"/>
+            <img class="office-map__photo" src="./img/office/photo-ring.png" srcset="./img/office/photo-ring-320.png 320w, ./img/office/photo-ring.png 542w" sizes="(max-width: 768px) 34vw, 13vw" alt="" aria-hidden="true" width="451" height="240" loading="lazy" decoding="async"/>
             <div class="office-map__badge" aria-hidden="true">
                 <img src="./img/office/time-badge.svg" alt="" width="59" height="37" loading="lazy" decoding="async"/>
                 <span>3 мин.</span>
