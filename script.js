@@ -1,0 +1,437 @@
+const competencyItems = document.querySelectorAll("[data-accordion-item]");
+const sectionTitles = document.querySelectorAll(
+  "#hero-title, #about-title, #projects-title, #competency-title, #benefits-title, " +
+    "#principles-title, #office-title, #footer-title, #footer-legal-title"
+);
+const revealCards = document.querySelectorAll(
+  ".about-card, .project-card, .competency-item, .benefits-card, .principle-card, " +
+    ".office-map, .site-footer__company, .site-footer__field, .site-footer__nav-group, " +
+    ".site-footer__licenses, .site-footer__note"
+);
+const competencyAnimationDuration = 320;
+const competencyAnimationTimers = new WeakMap();
+const heroCard = document.querySelector(".hero-card");
+const principlesSection = document.querySelector(".principles-section");
+const principleCards = [...document.querySelectorAll(".principle-card")];
+const principleShelves = [...document.querySelectorAll(".principles-rack__shelf")];
+const principleLines = [...document.querySelectorAll(".principles-connectors__line")];
+const heroLogoIcon = document.querySelector(".hero-card__logo-icon");
+const heroLogoMark = document.querySelector(".hero-card__logo-icon-mark");
+const heroNav = document.querySelector(".hero-card > .hero-card__nav");
+const heroFixedNav = document.querySelector(".hero-card__nav--floating");
+const heroNavLogos = document.querySelectorAll(".hero-card__nav-logo");
+const navFocusableSelector = "a, button, input, select, textarea, [tabindex]";
+let heroNavAnimationFrame = 0;
+let heroNavOffsetTop = heroNav?.offsetTop || 0;
+let scrollStateFrame = 0;
+let heroLogoAnimationFrame = 0;
+let heroLogoPreviousTime = 0;
+let heroLogoAngle = 0;
+let heroLogoVelocity = 0;
+let heroLogoTargetVelocity = 0;
+let heroLogoRestAngle = 0;
+let heroLogoIsSpinning = false;
+let activePrincipleIndex = -1;
+
+const revealSectionTitle = (title) => {
+  title.classList.add("section-title-reveal--visible");
+};
+
+const revealCard = (card) => {
+  card.classList.add("card-reveal--visible");
+
+  if (card.classList.contains("office-map")) {
+    card.classList.add("office-map--route-visible");
+  }
+};
+
+sectionTitles.forEach((title) => {
+  title.classList.add("section-title-reveal");
+});
+
+revealCards.forEach((card) => {
+  card.classList.add("card-reveal");
+});
+
+const updateHeroLogoSpin = (time) => {
+  if (!heroLogoPreviousTime) {
+    heroLogoPreviousTime = time;
+  }
+
+  const delta = Math.min(time - heroLogoPreviousTime, 64);
+  heroLogoPreviousTime = time;
+
+  if (heroLogoIsSpinning) {
+    const easing = 1 - Math.exp(-delta / 160);
+
+    heroLogoVelocity += (heroLogoTargetVelocity - heroLogoVelocity) * easing;
+    heroLogoAngle += heroLogoVelocity * delta;
+  } else {
+    const remainingAngle = heroLogoRestAngle - heroLogoAngle;
+    const easing = 1 - Math.exp(-delta / 1400);
+
+    heroLogoVelocity = 0;
+    heroLogoAngle += remainingAngle * easing;
+
+    if (Math.abs(remainingAngle) < 0.08) {
+      heroLogoAngle = 0;
+      heroLogoRestAngle = 0;
+      heroLogoAnimationFrame = 0;
+      heroLogoPreviousTime = 0;
+      heroLogoMark.style.transform = "rotateY(0deg)";
+      return;
+    }
+  }
+
+  heroLogoMark.style.transform = `rotateY(${heroLogoAngle.toFixed(2)}deg)`;
+
+  heroLogoAnimationFrame = window.requestAnimationFrame(updateHeroLogoSpin);
+};
+
+const requestHeroLogoFrame = () => {
+  if (!heroLogoAnimationFrame) {
+    heroLogoAnimationFrame = window.requestAnimationFrame(updateHeroLogoSpin);
+  }
+};
+
+if (
+  heroLogoIcon &&
+  heroLogoMark &&
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
+  heroLogoIcon.addEventListener("pointerenter", () => {
+    heroLogoIsSpinning = true;
+    heroLogoTargetVelocity = 0.18;
+    requestHeroLogoFrame();
+  });
+
+  heroLogoIcon.addEventListener("pointerleave", () => {
+    heroLogoIsSpinning = false;
+    heroLogoRestAngle = Math.ceil(heroLogoAngle / 360) * 360;
+
+    if (heroLogoRestAngle - heroLogoAngle < 24) {
+      heroLogoRestAngle += 360;
+    }
+
+    requestHeroLogoFrame();
+  });
+}
+
+heroNavLogos.forEach((logo) => {
+  logo.addEventListener("click", (event) => {
+    event.preventDefault();
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  });
+});
+
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+  sectionTitles.forEach(revealSectionTitle);
+  revealCards.forEach(revealCard);
+} else {
+  const sectionTitleObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        revealSectionTitle(entry.target);
+        observer.unobserve(entry.target);
+      });
+    },
+    {
+      rootMargin: "0px 0px -12% 0px",
+      threshold: 0.16,
+    }
+  );
+
+  sectionTitles.forEach((title) => {
+    sectionTitleObserver.observe(title);
+  });
+
+  const cardRevealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        revealCard(entry.target);
+        observer.unobserve(entry.target);
+      });
+    },
+    {
+      rootMargin: "0px 0px -10% 0px",
+      threshold: 0.12,
+    }
+  );
+
+  revealCards.forEach((card) => {
+    cardRevealObserver.observe(card);
+  });
+}
+
+const setActivePrinciple = (index) => {
+  if (index === activePrincipleIndex) return;
+
+  activePrincipleIndex = index;
+
+  principleCards.forEach((card, cardIndex) => {
+    card.classList.toggle("principle-card--highlight", cardIndex === index);
+  });
+
+  principleShelves.forEach((shelf, shelfIndex) => {
+    shelf.classList.toggle("principles-rack__shelf--active", shelfIndex === index);
+  });
+
+  principleLines.forEach((line, lineIndex) => {
+    line.classList.toggle("principles-connectors__line--active", lineIndex === index);
+  });
+};
+
+const syncPrincipleScrollTarget = () => {
+  if (!principlesSection || !principleCards.length) return;
+
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+  const rect = principlesSection.getBoundingClientRect();
+
+  const scrollStart = viewportHeight * 0.55;
+  const scrollEnd = viewportHeight * 0.62 - rect.height;
+
+  if (rect.top >= scrollStart) {
+    setActivePrinciple(-1);
+    return;
+  }
+
+  if (rect.top <= scrollEnd) {
+    setActivePrinciple(principleCards.length - 1);
+    return;
+  }
+
+  const progress = Math.min(Math.max((scrollStart - rect.top) / (scrollStart - scrollEnd), 0), 1);
+  const nextIndex = Math.min(Math.floor(progress * principleCards.length), principleCards.length - 1);
+
+  setActivePrinciple(nextIndex);
+};
+
+const getOriginalHeroNavBottom = () => {
+  if (!heroCard || !heroNav) return 0;
+
+  return heroCard.getBoundingClientRect().top + heroNavOffsetTop + heroNav.offsetHeight;
+};
+
+const setNavInteractive = (nav, isInteractive) => {
+  if (!nav) return;
+
+  nav.toggleAttribute("aria-hidden", !isInteractive);
+  nav.inert = !isInteractive;
+
+  nav.querySelectorAll(navFocusableSelector).forEach((element) => {
+    if (!element.dataset.originalTabindex && element.hasAttribute("tabindex")) {
+      element.dataset.originalTabindex = element.getAttribute("tabindex");
+    }
+
+    if (isInteractive) {
+      if (element.dataset.originalTabindex) {
+        element.setAttribute("tabindex", element.dataset.originalTabindex);
+        delete element.dataset.originalTabindex;
+      } else {
+        element.removeAttribute("tabindex");
+      }
+      return;
+    }
+
+    element.setAttribute("tabindex", "-1");
+  });
+};
+
+const setHeroNavFixed = (shouldFix) => {
+  if (!heroFixedNav) return;
+  const isVisible = heroFixedNav.classList.contains("hero-card__nav--visible");
+
+  if (shouldFix) {
+    if (isVisible) return;
+
+    setNavInteractive(heroNav, false);
+    setNavInteractive(heroFixedNav, true);
+    window.cancelAnimationFrame(heroNavAnimationFrame);
+    heroNavAnimationFrame = window.requestAnimationFrame(() => {
+      heroNavAnimationFrame = window.requestAnimationFrame(() => {
+        heroFixedNav.classList.add("hero-card__nav--visible");
+      });
+    });
+    return;
+  }
+
+  if (!isVisible) return;
+
+  window.cancelAnimationFrame(heroNavAnimationFrame);
+  heroFixedNav.classList.remove("hero-card__nav--visible");
+  setNavInteractive(heroFixedNav, false);
+  setNavInteractive(heroNav, true);
+};
+
+const updateHeroNavPosition = () => {
+  if (!heroCard || !heroNav) return;
+
+  const shouldFix = getOriginalHeroNavBottom() <= 0;
+
+  setHeroNavFixed(shouldFix);
+};
+
+const syncScrollState = () => {
+  scrollStateFrame = 0;
+  updateHeroNavPosition();
+  syncPrincipleScrollTarget();
+};
+
+const requestScrollStateUpdate = () => {
+  if (scrollStateFrame) return;
+
+  scrollStateFrame = window.requestAnimationFrame(syncScrollState);
+};
+
+setNavInteractive(heroFixedNav, false);
+setNavInteractive(heroNav, true);
+updateHeroNavPosition();
+syncPrincipleScrollTarget();
+
+window.addEventListener(
+  "scroll",
+  () => {
+    requestScrollStateUpdate();
+  },
+  { passive: true }
+);
+
+window.addEventListener("resize", () => {
+  if (heroNav && !heroNav.classList.contains("hero-card__nav--fixed")) {
+    heroNavOffsetTop = heroNav.offsetTop;
+  }
+
+  requestScrollStateUpdate();
+});
+
+const clearCompetencyAnimation = (item) => {
+  const timer = competencyAnimationTimers.get(item);
+
+  if (timer) {
+    window.clearTimeout(timer);
+    competencyAnimationTimers.delete(item);
+  }
+
+  item.classList.remove("competency-item--animating", "competency-item--closing");
+  item.style.removeProperty("height");
+  item.style.removeProperty("overflow");
+  item.style.removeProperty("transition");
+};
+
+const finishCompetencyAnimation = (item) => {
+  item.classList.remove("competency-item--animating", "competency-item--closing");
+  item.style.removeProperty("height");
+  item.style.removeProperty("overflow");
+  item.style.removeProperty("transition");
+  competencyAnimationTimers.delete(item);
+};
+
+const getCompetencyClosedHeight = (item) => {
+  const minHeight = parseFloat(window.getComputedStyle(item).minHeight);
+
+  return Number.isFinite(minHeight) ? minHeight : 0;
+};
+
+const animateCompetencyOpen = (item, startHeight) => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  clearCompetencyAnimation(item);
+
+  const endHeight = item.getBoundingClientRect().height;
+
+  item.classList.add("competency-item--animating");
+  item.style.height = `${startHeight}px`;
+  item.style.overflow = "hidden";
+  item.style.transition = "none";
+
+  item.getBoundingClientRect();
+  item.style.transition = `height ${competencyAnimationDuration}ms cubic-bezier(0.4, 0, 0.2, 1)`;
+  item.style.height = `${endHeight}px`;
+
+  const timer = window.setTimeout(() => {
+    finishCompetencyAnimation(item);
+  }, competencyAnimationDuration + 50);
+
+  competencyAnimationTimers.set(item, timer);
+};
+
+const animateCompetencyClose = (item, startHeight, onComplete) => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    onComplete();
+    return;
+  }
+
+  clearCompetencyAnimation(item);
+
+  const endHeight = getCompetencyClosedHeight(item);
+
+  item.classList.add("competency-item--closing");
+  item.style.height = `${startHeight}px`;
+  item.style.overflow = "hidden";
+  item.style.transition = "none";
+
+  item.getBoundingClientRect();
+  item.style.transition = `height ${competencyAnimationDuration}ms cubic-bezier(0.4, 0, 0.2, 1)`;
+  item.style.height = `${endHeight}px`;
+
+  const timer = window.setTimeout(() => {
+    finishCompetencyAnimation(item);
+    onComplete();
+  }, competencyAnimationDuration + 50);
+
+  competencyAnimationTimers.set(item, timer);
+};
+
+competencyItems.forEach((item) => {
+  const trigger = item.querySelector(".competency-item__button");
+  const panelId = trigger?.getAttribute("aria-controls");
+  const panel = panelId ? document.getElementById(panelId) : null;
+  const title = item.querySelector("h3")?.textContent?.trim() || "компетенция";
+
+  trigger?.addEventListener("click", () => {
+    const wasOpen = item.classList.contains("competency-item--open");
+
+    competencyItems.forEach((nextItem) => {
+      const nextTrigger = nextItem.querySelector(".competency-item__button");
+      const nextPanelId = nextTrigger?.getAttribute("aria-controls");
+      const nextPanel = nextPanelId ? document.getElementById(nextPanelId) : null;
+      const nextTitle = nextItem.querySelector("h3")?.textContent?.trim() || "компетенция";
+      const isActive = !wasOpen && nextItem === item;
+      const isOpen = nextItem.classList.contains("competency-item--open");
+      const startHeight = nextItem.getBoundingClientRect().height;
+
+      clearCompetencyAnimation(nextItem);
+      nextTrigger?.setAttribute("aria-expanded", String(isActive));
+      nextTrigger?.setAttribute(
+        "aria-label",
+        `${isActive ? "Свернуть" : "Развернуть"}: ${nextTitle}`
+      );
+
+      if (isActive) {
+        if (nextPanel) nextPanel.hidden = false;
+
+        nextItem.classList.add("competency-item--open");
+        animateCompetencyOpen(nextItem, startHeight);
+        return;
+      }
+
+      if (isOpen) {
+        nextItem.classList.remove("competency-item--open");
+
+        animateCompetencyClose(nextItem, startHeight, () => {
+          if (nextPanel) nextPanel.hidden = true;
+        });
+        return;
+      }
+
+      nextItem.classList.remove("competency-item--open");
+      if (nextPanel) nextPanel.hidden = true;
+    });
+
+    trigger.setAttribute("aria-label", `${wasOpen ? "Развернуть" : "Свернуть"}: ${title}`);
+  });
+});
