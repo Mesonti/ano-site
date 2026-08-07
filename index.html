@@ -35,7 +35,10 @@
 <main class="hero-screen">
     <section class="hero-card" aria-labelledby="hero-title">
         <div class="hero-screen__bg" aria-hidden="true">
-            <img src="./img/bg.png" srcset="./img/bg-960.png 960w, ./img/bg.png 1922w" sizes="100vw" alt="" width="1922" height="1548" decoding="async" fetchpriority="high"/>
+            <picture>
+                <source type="image/avif" srcset="./img/bg-960.avif 960w, ./img/bg-1280.avif 1280w, ./img/bg.avif 1922w" sizes="100vw">
+                <img src="./img/bg.png" srcset="./img/bg-960.png 960w, ./img/bg-1280.png 1280w, ./img/bg.png 1922w" sizes="100vw" alt="" width="1922" height="1548" decoding="async" fetchpriority="high"/>
+            </picture>
         </div>
 
         <div class="hero-card__backdrop" aria-hidden="true"></div>
@@ -89,7 +92,7 @@
 
         <span class="hero-card__logo-icon" aria-hidden="true">
             <span class="hero-card__logo-icon-bg"></span>
-            <img class="hero-card__logo-icon-mark" src="./img/logo-icon-mark-small.png" srcset="./img/logo-icon-mark-small-128.png 128w, ./img/logo-icon-mark-small.png 216w" sizes="clamp(32px, 6vw, 216px)" alt="" width="216" height="256" decoding="async"/>
+            <img class="hero-card__logo-icon-mark" src="./img/logo-icon-mark-small.png" srcset="./img/logo-icon-mark-small-64.png 54w, ./img/logo-icon-mark-small-128.png 108w, ./img/logo-icon-mark-small-192.png 162w, ./img/logo-icon-mark-small.png 216w" sizes="clamp(32px, 6vw, 146px)" alt="" width="216" height="256" decoding="async"/>
             <span class="hero-card__logo-icon-corner hero-card__logo-icon-corner--top-left"></span>
             <span class="hero-card__logo-icon-corner hero-card__logo-icon-corner--top-right"></span>
             <span class="hero-card__logo-icon-corner hero-card__logo-icon-corner--bottom-left"></span>
@@ -121,10 +124,10 @@
             </h1>
 
             <div class="hero-card__art" aria-hidden="true">
-                <img
+                    <img
                         class="hero-card__art-image"
                         src="img/big-logo.png"
-                        srcset="img/big-logo-640.png 640w, img/big-logo.png 894w"
+                        srcset="img/big-logo-320.png 276w, img/big-logo-480.png 414w, img/big-logo-640.png 552w, img/big-logo-768.png 662w, img/big-logo.png 894w"
                         sizes="(max-width: 768px) 60vw, 47vw"
                         alt=""
                         width="894"
@@ -177,7 +180,7 @@
                 <header class="project-card__header">
                     <h3>Единая цифровая платформа для аудита</h3>
                     <div class="project-card__icon" aria-hidden="true">
-                        <img class="project-card__icon-base" src="./img/ecp.png" srcset="./img/ecp-320.png 320w, ./img/ecp.png 389w" sizes="(max-width: 768px) 120px, 21vw" alt="" width="389" height="389" loading="lazy" decoding="async"/>
+                        <img class="project-card__icon-base" src="./img/ecp.png" srcset="./img/ecp-192.png 192w, ./img/ecp-320.png 320w, ./img/ecp.png 389w" sizes="(max-width: 1200px) 79px, 90px" alt="" width="389" height="389" loading="lazy" decoding="async"/>
                         <img class="project-card__icon-mark" src="./img/projects-background.svg" alt="" width="68" height="72" loading="lazy" decoding="async"/>
                     </div>
                 </header>
@@ -191,7 +194,7 @@
                 <header class="project-card__header">
                     <h3>Сервисы и решения <br>для цифрового офиса</h3>
                     <div class="project-card__icon" aria-hidden="true">
-                        <img class="project-card__icon-base" src="./img/back-office.png" srcset="./img/back-office-320.png 320w, ./img/back-office.png 389w" sizes="(max-width: 768px) 120px, 21vw" alt="" width="389" height="389" loading="lazy" decoding="async"/>
+                        <img class="project-card__icon-base" src="./img/back-office.png" srcset="./img/back-office-192.png 192w, ./img/back-office-320.png 320w, ./img/back-office.png 389w" sizes="(max-width: 1200px) 79px, 90px" alt="" width="389" height="389" loading="lazy" decoding="async"/>
                         <img class="project-card__icon-mark" src="./img/projects-background.svg" alt="" width="68" height="72" loading="lazy" decoding="async"/>
                     </div>
                 </header>
@@ -209,7 +212,7 @@
                 <header class="project-card__header">
                     <h3>Инфраструктура <br>и кибербезопасность</h3>
                     <div class="project-card__icon" aria-hidden="true">
-                        <img class="project-card__icon-base" src="./img/infrastructure.png" srcset="./img/infrastructure-320.png 320w, ./img/infrastructure.png 389w" sizes="(max-width: 768px) 120px, 21vw" alt="" width="389" height="389" loading="lazy" decoding="async"/>
+                        <img class="project-card__icon-base" src="./img/infrastructure.png" srcset="./img/infrastructure-192.png 192w, ./img/infrastructure-320.png 320w, ./img/infrastructure.png 389w" sizes="(max-width: 1200px) 79px, 90px" alt="" width="389" height="389" loading="lazy" decoding="async"/>
                         <img class="project-card__icon-mark" src="./img/projects-background.svg" alt="" width="68" height="72" loading="lazy" decoding="async"/>
                     </div>
                 </header>

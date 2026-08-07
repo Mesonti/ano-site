@@ -202,6 +202,12 @@ img {
     mix-blend-mode: lighten;
 }
 
+.hero-screen__bg picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 .hero-screen__bg img {
     width: 100%;
     height: auto;
