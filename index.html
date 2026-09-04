@@ -13,7 +13,7 @@
     <link rel="preload" href="./fonts/Golos-Text_Regular.ttf" as="font" type="font/ttf" crossorigin/>
     <link rel="preload" href="./fonts/Golos-Text_Medium.ttf" as="font" type="font/ttf" crossorigin/>
     <link rel="preload" href="./fonts/Golos-Text_DemiBold.ttf" as="font" type="font/ttf" crossorigin/>
-    <link rel="stylesheet" href="./styles.css?v=fix-v3"/>
+    <link rel="stylesheet" href="./styles.css?v=mobile-v27"/>
 </head>
 <body id="top">
 <nav class="hero-card__nav hero-card__nav--fixed hero-card__nav--floating" aria-label="Фиксированная навигация" aria-hidden="true" inert>
@@ -86,6 +86,12 @@
                 height="35"
                 decoding="async"
         />
+
+        <button class="hero-card__mobile-menu" type="button" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
         <span class="hero-card__logo-icon" aria-hidden="true">
             <span class="hero-card__logo-icon-bg"></span>
@@ -182,8 +188,7 @@
                     </div>
                 </header>
                 <p>
-                    Разрабатываем платформу, которая объединяет данные, процессы, инструменты, а также участников государственного аудита — органы контроля и проверяемые организации
-                    <p>Она автоматизирует весь цикл проверки, от сбора информации до подведения итогов. А встроенные интеллектуальные сервисы и ИИ-ассистенты помогают анализировать данные и выявлять возможные нарушения
+                    Разрабатываем платформу, которая объединяет данные, процессы, инструменты, а также участников государственного аудита — органы контроля и проверяемые организации. Она автоматизирует весь цикл проверки, от сбора информации до подведения итогов. А встроенные интеллектуальные сервисы и ИИ-ассистенты помогают анализировать данные и выявлять возможные нарушения
                 </p>
             </article>
 
@@ -197,8 +202,7 @@
                 </header>
                 <p>
                     Внедряем комплекс внутренних
-                    сервисов для повседневной работы: корпоративную почту и портал, ВКС, защищенный мессенджер, ITSM, системы управления проектами и персоналом
-                    <p>Все решения объединены в цифровой среде с общей авторизацией
+                    сервисов для повседневной работы: корпоративную почту и портал, ВКС, защищенный мессенджер, ITSM, системы управления проектами и персоналом. Все решения объединены в цифровой среде с общей авторизацией
                     <br>и навигацией: одной учетной записи достаточно, чтобы пользоваться ими
                     <br>без повторного входа и лишних
                     переключений между системами
@@ -214,8 +218,7 @@
                     </div>
                 </header>
                 <p>
-                    Создаем производительную, надежную <br>и безопасную вычислительную среду — технологическую основу для цифровых сервисов и решений на базе искусственного интеллекта
-                    <p>Инфраструктура обеспечивает стабильную работу систем, обработку больших данных и защиту информации. Она рассчитана на увеличение нагрузки
+                    Создаем производительную, надежную <br>и безопасную вычислительную среду — технологическую основу для цифровых сервисов и решений на базе искусственного интеллекта. Инфраструктура обеспечивает стабильную работу систем, обработку больших данных и защиту информации. Она рассчитана на увеличение нагрузки
                     <br>и масштабирование по мере развития проекта и запуска новых инструментов
                 </p>
             </article>
@@ -445,50 +448,66 @@
         <div class="principles-cards" aria-label="Список принципов">
             <article class="principle-card principle-card--1">
                 <p class="principle-card__eyebrow">Принцип 01</p>
-                <h3>Начни с себя</h3>
-                <p>A te ipso incipe — Начни с самого себя</p>
+                <p class="principle-card__content">
+                    <span class="principle-card__title">Начни с себя</span>
+                    <span class="principle-card__text">A te ipso incipe — Начни с самого себя</span>
+                </p>
             </article>
 
             <article class="principle-card principle-card--2">
                 <p class="principle-card__eyebrow">Принцип 02</p>
-                <h3>Сказал — сделай</h3>
-                <p>Facta, non verba — Дела, а не слова</p>
+                <p class="principle-card__content">
+                    <span class="principle-card__title">Сказал — сделай</span>
+                    <span class="principle-card__text">Facta, non verba — Дела, а не слова</span>
+                </p>
             </article>
 
             <article class="principle-card principle-card--3">
                 <p class="principle-card__eyebrow">Принцип 03</p>
-                <h3>Говори прямо</h3>
-                <p>Simplex sigillum veri — Простота — признак истины</p>
+                <p class="principle-card__content">
+                    <span class="principle-card__title">Говори прямо</span>
+                    <span class="principle-card__text">Simplex sigillum veri — Простота — признак истины</span>
+                </p>
             </article>
 
             <article class="principle-card principle-card--4">
                 <p class="principle-card__eyebrow">Принцип 04</p>
-                <h3>Критикуешь — предлагай</h3>
-                <p>Destruam et aedificabo —<br>Разрушу только чтобы построить</p>
+                <p class="principle-card__content">
+                    <span class="principle-card__title">Критикуешь — предлагай</span>
+                    <span class="principle-card__text">Destruam et aedificabo —<br>Разрушу только чтобы построить</span>
+                </p>
             </article>
 
             <article class="principle-card principle-card--5">
                 <p class="principle-card__eyebrow">Принцип 05</p>
-                <h3>Не усложняй</h3>
-                <p>Optimum, non perfectum — Лучшее, а не идеальное</p>
+                <p class="principle-card__content">
+                    <span class="principle-card__title">Не усложняй</span>
+                    <span class="principle-card__text">Optimum, non perfectum — Лучшее, а не идеальное</span>
+                </p>
             </article>
 
             <article class="principle-card principle-card--6">
                 <p class="principle-card__eyebrow">Принцип 06</p>
-                <h3>Работай над ошибками</h3>
-                <p>Nunquam errat, qui nihil agit —<br>Не ошибается тот, кто ничего не делает</p>
+                <p class="principle-card__content">
+                    <span class="principle-card__title">Работай над ошибками</span>
+                    <span class="principle-card__text">Nunquam errat, qui nihil agit —<br>Не ошибается тот, кто ничего не делает</span>
+                </p>
             </article>
 
             <article class="principle-card principle-card--7">
                 <p class="principle-card__eyebrow">Принцип 07</p>
-                <h3>Хвали заслуженное</h3>
-                <p>Meritum lauda — Хвали за заслуги</p>
+                <p class="principle-card__content">
+                    <span class="principle-card__title">Хвали заслуженное</span>
+                    <span class="principle-card__text">Meritum lauda — Хвали за заслуги</span>
+                </p>
             </article>
 
             <article class="principle-card principle-card--8">
                 <p class="principle-card__eyebrow">Принцип 08</p>
-                <h3>Мы — команда</h3>
-                <p>Unus pro omnibus, omnes pro uno —<br>Один за всех, и все за одного</p>
+                <p class="principle-card__content">
+                    <span class="principle-card__title">Мы — команда</span>
+                    <span class="principle-card__text">Unus pro omnibus, omnes pro uno —<br>Один за всех, и все за одного</span>
+                </p>
             </article>
         </div>
 
@@ -740,6 +759,6 @@
     <p class="site-footer__copyright">АНО «Цифровой аудит» © 2026</p>
 </footer>
 
-<script src="./script.js?v=fix-v3"></script>
+<script src="./script.js?v=mobile-v27"></script>
 </body>
 </html>

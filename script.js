@@ -188,6 +188,11 @@ const setActivePrinciple = (index) => {
 const syncPrincipleScrollTarget = () => {
   if (!principlesSection || !principleCards.length) return;
 
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    setActivePrinciple(-1);
+    return;
+  }
+
   const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
   const rect = principlesSection.getBoundingClientRect();
 
@@ -333,20 +338,56 @@ const finishCompetencyAnimation = (item) => {
 const getCompetencyClosedHeight = (item) => {
   const minHeight = parseFloat(window.getComputedStyle(item).minHeight);
 
-  return Number.isFinite(minHeight) ? minHeight : 0;
+  if (Number.isFinite(minHeight) && minHeight > 0) {
+    return minHeight;
+  }
+
+  const clone = item.cloneNode(true);
+  const rect = item.getBoundingClientRect();
+
+  clone.classList.remove(
+    "competency-item--open",
+    "competency-item--animating",
+    "competency-item--closing"
+  );
+  clone.removeAttribute("style");
+  clone.querySelectorAll("p").forEach((paragraph) => {
+    paragraph.hidden = true;
+  });
+
+  Object.assign(clone.style, {
+    position: "absolute",
+    left: "-9999px",
+    top: "0",
+    visibility: "hidden",
+    pointerEvents: "none",
+    width: `${rect.width}px`,
+    height: "auto",
+    overflow: "visible",
+  });
+
+  item.after(clone);
+  const closedHeight = clone.getBoundingClientRect().height;
+  clone.remove();
+
+  return closedHeight;
 };
 
 const animateCompetencyOpen = (item, startHeight) => {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    item.classList.add("competency-item--open");
+    return;
+  }
 
   clearCompetencyAnimation(item);
-
-  const endHeight = item.getBoundingClientRect().height;
 
   item.classList.add("competency-item--animating");
   item.style.height = `${startHeight}px`;
   item.style.overflow = "hidden";
   item.style.transition = "none";
+
+  item.classList.add("competency-item--open");
+  const endHeight = item.scrollHeight;
 
   item.getBoundingClientRect();
   item.style.transition = `height ${competencyAnimationDuration}ms cubic-bezier(0.4, 0, 0.2, 1)`;
@@ -361,18 +402,20 @@ const animateCompetencyOpen = (item, startHeight) => {
 
 const animateCompetencyClose = (item, startHeight, onComplete) => {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    item.classList.remove("competency-item--open");
     onComplete();
     return;
   }
 
   clearCompetencyAnimation(item);
 
-  const endHeight = getCompetencyClosedHeight(item);
-
   item.classList.add("competency-item--closing");
   item.style.height = `${startHeight}px`;
   item.style.overflow = "hidden";
   item.style.transition = "none";
+
+  item.classList.remove("competency-item--open");
+  const endHeight = getCompetencyClosedHeight(item);
 
   item.getBoundingClientRect();
   item.style.transition = `height ${competencyAnimationDuration}ms cubic-bezier(0.4, 0, 0.2, 1)`;
@@ -386,6 +429,37 @@ const animateCompetencyClose = (item, startHeight, onComplete) => {
   competencyAnimationTimers.set(item, timer);
 };
 
+const captureCompetencyPositions = () => {
+  if (!window.matchMedia("(max-width: 768px)").matches) return null;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return null;
+
+  return new Map(
+    [...competencyItems].map((item) => [item, item.getBoundingClientRect().top])
+  );
+};
+
+const animateCompetencyLayout = (positions) => {
+  if (!positions) return;
+
+  [...competencyItems].forEach((item) => {
+    const previousTop = positions.get(item);
+    if (!Number.isFinite(previousTop)) return;
+
+    const currentTop = item.getBoundingClientRect().top;
+    const delta = previousTop - currentTop;
+
+    if (Math.abs(delta) <= 0.5) return;
+
+    item.animate(
+      [{ transform: `translateY(${delta}px)` }, { transform: "translateY(0)" }],
+      {
+        duration: competencyAnimationDuration,
+        easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+      }
+    );
+  });
+};
+
 competencyItems.forEach((item) => {
   const trigger = item.querySelector(".competency-item__button");
   const panelId = trigger?.getAttribute("aria-controls");
@@ -394,6 +468,11 @@ competencyItems.forEach((item) => {
 
   trigger?.addEventListener("click", () => {
     const wasOpen = item.classList.contains("competency-item--open");
+    const isMobileAccordion = window.matchMedia("(max-width: 768px)").matches;
+
+    if (wasOpen && isMobileAccordion) return;
+
+    const positions = captureCompetencyPositions();
 
     competencyItems.forEach((nextItem) => {
       const nextTrigger = nextItem.querySelector(".competency-item__button");
@@ -414,14 +493,11 @@ competencyItems.forEach((item) => {
       if (isActive) {
         if (nextPanel) nextPanel.hidden = false;
 
-        nextItem.classList.add("competency-item--open");
         animateCompetencyOpen(nextItem, startHeight);
         return;
       }
 
       if (isOpen) {
-        nextItem.classList.remove("competency-item--open");
-
         animateCompetencyClose(nextItem, startHeight, () => {
           if (nextPanel) nextPanel.hidden = true;
         });
@@ -433,5 +509,6 @@ competencyItems.forEach((item) => {
     });
 
     trigger.setAttribute("aria-label", `${wasOpen ? "Развернуть" : "Свернуть"}: ${title}`);
+    animateCompetencyLayout(positions);
   });
 });
