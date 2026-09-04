@@ -2667,6 +2667,7 @@ img {
     gap: calc(8 * var(--footer-u));
 }
 
+.site-footer__license-list a,
 .site-footer__license-list span {
     display: inline-flex;
     align-items: center;
@@ -2679,6 +2680,7 @@ img {
     font-size: calc(24 * var(--footer-u));
     font-weight: 400;
     line-height: 1;
+    text-decoration: none;
 }
 
 .site-footer__note {
@@ -2910,6 +2912,7 @@ img {
         line-height: 24px;
     }
 
+    .site-footer__license-list a,
     .site-footer__license-list span {
         min-height: 44px;
         padding: 10px 24px;
@@ -3609,5 +3612,319 @@ img {
         font-weight: 400;
         line-height: normal;
         transition: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .benefits-section {
+        --benefits-u: 1px;
+        min-height: 0;
+        padding: 48px 16px;
+    }
+
+    .benefits-section__title {
+        margin-bottom: 24px;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0;
+    }
+
+    .benefits-section__grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .benefits-card {
+        min-height: 169px;
+        padding: 20px;
+        border-radius: 16px;
+        background: #fff;
+        color: var(--text-primary);
+    }
+
+    .benefits-card__content {
+        justify-content: space-between;
+        min-height: 129px;
+    }
+
+    .benefits-card__header {
+        gap: 8px;
+        font-size: 16px;
+        line-height: normal;
+        white-space: nowrap;
+    }
+
+    .benefits-card__number {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: normal;
+        gap: 4px;
+    }
+
+    .benefits-card__number::before,
+    .benefits-card__number::after {
+        font-size: 16px;
+        line-height: normal;
+    }
+
+    .benefits-card h3 {
+        flex: 0 1 auto;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0;
+    }
+
+    .benefits-card p {
+        color: var(--text-primary);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+        opacity: 0.8;
+    }
+
+    .benefits-card--link {
+        position: relative;
+        min-height: 169px;
+        padding: 0;
+        border-radius: 16px;
+        background: #fff;
+        transform: none;
+    }
+
+    .benefits-card--link:hover {
+        background: #fff;
+        transform: none;
+    }
+
+    .benefits-card__hh {
+        top: 50%;
+        left: 50%;
+        width: 211px;
+        height: 135px;
+        object-fit: contain;
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    .benefits-card__button {
+        --button-cut: 9px;
+        position: relative;
+        z-index: 2;
+        width: 272px;
+        height: 52px;
+        background: transparent;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 18px;
+        letter-spacing: -0.02em;
+        clip-path: none;
+    }
+
+    .benefits-card__button::before {
+        position: absolute;
+        inset: 14.7%;
+        background: var(--accent-red);
+        clip-path: polygon(
+                var(--button-cut) 0,
+                100% 0,
+                100% calc(100% - var(--button-cut)),
+                calc(100% - var(--button-cut)) 100%,
+                0 100%,
+                0 var(--button-cut)
+        );
+        content: "";
+    }
+
+    .benefits-card__button span {
+        position: relative;
+        z-index: 1;
+    }
+
+    .office-section {
+        --office-u: 1px;
+        min-height: 0;
+        gap: 24px;
+        padding: 48px 16px;
+    }
+
+    .office-section__heading {
+        gap: 8px;
+    }
+
+    .office-section__heading h2 {
+        font-size: 24px;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0;
+    }
+
+    .office-section__heading p {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0;
+    }
+
+    .office-map {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 343 / 267;
+        border-width: 0.2px;
+        border-radius: 4.5px;
+    }
+
+    .office-map__image {
+        object-position: bottom;
+        border-radius: inherit;
+    }
+
+    .office-map__route {
+        top: calc(47 / 267 * 100%);
+        left: calc(32 / 343 * 100%);
+        width: calc(256 / 343 * 100%);
+        height: calc(137 / 267 * 100%);
+    }
+
+    .office-map__route-way {
+        stroke-width: 11;
+        stroke-dasharray: 0.02 0.02;
+    }
+
+    .office-map__route-mask {
+        stroke-width: 20;
+    }
+
+    .office-map__route-point {
+        stroke-width: 11;
+        r: 19;
+    }
+
+    .office-map__photo {
+        top: calc(93 / 267 * 100%);
+        left: calc(106 / 343 * 100%);
+        width: calc(99 / 343 * 100%);
+        height: calc(99 / 267 * 100%);
+    }
+
+    .office-map__badge {
+        top: calc(82.88 / 267 * 100%);
+        left: calc(194.2 / 343 * 100%);
+        width: calc(11.113 / 343 * 100%);
+        height: calc(6.969 / 267 * 100%);
+    }
+
+    .office-map__badge span {
+        top: 10%;
+        left: 13%;
+        font-size: clamp(2px, calc(2.637 / 343 * 100vw), 2.637px);
+        line-height: normal;
+    }
+
+    .site-footer {
+        --footer-u: 1px;
+        min-height: 0;
+        gap: 24px;
+        padding: 48px 20px;
+        background: var(--text-primary);
+    }
+
+    .site-footer__top {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        width: 100%;
+    }
+
+    .site-footer__contacts,
+    .site-footer__legal {
+        display: flex;
+        flex: none;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+    }
+
+    .site-footer__legal {
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .site-footer h2 {
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 30px;
+        letter-spacing: -0.02em;
+    }
+
+    .site-footer__company {
+        font-size: 16px;
+        line-height: 22px;
+        letter-spacing: -0.02em;
+    }
+
+    .site-footer__field {
+        gap: 6px;
+        font-size: 16px;
+        line-height: 22px;
+        letter-spacing: -0.02em;
+    }
+
+    .site-footer__label {
+        color: #727787;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 18px;
+        letter-spacing: -0.02em;
+    }
+
+    .site-footer__nav {
+        gap: 24px;
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: -0.02em;
+    }
+
+    .site-footer__nav-group {
+        gap: 12px;
+    }
+
+    .site-footer__licenses {
+        gap: 12px;
+        font-size: 16px;
+        line-height: normal;
+    }
+
+    .site-footer__license-list {
+        gap: 8px;
+    }
+
+    .site-footer__license-list a,
+    .site-footer__license-list span {
+        min-height: 34px;
+        padding: 8px 20px;
+        border-radius: 72px;
+        background: #343740;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: normal;
+    }
+
+    .site-footer__note {
+        gap: 16px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+        color: #5d6273;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 0;
+    }
+
+    .site-footer__copyright {
+        color: #5d6273;
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: -0.02em;
     }
 }
